@@ -70,7 +70,7 @@ a{color:inherit}
 .pillars{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:18px;overflow:hidden}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
 .reveal.revealed{opacity:1;transform:translateY(0)}
-.pillar{background:rgba(255,255,255,.015);padding:44px 38px;position:relative;transition:background .25s}
+.pillar{background:rgba(255,255,255,.015);padding:44px 38px;position:relative;transition:background .25s,opacity .7s ease,transform .7s ease}
 .pillar:hover{background:rgba(255,255,255,.035)}
 .pillar-num{font-size:11px;font-weight:700;color:var(--gold-bright);letter-spacing:2px;margin-bottom:24px}
 .pillar-icon{width:14px;height:14px;border-radius:50%;background:var(--gold-bright);box-shadow:0 0 0 6px rgba(184,146,74,.12);margin-bottom:26px}
@@ -506,18 +506,30 @@ a{color:inherit}
   const items = document.querySelectorAll('.reveal');
   if (!items.length) return;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
-        const index = siblings.indexOf(entry.target);
-        setTimeout(() => entry.target.classList.add('revealed'), index * 130);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
+  function setupObserver() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
+          const index = siblings.indexOf(entry.target);
+          setTimeout(() => entry.target.classList.add('revealed'), index * 130);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
 
-  items.forEach(el => observer.observe(el));
+    items.forEach(el => observer.observe(el));
+  }
+
+  // Wait for the page to finish its initial paint/layout before observing,
+  // so elements already in view on load don't fire instantly without a visible transition.
+  if (document.readyState === 'complete') {
+    requestAnimationFrame(() => requestAnimationFrame(setupObserver));
+  } else {
+    window.addEventListener('load', () => {
+      requestAnimationFrame(() => requestAnimationFrame(setupObserver));
+    });
+  }
 })();
 
 // ---- CS Intelligence panel: animated count-up on scroll into view ----
