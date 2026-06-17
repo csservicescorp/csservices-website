@@ -41,7 +41,7 @@ a{color:inherit}
 .hero-video-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,20,38,.92) 0%,rgba(8,20,38,.75) 35%,rgba(8,20,38,.35) 65%,rgba(8,20,38,.15) 100%);z-index:1}
 .hero-grid{position:absolute;inset:0;z-index:2;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,black 30%,transparent 75%)}
 .hero-glow{display:none}
-.hero-inner{position:relative;z-index:3;max-width:600px;margin:0;text-align:left;padding:0 0 0 64px}
+.hero-inner{position:relative;z-index:3;max-width:600px;margin:0;text-align:left;padding:0 0 90px 64px}
 .hero-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.04);border:1px solid rgba(184,146,74,.3);border-radius:30px;padding:8px 20px;font-size:11px;font-weight:600;color:var(--gold-bright);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:32px}
 .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold-bright);box-shadow:0 0 8px var(--gold-bright)}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(38px,6vw,64px);font-weight:600;color:#fff;letter-spacing:-1px;line-height:1.1;margin-bottom:24px}
@@ -52,8 +52,30 @@ a{color:inherit}
 .btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(184,146,74,.4)}
 .btn-ghost{background:rgba(255,255,255,.03);color:#fff;padding:16px 32px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,.16);transition:all .2s}
 .btn-ghost:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.3)}
-.scroll-cue{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--text3);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;z-index:3}
-.scroll-cue-line{width:1px;height:30px;background:linear-gradient(to bottom,var(--gold-bright),transparent)}
+
+/* Hero: mini live map card, overlaid top-right on the video */
+.hero-map-card{position:absolute;top:108px;right:48px;z-index:3;width:240px;background:rgba(7,15,36,.78);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:14px;padding:16px 16px 12px}
+.hmc-title{font-size:12.5px;font-weight:700;color:#fff;margin-bottom:4px}
+.hmc-sub{font-size:10.5px;color:var(--text2);line-height:1.4;margin-bottom:12px}
+.hmc-canvas{position:relative;width:100%;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:transparent}
+.hmc-svg{width:100%;height:100%;display:block}
+.hmc-pin{transform-origin:center;animation:hmcPulse 2.2s ease-in-out infinite}
+.hmc-pin:nth-of-type(2){animation-delay:.3s}
+.hmc-pin:nth-of-type(3){animation-delay:.6s}
+.hmc-pin:nth-of-type(4){animation-delay:.9s}
+.hmc-pin:nth-of-type(5){animation-delay:1.2s}
+.hmc-pin:nth-of-type(6){animation-delay:1.5s}
+@keyframes hmcPulse{0%,100%{opacity:.5;r:3.5}50%{opacity:1;r:5}}
+.hmc-link{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--blue-light);text-decoration:none;margin-top:10px}
+.hmc-link:hover{color:#fff}
+
+/* Hero: stats bar below the video */
+.hero-stats-bar{position:absolute;bottom:0;left:0;right:0;z-index:3;background:rgba(7,15,36,.85);backdrop-filter:blur(10px);border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr);padding:22px 48px}
+.hstat{text-align:center;border-right:1px solid var(--border)}
+.hstat:last-child{border-right:none}
+.hstat-num{font-size:26px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums}
+.hstat-unit{font-size:15px;color:var(--gold-bright);font-weight:700}
+.hstat-label{font-size:10.5px;color:var(--text2);margin-top:4px;letter-spacing:.3px;text-transform:uppercase}
 
 /* ===== SECTION SCAFFOLDING ===== */
 .section{position:relative;padding:120px 48px}
@@ -76,35 +98,6 @@ a{color:inherit}
 .pillar-icon{width:14px;height:14px;border-radius:50%;background:var(--gold-bright);box-shadow:0 0 0 6px rgba(184,146,74,.12);margin-bottom:26px}
 .pillar h3{font-size:19px;font-weight:700;color:#fff;margin-bottom:12px;letter-spacing:-.3px}
 .pillar p{font-size:13.5px;color:var(--text2);line-height:1.7}
-
-/* ===== LIVE PROJECTS MAP (signature element) ===== */
-.map-section{background:var(--deep)}
-.map-wrap{max-width:640px;margin:0 auto;position:relative;background:#0B1A30;border:1px solid var(--border);border-radius:20px;padding:8px;box-shadow:0 40px 100px rgba(0,0,0,.5)}
-.map-canvas{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#070F24}
-.map-iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.7) brightness(.85) contrast(1.05)}
-.map-pin-overlay{position:absolute;inset:0;pointer-events:none;z-index:5}
-.html-pin{position:absolute;display:flex;align-items:center;gap:8px;transform:translate(-50%,-50%);pointer-events:auto;cursor:pointer}
-.html-pin .pin-dot{width:12px;height:12px;border-radius:50%;display:block;position:relative;box-shadow:0 0 0 6px rgba(255,255,255,.06)}
-.html-pin .pin-dot::after{content:'';position:absolute;inset:-10px;border-radius:50%;animation:pinPulse 2.4s ease-in-out infinite}
-.html-pin.gold .pin-dot{background:#D4A63A}
-.html-pin.gold .pin-dot::after{background:rgba(212,166,58,.35)}
-.html-pin.green .pin-dot{background:#5DD3A8}
-.html-pin.green .pin-dot::after{background:rgba(93,211,168,.35)}
-.html-pin.blue .pin-dot{background:#7AA8FF}
-.html-pin.blue .pin-dot::after{background:rgba(122,168,255,.35)}
-.html-pin .pin-label{font-size:12px;font-weight:600;color:#fff;background:rgba(7,15,36,.85);padding:3px 9px;border-radius:6px;white-space:nowrap;text-shadow:0 1px 3px rgba(0,0,0,.6)}
-@keyframes pinPulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:0;transform:scale(1.8)}}
-.map-pin-label{position:absolute;background:rgba(7,15,36,.95);border:1px solid rgba(184,146,74,.4);border-radius:8px;padding:8px 14px;font-size:11.5px;color:#fff;pointer-events:none;opacity:0;transition:opacity .2s;white-space:nowrap;transform:translate(-50%,-130%);z-index:10}
-.map-pin-label.show{opacity:1}
-.map-pin-label .ptitle{font-weight:700;color:var(--gold-bright);display:block}
-.map-pin-label .psub{font-size:10px;color:var(--text2)}
-.map-legend{display:flex;justify-content:center;gap:32px;padding:22px 0 4px;flex-wrap:wrap}
-.leg-item{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text2)}
-.leg-dot{width:8px;height:8px;border-radius:50%}
-.leg-dot.completed{background:var(--gold-bright);box-shadow:0 0 8px var(--gold-bright)}
-.leg-dot.active{background:#5DD3A8;box-shadow:0 0 8px #5DD3A8}
-.leg-dot.field{background:#7AA8FF;box-shadow:0 0 8px #7AA8FF}
-.map-note{text-align:center;font-size:10.5px;color:var(--text3);margin-top:8px;letter-spacing:.3px}
 
 /* ===== INTELLIGENCE PANEL (dashboard-style stats) ===== */
 .intel-panel{max-width:1100px;margin:0 auto;background:#0B1A30;border:1px solid var(--border);border-radius:20px;padding:56px 48px;position:relative}
@@ -209,12 +202,16 @@ a{color:inherit}
   .services-grid{grid-template-columns:1fr}
   .team-grid{grid-template-columns:1fr;max-width:320px}
   .footer-inner{grid-template-columns:1fr 1fr}
+  .hero-map-card{display:none}
+  .hero-stats-bar{grid-template-columns:repeat(2,1fr);row-gap:18px;padding:18px 24px}
+  .hstat:nth-child(odd){border-right:1px solid var(--border)}
+  .hstat:nth-child(even){border-right:none}
 }
 @media(max-width:640px){
   .topnav{padding:0 20px}
   .tnlinks{display:none}
   .section{padding:80px 20px}
-  .hero-inner{padding:0 24px;max-width:100%}
+  .hero-inner{padding:0 24px;max-width:100%;padding-bottom:140px}
   .intel-grid{grid-template-columns:1fr 1fr;gap:24px}
   .istat-num{font-size:28px}
   .concierge-track{grid-template-columns:1fr 1fr}
@@ -222,6 +219,8 @@ a{color:inherit}
   .lead-box{padding:40px 26px}
   .footer-inner{grid-template-columns:1fr}
   .intel-panel{padding:36px 24px}
+  .hstat-num{font-size:20px}
+  .hstat-label{font-size:9.5px}
 }
 </style>
 </head>
@@ -259,7 +258,41 @@ a{color:inherit}
       <a href="siman-method.html" class="btn-ghost">See the Siman Method™</a>
     </div>
   </div>
-  <div class="scroll-cue"><div class="scroll-cue-line"></div>Scroll</div>
+
+  <div class="hero-map-card">
+    <div class="hmc-title">Live Projects Map</div>
+    <div class="hmc-sub">Real-time projects across South Florida.</div>
+    <div class="hmc-canvas" id="heroMapCanvas">
+      <svg class="hmc-svg" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="hmcGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#4CC9FF" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#4CC9FF" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <path d="M120,8 C128,40 138,68 132,98 C127,128 145,150 138,178
+                 C133,192 112,196 100,190 C92,178 98,158 90,138
+                 C82,116 70,100 76,76 C82,52 96,30 104,12 C108,6 116,4 120,8 Z"
+          fill="none" stroke="rgba(124,168,255,.35)" stroke-width="1.5"/>
+        <circle class="hmc-pin" cx="110" cy="20" r="3.5" fill="#4CC9FF"/>
+        <circle class="hmc-pin" cx="124" cy="48" r="3.5" fill="#4CC9FF"/>
+        <circle class="hmc-pin" cx="118" cy="78" r="3.5" fill="#4CC9FF"/>
+        <circle class="hmc-pin" cx="130" cy="108" r="3.5" fill="#4CC9FF"/>
+        <circle class="hmc-pin" cx="122" cy="138" r="3.5" fill="#4CC9FF"/>
+        <circle class="hmc-pin" cx="112" cy="168" r="3.5" fill="#4CC9FF"/>
+      </svg>
+    </div>
+    <a href="#" class="hmc-link">View Live Map <i class="ti ti-arrow-right"></i></a>
+  </div>
+
+  <div class="hero-stats-bar">
+    <div class="hstat"><div class="hstat-num"><span class="count-target" data-target="6">0</span><span class="hstat-unit">+</span></div><div class="hstat-label">Years of Excellence</div></div>
+    <div class="hstat"><div class="hstat-num"><span class="count-target" data-target="450">0</span><span class="hstat-unit">+</span></div><div class="hstat-label">Projects Completed</div></div>
+    <div class="hstat"><div class="hstat-num"><span class="count-target" data-target="98">0</span><span class="hstat-unit">%</span></div><div class="hstat-label">Client Satisfaction</div></div>
+    <div class="hstat"><div class="hstat-num">24<span class="hstat-unit">/7</span></div><div class="hstat-label">Emergency Services</div></div>
+  </div>
+
+
 </section>
 
 <!-- ===== THREE PILLARS ===== -->
@@ -286,40 +319,7 @@ a{color:inherit}
   </div>
 </section>
 
-<!-- ===== LIVE PROJECTS MAP (signature element) ===== -->
-<section class="section map-section">
-  <div class="eyebrow">Operating Across South Florida</div>
-  <div class="section-head reveal">
-    <h2>Live Projects Map</h2>
-    <p>A real-time view of where our teams are working right now.</p>
-  </div>
-  <div class="map-wrap reveal">
-    <div class="map-canvas" id="mapCanvas">
-      <iframe
-        class="map-iframe"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1256614.7030269294!2d-81.00838924011305!3d26.497839295603207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88dbaa4f2e750669%3A0x7fafe54b85399591!2sSouth%20Florida%2C%20FL!5e0!3m2!1sen!2sus!4v1781703789415!5m2!1sen!2sus"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="South Florida service area map">
-      </iframe>
-      <div class="map-pin-overlay" id="mapPinOverlay">
-        <div class="map-pin html-pin gold" data-title="Exterior Painting" data-sub="Palm Beach · Completed" style="top:36%;left:70%"><span class="pin-dot"></span><span class="pin-label">Palm Beach</span></div>
-        <div class="map-pin html-pin green" data-title="Kitchen Remodel" data-sub="Boca Raton · In Progress" style="top:48%;left:69%"><span class="pin-dot"></span><span class="pin-label">Boca Raton</span></div>
-        <div class="map-pin html-pin blue" data-title="Field Team Active" data-sub="Fort Lauderdale" style="top:56%;left:69%"><span class="pin-dot"></span><span class="pin-label">Fort Lauderdale</span></div>
-        <div class="map-pin html-pin gold" data-title="Roof Restoration" data-sub="Coral Gables · Completed" style="top:68%;left:60%"><span class="pin-dot"></span><span class="pin-label">Coral Gables</span></div>
-        <div class="map-pin html-pin green" data-title="HOA Maintenance" data-sub="Miami · In Progress" style="top:67%;left:67%"><span class="pin-dot"></span><span class="pin-label">Miami</span></div>
-        <div class="map-pin html-pin blue" data-title="Field Team Active" data-sub="Boca Raton" style="top:51%;left:71%"><span class="pin-dot"></span></div>
-      </div>
-      <div class="map-pin-label" id="mapLabel"></div>
-    </div>
-    <div class="map-legend">
-      <div class="leg-item"><span class="leg-dot completed"></span> Completed Projects</div>
-      <div class="leg-item"><span class="leg-dot active"></span> Projects In Progress</div>
-      <div class="leg-item"><span class="leg-dot field"></span> Field Teams Active</div>
-    </div>
-  </div>
-  <div class="map-note">Pin positions are illustrative — live geolocation feed planned for a future platform release</div>
-</section>
+
 
 <!-- ===== INTELLIGENCE PANEL ===== -->
 <section class="section section-dark">
@@ -568,26 +568,6 @@ a{color:inherit}
   }, { threshold: 0.4 });
 
   counters.forEach(el => observer.observe(el));
-})();
-
-// ---- Live Projects Map: hover tooltips ----
-(function(){
-  const canvas = document.getElementById('mapCanvas');
-  const label = document.getElementById('mapLabel');
-  const pins = document.querySelectorAll('.html-pin');
-  pins.forEach(pin => {
-    pin.addEventListener('mouseenter', () => {
-      const title = pin.dataset.title;
-      const sub = pin.dataset.sub;
-      label.innerHTML = '<span class="ptitle">' + title + '</span><span class="psub">' + sub + '</span>';
-      label.classList.add('show');
-      const rect = canvas.getBoundingClientRect();
-      const pinRect = pin.getBoundingClientRect();
-      label.style.left = (pinRect.left - rect.left + pinRect.width / 2) + 'px';
-      label.style.top = (pinRect.top - rect.top) + 'px';
-    });
-    pin.addEventListener('mouseleave', () => label.classList.remove('show'));
-  });
 })();
 
 // ---- Before/After holographic slider ----
