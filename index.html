@@ -467,12 +467,12 @@ a{color:inherit}
 
   function animateCount(el) {
     const target = parseFloat(el.dataset.target);
-    const duration = 2200;
+    const duration = 3400;
     const startTime = performance.now();
 
     function tick(now) {
       const progress = Math.min((now - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 1.8);
+      const eased = 1 - Math.pow(1 - progress, 2.4);
       const current = Math.round(target * eased);
       el.textContent = current;
       if (progress < 1) {
