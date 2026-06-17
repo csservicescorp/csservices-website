@@ -146,7 +146,9 @@ a{color:inherit}
 
 /* ===== SERVICES (light section for contrast) ===== */
 .services-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.svc-card{background:#fff;border-radius:14px;padding:32px 28px;border:1px solid #E4E8F0;transition:transform .2s,box-shadow .2s}
+.svc-card{background:#fff;border-radius:14px;padding:32px 28px;border:1px solid #E4E8F0;transition:transform .2s,box-shadow .2s,opacity .7s ease}
+.svc-card.reveal{transition:opacity .7s ease,transform .7s ease}
+.svc-card.reveal.revealed{transition:transform .2s,box-shadow .2s,opacity .2s}
 .svc-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(7,29,73,.08)}
 .svc-icon{width:13px;height:13px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 6px rgba(184,146,74,.1);margin-bottom:22px}
 .svc-card h4{font-size:15.5px;font-weight:700;color:var(--navy);margin-bottom:8px}
@@ -287,11 +289,11 @@ a{color:inherit}
 <!-- ===== LIVE PROJECTS MAP (signature element) ===== -->
 <section class="section map-section">
   <div class="eyebrow">Operating Across South Florida</div>
-  <div class="section-head">
+  <div class="section-head reveal">
     <h2>Live Projects Map</h2>
     <p>A real-time view of where our teams are working right now.</p>
   </div>
-  <div class="map-wrap">
+  <div class="map-wrap reveal">
     <div class="map-canvas" id="mapCanvas">
       <iframe
         class="map-iframe"
@@ -322,11 +324,11 @@ a{color:inherit}
 <!-- ===== INTELLIGENCE PANEL ===== -->
 <section class="section section-dark">
   <div class="eyebrow">CS Intelligence</div>
-  <div class="section-head">
+  <div class="section-head reveal">
     <h2>Operating at scale</h2>
     <p>Real numbers behind every property we maintain.</p>
   </div>
-  <div class="intel-panel">
+  <div class="intel-panel reveal">
     <div class="intel-head">
       <h3>South Florida Operations Overview</h3>
       <div class="intel-live"><span class="dot"></span> Live</div>
@@ -343,11 +345,11 @@ a{color:inherit}
 <!-- ===== BEFORE/AFTER HOLOGRAPHIC SLIDER ===== -->
 <section class="section map-section">
   <div class="eyebrow">Property Transformation</div>
-  <div class="section-head">
+  <div class="section-head reveal">
     <h2>Before & After</h2>
     <p>Drag the line to see the transformation. [Placeholder — real project photography to follow]</p>
   </div>
-  <div class="ba-wrap">
+  <div class="ba-wrap reveal">
     <div class="ba-slider" id="baSlider">
       <div class="ba-layer ba-before">Before — Photo Placeholder</div>
       <div class="ba-after-clip" id="baAfterClip">
@@ -364,58 +366,58 @@ a{color:inherit}
 <!-- ===== CONCIERGE EXPERIENCE ===== -->
 <section class="section map-section">
   <div class="eyebrow">The Concierge Experience</div>
-  <div class="section-head">
+  <div class="section-head reveal">
     <h2>From first call to ongoing care</h2>
     <p>A structured process for every property, every time.</p>
   </div>
   <div class="concierge-track">
-    <div class="ctrack-item"><div class="ctrack-dot"></div><h4>Consultation</h4><p>A direct conversation about your property and goals.</p></div>
-    <div class="ctrack-item"><div class="ctrack-dot"></div><h4>Inspection</h4><p>Full on-site assessment, documented in detail.</p></div>
-    <div class="ctrack-item"><div class="ctrack-dot"></div><h4>Digital Proposal</h4><p>A clear, itemized plan — no surprises.</p></div>
-    <div class="ctrack-item"><div class="ctrack-dot"></div><h4>Execution</h4><p>Skilled teams, scheduled and supervised.</p></div>
-    <div class="ctrack-item"><div class="ctrack-dot"></div><h4>Quality Audit</h4><p>Verification against the original scope.</p></div>
-    <div class="ctrack-item"><div class="ctrack-dot"></div><h4>Ongoing Care</h4><p>Maintenance that continues after handoff.</p></div>
+    <div class="ctrack-item reveal"><div class="ctrack-dot"></div><h4>Consultation</h4><p>A direct conversation about your property and goals.</p></div>
+    <div class="ctrack-item reveal"><div class="ctrack-dot"></div><h4>Inspection</h4><p>Full on-site assessment, documented in detail.</p></div>
+    <div class="ctrack-item reveal"><div class="ctrack-dot"></div><h4>Digital Proposal</h4><p>A clear, itemized plan — no surprises.</p></div>
+    <div class="ctrack-item reveal"><div class="ctrack-dot"></div><h4>Execution</h4><p>Skilled teams, scheduled and supervised.</p></div>
+    <div class="ctrack-item reveal"><div class="ctrack-dot"></div><h4>Quality Audit</h4><p>Verification against the original scope.</p></div>
+    <div class="ctrack-item reveal"><div class="ctrack-dot"></div><h4>Ongoing Care</h4><p>Maintenance that continues after handoff.</p></div>
   </div>
 </section>
 
 <!-- ===== SERVICES (light section) ===== -->
 <section class="section section-light">
   <div class="eyebrow">What We Do</div>
-  <div class="section-head">
+  <div class="section-head reveal">
     <h2>Services for homes, HOAs & properties</h2>
     <p>One team, one process, across every service we offer.</p>
   </div>
   <div class="services-grid">
-    <div class="svc-card"><div class="svc-icon"></div><h4>HOA & Building Maintenance</h4><p>24/7 support for HOAs, condominiums, and managed properties — requests coordinated, progress documented.</p></div>
-    <div class="svc-card"><div class="svc-icon"></div><h4>Property Repairs & Improvements</h4><p>Reliable repairs for common areas, units, walkways, doors, lighting, drywall, stucco, and more.</p></div>
-    <div class="svc-card"><div class="svc-icon"></div><h4>Exterior & Interior Painting</h4><p>Professional painting with proper preparation and clean, precise execution.</p></div>
-    <div class="svc-card"><div class="svc-icon"></div><h4>Parking Lot Painting</h4><p>Precision pavement marking and striping for HOAs and commercial properties.</p></div>
-    <div class="svc-card"><div class="svc-icon"></div><h4>Cabinetry & Finish Upgrades</h4><p>Detailed upgrades that improve appearance, function, and property value.</p></div>
-    <div class="svc-card"><div class="svc-icon"></div><h4>Emergency & 24/7 Support</h4><p>Urgent leaks, property damage, fast assessment, and coordination — any hour.</p></div>
+    <div class="svc-card reveal"><div class="svc-icon"></div><h4>HOA & Building Maintenance</h4><p>24/7 support for HOAs, condominiums, and managed properties — requests coordinated, progress documented.</p></div>
+    <div class="svc-card reveal"><div class="svc-icon"></div><h4>Property Repairs & Improvements</h4><p>Reliable repairs for common areas, units, walkways, doors, lighting, drywall, stucco, and more.</p></div>
+    <div class="svc-card reveal"><div class="svc-icon"></div><h4>Exterior & Interior Painting</h4><p>Professional painting with proper preparation and clean, precise execution.</p></div>
+    <div class="svc-card reveal"><div class="svc-icon"></div><h4>Parking Lot Painting</h4><p>Precision pavement marking and striping for HOAs and commercial properties.</p></div>
+    <div class="svc-card reveal"><div class="svc-icon"></div><h4>Cabinetry & Finish Upgrades</h4><p>Detailed upgrades that improve appearance, function, and property value.</p></div>
+    <div class="svc-card reveal"><div class="svc-icon"></div><h4>Emergency & 24/7 Support</h4><p>Urgent leaks, property damage, fast assessment, and coordination — any hour.</p></div>
   </div>
 </section>
 
 <!-- ===== TEAM ===== -->
 <section class="section section-dark">
   <div class="eyebrow">Leadership</div>
-  <div class="section-head">
+  <div class="section-head reveal">
     <h2>The team behind the method</h2>
     <p>The people who built the Siman Method™ inside 400+ real units — and run it every day.</p>
   </div>
   <div class="team-grid">
-    <div class="team-card">
+    <div class="team-card reveal">
       <div class="team-photo"><img src="images/team/alvaro-siman.jpg" alt="Álvaro Siman"></div>
       <h4>Álvaro Siman</h4>
       <div class="team-role">CEO & Founder</div>
       <p class="team-bio">Built CS Services from the field up, creating the Siman Method™ to bring documented, repeatable discipline to property care across South Florida.</p>
     </div>
-    <div class="team-card">
+    <div class="team-card reveal">
       <div class="team-photo"><img src="images/team/beatriz-cunha.jpg" alt="Beatriz Cunha"></div>
       <h4>Beatriz Cunha</h4>
       <div class="team-role">Co-Founder & Operations</div>
       <p class="team-bio">Runs day-to-day operations and technology, turning the Siman Method™ into the systems that keep every property on schedule and on record.</p>
     </div>
-    <div class="team-card">
+    <div class="team-card reveal">
       <div class="team-photo"><img src="images/team/laiana-diretora.jpg" alt="Laiana Siman"></div>
       <h4>Laiana Siman</h4>
       <div class="team-role">Commercial Director</div>
@@ -427,11 +429,11 @@ a{color:inherit}
 <!-- ===== TRUST WALL ===== -->
 <section class="section map-section">
   <div class="eyebrow">Verified & Trusted</div>
-  <div class="section-head" style="margin-bottom:40px">
+  <div class="section-head reveal" style="margin-bottom:40px">
     <h2>Trust Wall</h2>
     <p>[Placeholder — replace with real certifications, licenses, and review counts]</p>
   </div>
-  <div class="trust-wall">
+  <div class="trust-wall reveal">
     <div class="trust-track">
       <div class="trust-item"><i class="ti ti-certificate"></i> Licensed & Insured</div>
       <div class="trust-item"><i class="ti ti-shield"></i> Workers' Compensation Covered</div>
@@ -450,7 +452,7 @@ a{color:inherit}
 <!-- ===== LEAD FORM ===== -->
 <section class="section section-dark" id="lead-form">
   <div class="lead-section">
-    <div class="lead-box">
+    <div class="lead-box reveal">
       <div class="lead-head">
         <h2>Schedule a Private Consultation</h2>
         <p>We respond fast — most requests get a reply within one business day.</p>
