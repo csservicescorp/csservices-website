@@ -330,10 +330,10 @@ a{color:inherit}
       <div class="intel-live"><span class="dot"></span> Live</div>
     </div>
     <div class="intel-grid">
-      <div class="istat"><div class="istat-num">400<span class="unit">+</span></div><div class="istat-label">Units Under Management</div></div>
-      <div class="istat"><div class="istat-num">6<span class="unit">+</span></div><div class="istat-label">Years in South Florida</div></div>
-      <div class="istat"><div class="istat-num">24<span class="unit">/7</span></div><div class="istat-label">Real Availability</div></div>
-      <div class="istat"><div class="istat-num">6<span class="unit">-Phase</span></div><div class="istat-label">Documented Method</div></div>
+      <div class="istat"><div class="istat-num"><span class="count-target" data-target="400">0</span><span class="unit">+</span></div><div class="istat-label">Units Under Management</div></div>
+      <div class="istat"><div class="istat-num"><span class="count-target" data-target="6">0</span><span class="unit">+</span></div><div class="istat-label">Years in South Florida</div></div>
+      <div class="istat"><div class="istat-num"><span class="count-target" data-target="24">0</span><span class="unit">/7</span></div><div class="istat-label">Real Availability</div></div>
+      <div class="istat"><div class="istat-num"><span class="count-target" data-target="6">0</span><span class="unit">-Phase</span></div><div class="istat-label">Documented Method</div></div>
     </div>
   </div>
 </section>
@@ -499,6 +499,42 @@ a{color:inherit}
 </footer>
 
 <script>
+// ---- CS Intelligence panel: animated count-up on scroll into view ----
+(function(){
+  const counters = document.querySelectorAll('.count-target');
+  if (!counters.length) return;
+
+  function animateCount(el) {
+    const target = parseFloat(el.dataset.target);
+    const duration = 1400;
+    const startTime = performance.now();
+
+    function tick(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(target * eased);
+      el.textContent = current;
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        el.textContent = target;
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCount(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(el => observer.observe(el));
+})();
+
 // ---- Live Projects Map: hover tooltips ----
 (function(){
   const canvas = document.getElementById('mapCanvas');
