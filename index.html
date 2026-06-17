@@ -122,14 +122,19 @@ a{color:inherit}
 .ctrack-item p{font-size:11px;color:var(--text3);line-height:1.5}
 
 /* ===== SERVICES (light section for contrast) ===== */
-.services-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.svc-card{background:#fff;border-radius:14px;padding:32px 28px;border:1px solid #E4E8F0;transition:transform .2s,box-shadow .2s,opacity .7s ease}
-.svc-card.reveal{transition:opacity .7s ease,transform .7s ease}
-.svc-card.reveal.revealed{transition:transform .2s,box-shadow .2s,opacity .2s}
-.svc-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(7,29,73,.08)}
-.svc-icon{width:13px;height:13px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 6px rgba(15,94,255,.1);margin-bottom:22px}
-.svc-card h4{font-size:15.5px;font-weight:700;color:var(--navy);margin-bottom:8px}
-.svc-card p{font-size:12.5px;color:#5A6478;line-height:1.65}
+.svc-layout{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:start}
+.svc-intro h2{font-size:30px;font-weight:800;letter-spacing:-1px;color:var(--navy);margin:14px 0 14px;line-height:1.2}
+.svc-intro p{font-size:13.5px;color:#5A6478;line-height:1.65;margin-bottom:18px}
+.svc-view-all{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--blue);text-decoration:none}
+.svc-view-all:hover{color:var(--navy)}
+.svc-columns{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+.svc-col{padding:0 22px;border-left:1px solid #E0E4EC;transition:opacity .7s ease,transform .7s ease}
+.svc-col:first-child{border-left:none;padding-left:0}
+.svc-col-icon{color:var(--blue);font-size:28px;margin-bottom:18px}
+.svc-col h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.svc-col p{font-size:12px;color:#5A6478;line-height:1.6;margin-bottom:14px}
+.svc-learn{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;color:var(--blue);text-decoration:none}
+.svc-learn:hover{color:var(--navy)}
 
 /* ===== TEAM ===== */
 .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;max-width:980px;margin:0 auto}
@@ -183,12 +188,15 @@ a{color:inherit}
   .intel-grid{grid-template-columns:repeat(2,1fr)}
   .concierge-track{grid-template-columns:repeat(3,1fr);row-gap:40px}
   .concierge-track::before{display:none}
-  .services-grid{grid-template-columns:1fr}
   .team-grid{grid-template-columns:1fr;max-width:320px}
   .footer-inner{grid-template-columns:1fr 1fr}
   .hero-stats-bar{grid-template-columns:repeat(2,1fr);row-gap:18px;padding:18px 24px}
   .hstat:nth-child(odd){border-right:1px solid var(--border)}
   .hstat:nth-child(even){border-right:none}
+  .svc-layout{grid-template-columns:1fr;gap:32px}
+  .svc-columns{grid-template-columns:repeat(3,1fr);row-gap:28px}
+  .svc-col{border-left:1px solid #E0E4EC}
+  .svc-col:nth-child(3n+1){border-left:none}
 }
 @media(max-width:640px){
   .topnav{padding:0 20px}
@@ -204,6 +212,9 @@ a{color:inherit}
   .intel-panel{padding:36px 24px}
   .hstat-num{font-size:20px}
   .hstat-label{font-size:9.5px}
+  .svc-columns{grid-template-columns:1fr;gap:0}
+  .svc-col{border-left:none;border-top:1px solid #E0E4EC;padding:24px 0 0;margin-top:24px}
+  .svc-col:first-child{border-top:none;padding-top:0;margin-top:0}
 }
 </style>
 </head>
@@ -340,18 +351,45 @@ a{color:inherit}
 
 <!-- ===== SERVICES (light section) ===== -->
 <section class="section section-light">
-  <div class="eyebrow">What We Do</div>
-  <div class="section-head reveal">
-    <h2>Services for homes, HOAs & properties</h2>
-    <p>One team, one process, across every service we offer.</p>
-  </div>
-  <div class="services-grid">
-    <div class="svc-card reveal"><div class="svc-icon"></div><h4>HOA & Building Maintenance</h4><p>24/7 support for HOAs, condominiums, and managed properties — requests coordinated, progress documented.</p></div>
-    <div class="svc-card reveal"><div class="svc-icon"></div><h4>Property Repairs & Improvements</h4><p>Reliable repairs for common areas, units, walkways, doors, lighting, drywall, stucco, and more.</p></div>
-    <div class="svc-card reveal"><div class="svc-icon"></div><h4>Exterior & Interior Painting</h4><p>Professional painting with proper preparation and clean, precise execution.</p></div>
-    <div class="svc-card reveal"><div class="svc-icon"></div><h4>Parking Lot Painting</h4><p>Precision pavement marking and striping for HOAs and commercial properties.</p></div>
-    <div class="svc-card reveal"><div class="svc-icon"></div><h4>Cabinetry & Finish Upgrades</h4><p>Detailed upgrades that improve appearance, function, and property value.</p></div>
-    <div class="svc-card reveal"><div class="svc-icon"></div><h4>Emergency & 24/7 Support</h4><p>Urgent leaks, property damage, fast assessment, and coordination — any hour.</p></div>
+  <div class="svc-layout">
+    <div class="svc-intro">
+      <div class="eyebrow" style="text-align:left">Complete Solutions</div>
+      <h2>Everything Your Home Deserves</h2>
+      <p>From custom remodeling to ongoing maintenance, we deliver unmatched quality and peace of mind.</p>
+      <a href="#lead-form" class="svc-view-all">View All Services <i class="ti ti-arrow-right"></i></a>
+    </div>
+    <div class="svc-columns">
+      <div class="svc-col reveal">
+        <div class="svc-col-icon"><i class="ti ti-tools"></i></div>
+        <h4>Custom Remodeling</h4>
+        <p>Kitchens, bathrooms, whole home renovations and custom builds.</p>
+        <a href="#lead-form" class="svc-learn">Learn More <i class="ti ti-arrow-right"></i></a>
+      </div>
+      <div class="svc-col reveal">
+        <div class="svc-col-icon"><i class="ti ti-shield-check"></i></div>
+        <h4>Property Maintenance</h4>
+        <p>Preventive maintenance and repairs to keep your property in perfect condition.</p>
+        <a href="#lead-form" class="svc-learn">Learn More <i class="ti ti-arrow-right"></i></a>
+      </div>
+      <div class="svc-col reveal">
+        <div class="svc-col-icon"><i class="ti ti-paint"></i></div>
+        <h4>Exterior Services</h4>
+        <p>Roofing, painting, parking lots, and outdoor living spaces.</p>
+        <a href="#lead-form" class="svc-learn">Learn More <i class="ti ti-arrow-right"></i></a>
+      </div>
+      <div class="svc-col reveal">
+        <div class="svc-col-icon"><i class="ti ti-alert-triangle"></i></div>
+        <h4>Emergency Services</h4>
+        <p>24/7 response for urgent repairs and storm damage restoration.</p>
+        <a href="#lead-form" class="svc-learn">Learn More <i class="ti ti-arrow-right"></i></a>
+      </div>
+      <div class="svc-col reveal">
+        <div class="svc-col-icon"><i class="ti ti-clipboard-list"></i></div>
+        <h4>Project Management</h4>
+        <p>Full-service management from planning to completion with total transparency.</p>
+        <a href="#lead-form" class="svc-learn">Learn More <i class="ti ti-arrow-right"></i></a>
+      </div>
+    </div>
   </div>
 </section>
 
