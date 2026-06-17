@@ -59,13 +59,13 @@ a{color:inherit}
 .hmc-sub{font-size:10.5px;color:var(--text2);line-height:1.4;margin-bottom:12px}
 .hmc-canvas{position:relative;width:100%;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:transparent}
 .hmc-svg{width:100%;height:100%;display:block}
-.hmc-pin{transform-origin:center;animation:hmcPulse 2.2s ease-in-out infinite}
+.hmc-pin{transform-box:fill-box;transform-origin:center;animation:hmcPulse 2.2s ease-in-out infinite}
 .hmc-pin:nth-of-type(2){animation-delay:.3s}
 .hmc-pin:nth-of-type(3){animation-delay:.6s}
 .hmc-pin:nth-of-type(4){animation-delay:.9s}
 .hmc-pin:nth-of-type(5){animation-delay:1.2s}
 .hmc-pin:nth-of-type(6){animation-delay:1.5s}
-@keyframes hmcPulse{0%,100%{opacity:.5;r:3.5}50%{opacity:1;r:5}}
+@keyframes hmcPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.5)}}
 .hmc-link{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--blue-light);text-decoration:none;margin-top:10px}
 .hmc-link:hover{color:#fff}
 
@@ -285,7 +285,7 @@ a{color:inherit}
     <a href="#" class="hmc-link">View Live Map <i class="ti ti-arrow-right"></i></a>
   </div>
 
-  <div class="hero-stats-bar">
+  <div class="hero-stats-bar reveal">
     <div class="hstat"><div class="hstat-num"><span class="count-target" data-target="6">0</span><span class="hstat-unit">+</span></div><div class="hstat-label">Years of Excellence</div></div>
     <div class="hstat"><div class="hstat-num"><span class="count-target" data-target="450">0</span><span class="hstat-unit">+</span></div><div class="hstat-label">Projects Completed</div></div>
     <div class="hstat"><div class="hstat-num"><span class="count-target" data-target="98">0</span><span class="hstat-unit">%</span></div><div class="hstat-label">Client Satisfaction</div></div>
