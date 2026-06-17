@@ -71,7 +71,7 @@ a{color:inherit}
 .pillar{background:rgba(255,255,255,.015);padding:44px 38px;position:relative;transition:background .25s}
 .pillar:hover{background:rgba(255,255,255,.035)}
 .pillar-num{font-size:11px;font-weight:700;color:var(--gold-bright);letter-spacing:2px;margin-bottom:24px}
-.pillar-icon{width:46px;height:46px;border-radius:10px;background:rgba(184,146,74,.12);border:1px solid rgba(184,146,74,.25);display:flex;align-items:center;justify-content:center;color:var(--gold-bright);font-size:21px;margin-bottom:22px}
+.pillar-icon{width:14px;height:14px;border-radius:50%;background:var(--gold-bright);box-shadow:0 0 0 6px rgba(184,146,74,.12);margin-bottom:26px}
 .pillar h3{font-size:19px;font-weight:700;color:#fff;margin-bottom:12px;letter-spacing:-.3px}
 .pillar p{font-size:13.5px;color:var(--text2);line-height:1.7}
 
@@ -138,7 +138,7 @@ a{color:inherit}
 .concierge-track{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:16px;position:relative}
 .concierge-track::before{content:'';position:absolute;top:23px;left:4%;right:4%;height:1px;background:linear-gradient(90deg,transparent,var(--border) 15%,var(--border) 85%,transparent)}
 .ctrack-item{position:relative;text-align:center}
-.ctrack-dot{width:46px;height:46px;border-radius:50%;background:var(--deep);border:1.5px solid rgba(184,146,74,.4);color:var(--gold-bright);display:flex;align-items:center;justify-content:center;font-size:17px;margin:0 auto 18px;position:relative;z-index:1}
+.ctrack-dot{width:14px;height:14px;border-radius:50%;background:var(--gold-bright);margin:0 auto 22px;position:relative;z-index:1;box-shadow:0 0 0 6px rgba(8,20,38,1),0 0 0 7px rgba(184,146,74,.3)}
 .ctrack-item h4{font-size:13px;font-weight:700;color:#fff;margin-bottom:6px}
 .ctrack-item p{font-size:11px;color:var(--text3);line-height:1.5}
 
@@ -146,7 +146,7 @@ a{color:inherit}
 .services-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .svc-card{background:#fff;border-radius:14px;padding:32px 28px;border:1px solid #E4E8F0;transition:transform .2s,box-shadow .2s}
 .svc-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(7,29,73,.08)}
-.svc-icon{width:44px;height:44px;border-radius:10px;background:rgba(184,146,74,.1);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:18px}
+.svc-icon{width:13px;height:13px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 6px rgba(184,146,74,.1);margin-bottom:22px}
 .svc-card h4{font-size:15.5px;font-weight:700;color:var(--navy);margin-bottom:8px}
 .svc-card p{font-size:12.5px;color:#5A6478;line-height:1.65}
 
@@ -263,19 +263,19 @@ a{color:inherit}
   <div class="pillars">
     <div class="pillar">
       <div class="pillar-num">01</div>
-      <div class="pillar-icon"><i class="ti ti-shield-check"></i></div>
+      <div class="pillar-icon"></div>
       <h3>Built on a documented process</h3>
       <p>Every job follows the Siman Method™ — a six-phase framework that diagnoses, documents, and reports on every property, so boards and owners see proof, not promises.</p>
     </div>
     <div class="pillar">
       <div class="pillar-num">02</div>
-      <div class="pillar-icon"><i class="ti ti-clock-hour-4"></i></div>
+      <div class="pillar-icon"></div>
       <h3>24/7 that actually means 24/7</h3>
       <p>Emergencies don't wait for business hours. Dispatch and field teams are structured to respond around the clock, with confirmation at every step.</p>
     </div>
     <div class="pillar">
       <div class="pillar-num">03</div>
-      <div class="pillar-icon"><i class="ti ti-photo"></i></div>
+      <div class="pillar-icon"></div>
       <h3>Proof you can see</h3>
       <p>Before-and-after documentation and a real portfolio across South Florida's most demanding properties — not stock photos, real work.</p>
     </div>
@@ -367,12 +367,12 @@ a{color:inherit}
     <p>A structured process for every property, every time.</p>
   </div>
   <div class="concierge-track">
-    <div class="ctrack-item"><div class="ctrack-dot"><i class="ti ti-phone"></i></div><h4>Consultation</h4><p>A direct conversation about your property and goals.</p></div>
-    <div class="ctrack-item"><div class="ctrack-dot"><i class="ti ti-search"></i></div><h4>Inspection</h4><p>Full on-site assessment, documented in detail.</p></div>
-    <div class="ctrack-item"><div class="ctrack-dot"><i class="ti ti-file-text"></i></div><h4>Digital Proposal</h4><p>A clear, itemized plan — no surprises.</p></div>
-    <div class="ctrack-item"><div class="ctrack-dot"><i class="ti ti-tools"></i></div><h4>Execution</h4><p>Skilled teams, scheduled and supervised.</p></div>
-    <div class="ctrack-item"><div class="ctrack-dot"><i class="ti ti-checkbox"></i></div><h4>Quality Audit</h4><p>Verification against the original scope.</p></div>
-    <div class="ctrack-item"><div class="ctrack-dot"><i class="ti ti-refresh"></i></div><h4>Ongoing Care</h4><p>Maintenance that continues after handoff.</p></div>
+    <div class="ctrack-item"><div class="ctrack-dot"></div><h4>Consultation</h4><p>A direct conversation about your property and goals.</p></div>
+    <div class="ctrack-item"><div class="ctrack-dot"></div><h4>Inspection</h4><p>Full on-site assessment, documented in detail.</p></div>
+    <div class="ctrack-item"><div class="ctrack-dot"></div><h4>Digital Proposal</h4><p>A clear, itemized plan — no surprises.</p></div>
+    <div class="ctrack-item"><div class="ctrack-dot"></div><h4>Execution</h4><p>Skilled teams, scheduled and supervised.</p></div>
+    <div class="ctrack-item"><div class="ctrack-dot"></div><h4>Quality Audit</h4><p>Verification against the original scope.</p></div>
+    <div class="ctrack-item"><div class="ctrack-dot"></div><h4>Ongoing Care</h4><p>Maintenance that continues after handoff.</p></div>
   </div>
 </section>
 
@@ -384,12 +384,12 @@ a{color:inherit}
     <p>One team, one process, across every service we offer.</p>
   </div>
   <div class="services-grid">
-    <div class="svc-card"><div class="svc-icon"><i class="ti ti-building-community"></i></div><h4>HOA & Building Maintenance</h4><p>24/7 support for HOAs, condominiums, and managed properties — requests coordinated, progress documented.</p></div>
-    <div class="svc-card"><div class="svc-icon"><i class="ti ti-tools"></i></div><h4>Property Repairs & Improvements</h4><p>Reliable repairs for common areas, units, walkways, doors, lighting, drywall, stucco, and more.</p></div>
-    <div class="svc-card"><div class="svc-icon"><i class="ti ti-paint"></i></div><h4>Exterior & Interior Painting</h4><p>Professional painting with proper preparation and clean, precise execution.</p></div>
-    <div class="svc-card"><div class="svc-icon"><i class="ti ti-road"></i></div><h4>Parking Lot Painting</h4><p>Precision pavement marking and striping for HOAs and commercial properties.</p></div>
-    <div class="svc-card"><div class="svc-icon"><i class="ti ti-armchair"></i></div><h4>Cabinetry & Finish Upgrades</h4><p>Detailed upgrades that improve appearance, function, and property value.</p></div>
-    <div class="svc-card"><div class="svc-icon"><i class="ti ti-alert-triangle"></i></div><h4>Emergency & 24/7 Support</h4><p>Urgent leaks, property damage, fast assessment, and coordination — any hour.</p></div>
+    <div class="svc-card"><div class="svc-icon"></div><h4>HOA & Building Maintenance</h4><p>24/7 support for HOAs, condominiums, and managed properties — requests coordinated, progress documented.</p></div>
+    <div class="svc-card"><div class="svc-icon"></div><h4>Property Repairs & Improvements</h4><p>Reliable repairs for common areas, units, walkways, doors, lighting, drywall, stucco, and more.</p></div>
+    <div class="svc-card"><div class="svc-icon"></div><h4>Exterior & Interior Painting</h4><p>Professional painting with proper preparation and clean, precise execution.</p></div>
+    <div class="svc-card"><div class="svc-icon"></div><h4>Parking Lot Painting</h4><p>Precision pavement marking and striping for HOAs and commercial properties.</p></div>
+    <div class="svc-card"><div class="svc-icon"></div><h4>Cabinetry & Finish Upgrades</h4><p>Detailed upgrades that improve appearance, function, and property value.</p></div>
+    <div class="svc-card"><div class="svc-icon"></div><h4>Emergency & 24/7 Support</h4><p>Urgent leaks, property damage, fast assessment, and coordination — any hour.</p></div>
   </div>
 </section>
 
