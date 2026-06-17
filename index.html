@@ -53,32 +53,6 @@ a{color:inherit}
 .btn-ghost{background:rgba(255,255,255,.03);color:#fff;padding:16px 32px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,.16);transition:all .2s}
 .btn-ghost:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.3)}
 
-/* Hero: mini live map card, overlaid top-right on the video */
-.hero-map-card{position:absolute;top:108px;right:48px;z-index:3;width:240px;background:rgba(7,15,36,.78);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:14px;padding:16px 16px 12px}
-.hmc-title{font-size:12.5px;font-weight:700;color:#fff;margin-bottom:4px}
-.hmc-sub{font-size:10.5px;color:var(--text2);line-height:1.4;margin-bottom:12px}
-.hmc-canvas{position:relative;width:100%;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:transparent}
-.hmc-svg{width:100%;height:100%;display:block}
-.hmc-pin{transform-box:fill-box;transform-origin:center;animation:hmcPulse 2.2s ease-in-out infinite}
-.hmc-pin:nth-of-type(2){animation-delay:.3s}
-.hmc-pin:nth-of-type(3){animation-delay:.6s}
-.hmc-pin:nth-of-type(4){animation-delay:.9s}
-.hmc-pin:nth-of-type(5){animation-delay:1.2s}
-.hmc-pin:nth-of-type(6){animation-delay:1.5s}
-@keyframes hmcPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.5)}}
-.hmc-link-line{opacity:.4;stroke-dasharray:4 3;animation:hmcFlow 3s linear infinite}
-.hmc-link-line:nth-of-type(2){animation-delay:.2s}
-.hmc-link-line:nth-of-type(3){animation-delay:.4s}
-.hmc-link-line:nth-of-type(4){animation-delay:.6s}
-.hmc-link-line:nth-of-type(5){animation-delay:.8s}
-.hmc-link-line:nth-of-type(6){animation-delay:.3s}
-.hmc-link-line:nth-of-type(7){animation-delay:.5s}
-.hmc-link-line:nth-of-type(8){animation-delay:.7s}
-@keyframes hmcFlow{to{stroke-dashoffset:-14}}
-.hmc-pin-faint{opacity:.55;animation:hmcPulse 2.6s ease-in-out infinite}
-.hmc-link{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--blue-light);text-decoration:none;margin-top:10px}
-.hmc-link:hover{color:#fff}
-
 /* Hero: stats bar below the video */
 .hero-stats-bar{position:absolute;bottom:0;left:0;right:0;z-index:3;background:rgba(7,15,36,.85);backdrop-filter:blur(10px);border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr);padding:22px 48px}
 .hstat{text-align:center;border-right:1px solid var(--border)}
@@ -212,7 +186,6 @@ a{color:inherit}
   .services-grid{grid-template-columns:1fr}
   .team-grid{grid-template-columns:1fr;max-width:320px}
   .footer-inner{grid-template-columns:1fr 1fr}
-  .hero-map-card{display:none}
   .hero-stats-bar{grid-template-columns:repeat(2,1fr);row-gap:18px;padding:18px 24px}
   .hstat:nth-child(odd){border-right:1px solid var(--border)}
   .hstat:nth-child(even){border-right:none}
@@ -267,45 +240,6 @@ a{color:inherit}
       <a href="#lead-form" class="btn-gold"><i class="ti ti-calendar"></i> Schedule a Private Consultation</a>
       <a href="siman-method.html" class="btn-ghost">See the Siman Method™</a>
     </div>
-  </div>
-
-  <div class="hero-map-card">
-    <div class="hmc-title">Live Projects Map</div>
-    <div class="hmc-sub">Real-time projects across South Florida.</div>
-    <div class="hmc-canvas" id="heroMapCanvas">
-      <svg class="hmc-svg" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="hmcGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#4CC9FF" stop-opacity="0.9"/>
-            <stop offset="100%" stop-color="#4CC9FF" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-        <path d="M120,8 C128,40 138,68 132,98 C127,128 145,150 138,178
-                 C133,192 112,196 100,190 C92,178 98,158 90,138
-                 C82,116 70,100 76,76 C82,52 96,30 104,12 C108,6 116,4 120,8 Z"
-          fill="none" stroke="rgba(124,168,255,.35)" stroke-width="1.5"/>
-        <g class="hmc-network" fill="none" stroke="#4CC9FF" stroke-width="1">
-          <line class="hmc-link-line" x1="110" y1="20" x2="124" y2="48"/>
-          <line class="hmc-link-line" x1="124" y1="48" x2="118" y2="78"/>
-          <line class="hmc-link-line" x1="118" y1="78" x2="130" y2="108"/>
-          <line class="hmc-link-line" x1="130" y1="108" x2="122" y2="138"/>
-          <line class="hmc-link-line" x1="122" y1="138" x2="112" y2="168"/>
-          <line class="hmc-link-line" x1="110" y1="20" x2="80" y2="60"/>
-          <line class="hmc-link-line" x1="118" y1="78" x2="150" y2="90"/>
-          <line class="hmc-link-line" x1="122" y1="138" x2="155" y2="130"/>
-        </g>
-        <circle class="hmc-pin" cx="110" cy="20" r="3.5" fill="#4CC9FF"/>
-        <circle class="hmc-pin" cx="124" cy="48" r="3.5" fill="#4CC9FF"/>
-        <circle class="hmc-pin" cx="118" cy="78" r="3.5" fill="#4CC9FF"/>
-        <circle class="hmc-pin" cx="130" cy="108" r="3.5" fill="#4CC9FF"/>
-        <circle class="hmc-pin" cx="122" cy="138" r="3.5" fill="#4CC9FF"/>
-        <circle class="hmc-pin" cx="112" cy="168" r="3.5" fill="#4CC9FF"/>
-        <circle class="hmc-pin hmc-pin-faint" cx="80" cy="60" r="2.5" fill="#4CC9FF"/>
-        <circle class="hmc-pin hmc-pin-faint" cx="150" cy="90" r="2.5" fill="#4CC9FF"/>
-        <circle class="hmc-pin hmc-pin-faint" cx="155" cy="130" r="2.5" fill="#4CC9FF"/>
-      </svg>
-    </div>
-    <a href="#" class="hmc-link">View Live Map <i class="ti ti-arrow-right"></i></a>
   </div>
 
   <div class="hero-stats-bar reveal">
