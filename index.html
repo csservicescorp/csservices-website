@@ -120,16 +120,6 @@ a{color:inherit}
 .ba-tag.right{right:18px;color:var(--gold-bright);border-color:rgba(184,146,74,.4)}
 .ba-caption{text-align:center;margin-top:28px;font-size:13px;color:var(--text2)}
 
-/* ===== VALUE IMPACT CARDS ===== */
-.value-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.value-card{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:16px;padding:32px 28px;transition:border-color .25s}
-.value-card:hover{border-color:rgba(184,146,74,.35)}
-.value-tag{font-size:10.5px;font-weight:700;color:var(--gold-bright);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
-.value-card h4{font-size:17px;font-weight:700;color:#fff;margin-bottom:20px}
-.value-row{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--text2)}
-.value-row:last-child{border-bottom:none}
-.value-row .vnum{color:#fff;font-weight:700;font-size:14px}
-.value-row.roi .vnum{color:#5DD3A8}
 
 /* ===== CONCIERGE TIMELINE ===== */
 .concierge-track{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:16px;position:relative}
@@ -201,7 +191,6 @@ a{color:inherit}
   .concierge-track::before{display:none}
   .services-grid{grid-template-columns:1fr}
   .team-grid{grid-template-columns:1fr;max-width:320px}
-  .value-grid{grid-template-columns:1fr}
   .footer-inner{grid-template-columns:1fr 1fr}
 }
 @media(max-width:640px){
@@ -382,38 +371,6 @@ a{color:inherit}
       <div class="ba-tag right">After</div>
     </div>
     <p class="ba-caption">Kitchen Remodel — Boca Raton, FL</p>
-  </div>
-</section>
-
-<!-- ===== PROPERTY VALUE IMPACT ===== -->
-<section class="section section-dark">
-  <div class="eyebrow">Investment, Not Expense</div>
-  <div class="section-head">
-    <h2>Property Value Impact</h2>
-    <p>Every project is framed by what it returns, not just what it costs. [Illustrative figures — confirm real ROI data before publishing]</p>
-  </div>
-  <div class="value-grid">
-    <div class="value-card">
-      <div class="value-tag">Kitchen Remodel</div>
-      <h4>Boca Raton</h4>
-      <div class="value-row"><span>Investment</span><span class="vnum">$45,000</span></div>
-      <div class="value-row"><span>Potential Value Increase</span><span class="vnum">+$80,000</span></div>
-      <div class="value-row roi"><span>Estimated ROI</span><span class="vnum">177%</span></div>
-    </div>
-    <div class="value-card">
-      <div class="value-tag">Roof Restoration</div>
-      <h4>Coral Gables</h4>
-      <div class="value-row"><span>Investment</span><span class="vnum">$28,000</span></div>
-      <div class="value-row"><span>Potential Value Increase</span><span class="vnum">+$42,000</span></div>
-      <div class="value-row roi"><span>Estimated ROI</span><span class="vnum">150%</span></div>
-    </div>
-    <div class="value-card">
-      <div class="value-tag">Exterior Refresh</div>
-      <h4>Palm Beach</h4>
-      <div class="value-row"><span>Investment</span><span class="vnum">$19,500</span></div>
-      <div class="value-row"><span>Potential Value Increase</span><span class="vnum">+$30,000</span></div>
-      <div class="value-row roi"><span>Estimated ROI</span><span class="vnum">154%</span></div>
-    </div>
   </div>
 </section>
 
