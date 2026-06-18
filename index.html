@@ -103,15 +103,17 @@ a{color:inherit}
 .ctrack-item p{font-size:11px;color:var(--text3);line-height:1.5}
 
 /* ===== SERVICES (light section for contrast) ===== */
-.svc-layout{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:start}
+.svc-layout{max-width:1180px;margin:0 auto}
+.svc-intro{max-width:560px;margin-bottom:48px}
 .svc-intro h2{font-family:'Montserrat',sans-serif;font-size:30px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin:14px 0 14px;line-height:1.3}
 .svc-intro p{font-size:13.5px;color:#5A6478;line-height:1.65;margin-bottom:18px}
 .svc-view-all{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--blue);text-decoration:none}
 .svc-view-all:hover{color:var(--navy)}
-.svc-columns{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
-.svc-col{padding:0 22px;border-left:1px solid #E0E4EC;transition:opacity .7s ease,transform .7s ease}
-.svc-col:first-child{border-left:none;padding-left:0}
-.svc-col-icon{color:var(--blue);font-size:28px;margin-bottom:18px}
+.svc-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.svc-col{transition:opacity .7s ease,transform .7s ease}
+.svc-col-photo{width:100%;aspect-ratio:4/3;border-radius:14px;overflow:hidden;margin-bottom:20px;background:#E4E8F0}
+.svc-col-photo img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.svc-col:hover .svc-col-photo img{transform:scale(1.05)}
 .svc-col h4{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy);margin-bottom:10px}
 .svc-col p{font-size:12px;color:#5A6478;line-height:1.6;margin-bottom:14px}
 .svc-col p .hl{color:var(--blue);font-weight:600}
@@ -173,10 +175,7 @@ a{color:inherit}
   .hero-stats-bar{grid-template-columns:repeat(2,1fr);row-gap:18px;padding:18px 24px}
   .hstat:nth-child(odd){border-right:1px solid var(--border)}
   .hstat:nth-child(even){border-right:none}
-  .svc-layout{grid-template-columns:1fr;gap:32px}
-  .svc-columns{grid-template-columns:repeat(3,1fr);row-gap:28px}
-  .svc-col{border-left:1px solid #E0E4EC}
-  .svc-col:nth-child(3n+1){border-left:none}
+  .svc-columns{grid-template-columns:repeat(3,1fr);gap:20px}
 }
 @media(max-width:640px){
   .hero{min-height:100vh;align-items:flex-start}
@@ -204,9 +203,7 @@ a{color:inherit}
   .footer-inner{grid-template-columns:1fr}
   .hstat-num{font-size:20px}
   .hstat-label{font-size:9.5px}
-  .svc-columns{grid-template-columns:1fr;gap:0}
-  .svc-col{border-left:none;border-top:1px solid #E0E4EC;padding:24px 0 0;margin-top:24px}
-  .svc-col:first-child{border-top:none;padding-top:0;margin-top:0}
+  .svc-columns{grid-template-columns:1fr;gap:28px}
 }
 </style>
 </head>
@@ -274,19 +271,19 @@ a{color:inherit}
     </div>
     <div class="svc-columns">
       <div class="svc-col reveal">
-        <div class="svc-col-icon"><i class="ti ti-tools"></i></div>
+        <div class="svc-col-photo"><img src="images/services/kitchen-1.jpg" alt="Custom kitchen remodeling project" loading="lazy"></div>
         <h4>Custom Remodeling</h4>
         <p>Kitchens, bathrooms, and whole home renovations <span class="hl">built around your lifestyle</span>. From initial design through final walkthrough, every detail is planned, documented, and executed with <span class="hl">skilled craftsmanship</span>.</p>
         <a href="custom-remodeling.html" class="svc-learn">Learn More <i class="ti ti-arrow-right"></i></a>
       </div>
       <div class="svc-col reveal">
-        <div class="svc-col-icon"><i class="ti ti-shield-check"></i></div>
+        <div class="svc-col-photo"><img src="images/services/property-1.jpg" alt="Well maintained HOA property" loading="lazy"></div>
         <h4>Property Maintenance</h4>
         <p>Scheduled inspections and preventive care that <span class="hl">catch small issues before they become costly repairs</span>. A documented maintenance plan keeps your property running smoothly all year long.</p>
         <a href="property-maintenance.html" class="svc-learn">Learn More <i class="ti ti-arrow-right"></i></a>
       </div>
       <div class="svc-col reveal">
-        <div class="svc-col-icon"><i class="ti ti-alert-triangle"></i></div>
+        <div class="svc-col-photo"><img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=700&q=80" alt="Emergency property restoration" loading="lazy"></div>
         <h4>Emergency Services</h4>
         <p><span class="hl">Around the clock response</span> for urgent repairs, storm damage, and unexpected property issues. Fast assessment and clear communication from the first call to full restoration.</p>
         <a href="emergency-services.html" class="svc-learn">Learn More <i class="ti ti-arrow-right"></i></a>
