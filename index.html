@@ -670,7 +670,7 @@ function switchProject(idx) {
   }
 }
 
-// ---- Snake path animation connecting concierge dots ----
+// ---- Snake path animation connecting concierge dots (zigzag) ----
 (function(){
   function buildSnake() {
     const wrap = document.getElementById('ctrackWrap');
@@ -680,7 +680,6 @@ function switchProject(idx) {
     const dots = Array.from(wrap.querySelectorAll('.ctrack-dot'));
     const wrapRect = wrap.getBoundingClientRect();
 
-    // Build smooth SVG path through all dot centers
     function getCenter(el) {
       const r = el.getBoundingClientRect();
       return {
@@ -692,45 +691,72 @@ function switchProject(idx) {
     const pts = dots.map(getCenter);
     if (pts.length < 2) return;
 
-    // Smooth bezier through points
-    let d = `M ${pts[0].x} ${pts[0].y}`;
+    // Build zigzag snake: goes across a row, then curves DOWN to next row, reverses direction
+    // Detect cols per row by grouping dots with similar Y
+    const rows = [];
+    let currentRow = [pts[0]];
     for (let i = 1; i < pts.length; i++) {
-      const prev = pts[i - 1];
-      const curr = pts[i];
-      const cx = (prev.x + curr.x) / 2;
-      d += ` C ${cx} ${prev.y}, ${cx} ${curr.y}, ${curr.x} ${curr.y}`;
+      if (Math.abs(pts[i].y - currentRow[0].y) < 30) {
+        currentRow.push(pts[i]);
+      } else {
+        rows.push(currentRow);
+        currentRow = [pts[i]];
+      }
     }
-    path.setAttribute('d', d);
+    rows.push(currentRow);
 
-    // Measure total length and set dasharray
+    // Build ordered sequence: row 0 left→right, row 1 right→left, etc.
+    const ordered = [];
+    rows.forEach((row, ri) => {
+      const sorted = [...row].sort((a, b) => a.x - b.x);
+      if (ri % 2 === 0) ordered.push(...sorted);
+      else ordered.push(...sorted.reverse());
+    });
+
+    // Build smooth path through ordered points with nice curves
+    let d = `M ${ordered[0].x} ${ordered[0].y}`;
+    for (let i = 1; i < ordered.length; i++) {
+      const prev = ordered[i - 1];
+      const curr = ordered[i];
+      const dx = Math.abs(curr.x - prev.x);
+      const dy = Math.abs(curr.y - prev.y);
+      if (dy > dx) {
+        // vertical transition (between rows) — S-curve
+        const midy = (prev.y + curr.y) / 2;
+        d += ` C ${prev.x} ${midy}, ${curr.x} ${midy}, ${curr.x} ${curr.y}`;
+      } else {
+        // horizontal (within row) — gentle arc
+        const midy = Math.min(prev.y, curr.y) - 10;
+        d += ` C ${prev.x + (curr.x - prev.x) * 0.4} ${midy}, ${prev.x + (curr.x - prev.x) * 0.6} ${midy}, ${curr.x} ${curr.y}`;
+      }
+    }
+
+    path.setAttribute('d', d);
     const len = path.getTotalLength();
     path.style.strokeDasharray = len;
     path.style.strokeDashoffset = len;
 
-    // Animate when section enters viewport
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           observer.disconnect();
-          // Animate the snake drawing
           let start = null;
-          const duration = 1800;
+          const duration = 2200;
           function animSnake(ts) {
             if (!start) start = ts;
             const progress = Math.min((ts - start) / duration, 1);
             const eased = 1 - Math.pow(1 - progress, 2);
             path.style.strokeDashoffset = len * (1 - eased);
-            // Light up each dot as snake reaches it
-            dots.forEach((dot, i) => {
-              const threshold = i / (dots.length - 1);
-              if (progress >= threshold) dot.classList.add('dot-active');
+            ordered.forEach((pt, i) => {
+              const threshold = i / (ordered.length - 1);
+              if (progress >= threshold) dots[i] && dots[i].classList.add('dot-active');
             });
             if (progress < 1) requestAnimationFrame(animSnake);
           }
           requestAnimationFrame(animSnake);
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.2 });
 
     observer.observe(wrap);
   }
