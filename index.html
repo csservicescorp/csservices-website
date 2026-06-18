@@ -46,7 +46,7 @@ a{color:inherit}
 .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold-bright);box-shadow:0 0 8px var(--gold-bright)}
 .hero-eyebrow-title{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,.5);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px}
 .hero h1{font-family:'Montserrat',sans-serif;font-size:clamp(28px,4.2vw,44px);font-weight:300;color:rgba(255,255,255,.92);letter-spacing:4px;text-transform:uppercase;line-height:1.3;margin-bottom:24px}
-.hero-sub{font-size:14.5px;color:var(--text2);max-width:400px;margin:0 0 42px;line-height:1.65;font-weight:300}
+.hero-sub{font-size:14.5px;color:var(--text2);max-width:480px;margin:0 0 42px;line-height:1.65;font-weight:300}
 .hero-ctas{display:flex;gap:16px;justify-content:flex-start;flex-wrap:wrap}
 .btn-gold{background:var(--blue);color:#fff;padding:16px 32px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;transition:all .25s;display:inline-flex;align-items:center;gap:9px;letter-spacing:.2px;box-shadow:0 8px 30px rgba(15,94,255,.25)}
 .btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(15,94,255,.4)}
@@ -237,7 +237,7 @@ a{color:inherit}
   <div class="hero-inner">
     <div class="hero-badge"><span class="dot"></span> Miami · Fort Lauderdale · Boca Raton · Palm Beach</div>
     <div class="hero-eyebrow-title">Excellence in</div>
-    <h1>Property Care & Transformation</h1>
+    <h1>Property Care & <span id="transformWord">Transformation</span></h1>
     <p class="hero-sub">Remodeling, maintenance & ongoing property care for South Florida's finest homes, delivered through a documented process, trusted craftsmanship, and long-term partnership.</p>
     <div class="hero-ctas">
       <a href="#lead-form" class="btn-gold"><i class="ti ti-calendar"></i> Schedule a Private Consultation</a>
@@ -452,6 +452,23 @@ a{color:inherit}
 </footer>
 
 <script>
+// ---- Match hero-sub width to the rendered width of "Transformation" ----
+(function(){
+  const word = document.getElementById('transformWord');
+  const sub = document.querySelector('.hero-sub');
+  if (!word || !sub) return;
+  function syncWidth(){
+    const w = word.getBoundingClientRect().width;
+    if (w > 0) sub.style.maxWidth = w + 'px';
+  }
+  syncWidth();
+  window.addEventListener('resize', syncWidth);
+  // Re-check after fonts finish loading (Montserrat 300 may shift width)
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(syncWidth);
+  }
+})();
+
 // ---- Hero floating stat cards (mobile): appear one by one, ~1s apart ----
 (function(){
   const cards = document.querySelectorAll('.hfs-card');
