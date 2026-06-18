@@ -102,13 +102,15 @@ a{color:inherit}
 
 
 /* ===== CONCIERGE TIMELINE ===== */
-.concierge-track{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:16px;position:relative}
-.concierge-track::before{display:none}
+.siman-steps{max-width:640px;margin:0 auto;position:relative}
+.siman-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
+.snake-path{fill:none;stroke:#0F5EFF;stroke-width:1.5;stroke-linecap:round;stroke-dasharray:3000;stroke-dashoffset:3000;opacity:.5;transition:stroke-dashoffset 0s}
+.siman-row{display:grid;grid-template-columns:1fr 1fr;gap:0;position:relative;z-index:1;margin-bottom:48px}
+.siman-step{text-align:center;padding:0 16px}
+.siman-step-label{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--blue);opacity:.6;margin-bottom:8px;text-transform:uppercase}
+.ctrack-dot{width:12px;height:12px;border-radius:50%;background:var(--blue);margin:0 auto 14px;position:relative;z-index:2;box-shadow:0 0 0 5px rgba(8,20,38,1),0 0 0 6px rgba(15,94,255,.3);transition:box-shadow .3s ease}
+.ctrack-dot.dot-active{box-shadow:0 0 0 5px rgba(8,20,38,1),0 0 0 7px rgba(15,94,255,.7),0 0 16px rgba(15,94,255,.4)}
 .ctrack-item{position:relative;text-align:center;z-index:1}
-.ctrack-dot{width:14px;height:14px;border-radius:50%;background:var(--blue);margin:0 auto 22px;position:relative;z-index:2;box-shadow:0 0 0 6px rgba(8,20,38,1),0 0 0 7px rgba(15,94,255,.3);transition:box-shadow .3s ease}
-.ctrack-dot.dot-active{box-shadow:0 0 0 6px rgba(8,20,38,1),0 0 0 8px rgba(15,94,255,.6),0 0 18px rgba(15,94,255,.4)}
-.ctrack-snake{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
-.snake-path{fill:none;stroke:rgba(79,140,255,0.35);stroke-width:1.2;stroke-linecap:round;stroke-dasharray:2000;stroke-dashoffset:2000;transition:stroke-dashoffset 0s}
 .ctrack-item h4{font-size:13px;font-weight:700;color:#fff;margin-bottom:6px}
 .ctrack-item p{font-size:11px;color:var(--text3);line-height:1.5}
 
@@ -178,7 +180,7 @@ a{color:inherit}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:980px){
-  .concierge-track{grid-template-columns:repeat(3,1fr);row-gap:40px}
+
   .team-grid{grid-template-columns:1fr;max-width:320px}
   .footer-inner{grid-template-columns:1fr 1fr}
   .hero-stats-bar{grid-template-columns:repeat(2,1fr);row-gap:18px;padding:18px 24px}
@@ -207,7 +209,7 @@ a{color:inherit}
   .hfs-num{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;line-height:1}
   .hfs-unit{font-family:'Montserrat',sans-serif;font-size:13px;color:var(--blue-light);font-weight:700}
   .hfs-label{font-size:9.5px;color:rgba(255,255,255,.9);margin-top:4px;letter-spacing:.2px}
-  .concierge-track{grid-template-columns:1fr 1fr;row-gap:40px}
+
   .lead-form{grid-template-columns:1fr}
   .lead-box{padding:40px 26px}
   .footer-inner{grid-template-columns:1fr}
@@ -386,23 +388,52 @@ a{color:inherit}
     <h2>From first call to ongoing care</h2>
     <p>A structured process for every property, every time.</p>
   </div>
-  <div class="concierge-track" id="ctrackWrap">
-    <svg class="ctrack-snake" id="ctrackSvg" aria-hidden="true">
-      <defs>
-        <linearGradient id="snakeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#0F5EFF" stop-opacity="0.3"/>
-          <stop offset="50%" stop-color="#4CC9FF" stop-opacity="0.9"/>
-          <stop offset="100%" stop-color="#0F5EFF" stop-opacity="0.3"/>
-        </linearGradient>
-      </defs>
+  <div class="siman-steps" id="ctrackWrap">
+    <svg class="siman-svg" id="ctrackSvg" aria-hidden="true">
       <path class="snake-path" id="snakePath"/>
     </svg>
-    <div class="ctrack-item reveal"><div class="ctrack-dot"></div><h4>Consultation</h4><p>A direct conversation about your property and goals.</p></div>
-    <div class="ctrack-item reveal"><div class="ctrack-dot"></div><h4>Inspection</h4><p>Full on-site assessment, documented in detail.</p></div>
-    <div class="ctrack-item reveal"><div class="ctrack-dot"></div><h4>Digital Proposal</h4><p>A clear, itemized plan — no surprises.</p></div>
-    <div class="ctrack-item reveal"><div class="ctrack-dot"></div><h4>Execution</h4><p>Skilled teams, scheduled and supervised.</p></div>
-    <div class="ctrack-item reveal"><div class="ctrack-dot"></div><h4>Quality Audit</h4><p>Verification against the original scope.</p></div>
-    <div class="ctrack-item reveal"><div class="ctrack-dot"></div><h4>Ongoing Care</h4><p>Maintenance that continues after handoff.</p></div>
+    <div class="siman-row">
+      <div class="siman-step left reveal" id="step0">
+        <div class="siman-step-label">STEP 01</div>
+        <div class="ctrack-dot"></div>
+        <h4>Consultation</h4>
+        <p>A direct conversation about your property and goals.</p>
+      </div>
+      <div class="siman-step right reveal" id="step1">
+        <div class="siman-step-label">STEP 02</div>
+        <div class="ctrack-dot"></div>
+        <h4>Inspection</h4>
+        <p>Full on-site assessment, documented in detail.</p>
+      </div>
+    </div>
+    <div class="siman-row reverse">
+      <div class="siman-step left reveal" id="step2">
+        <div class="siman-step-label">STEP 04</div>
+        <div class="ctrack-dot"></div>
+        <h4>Execution</h4>
+        <p>Skilled teams, scheduled and supervised.</p>
+      </div>
+      <div class="siman-step right reveal" id="step3">
+        <div class="siman-step-label">STEP 03</div>
+        <div class="ctrack-dot"></div>
+        <h4>Digital Proposal</h4>
+        <p>A clear, itemized plan — no surprises.</p>
+      </div>
+    </div>
+    <div class="siman-row">
+      <div class="siman-step left reveal" id="step4">
+        <div class="siman-step-label">STEP 05</div>
+        <div class="ctrack-dot"></div>
+        <h4>Quality Audit</h4>
+        <p>Verification against the original scope.</p>
+      </div>
+      <div class="siman-step right reveal" id="step5">
+        <div class="siman-step-label">STEP 06</div>
+        <div class="ctrack-dot"></div>
+        <h4>Ongoing Care</h4>
+        <p>Maintenance that continues after handoff.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -667,64 +698,46 @@ function switchProject(idx) {
   }
 }
 
-// ---- Snake path animation connecting concierge dots (zigzag) ----
+// ---- Snake path animation — zigzag row by row ----
 (function(){
   function buildSnake() {
     const wrap = document.getElementById('ctrackWrap');
     const path = document.getElementById('snakePath');
     if (!wrap || !path) return;
 
-    const dots = Array.from(wrap.querySelectorAll('.ctrack-dot'));
-    const wrapRect = wrap.getBoundingClientRect();
+    // Order: step0(L), step1(R), step3(R), step2(L), step4(L), step5(R)
+    const order = ['step0','step1','step3','step2','step4','step5'];
+    const dots = order.map(id => {
+      const el = document.getElementById(id);
+      return el ? el.querySelector('.ctrack-dot') : null;
+    }).filter(Boolean);
 
-    function getCenter(el) {
+    const wrapRect = wrap.getBoundingClientRect();
+    function center(el) {
       const r = el.getBoundingClientRect();
-      return {
-        x: r.left - wrapRect.left + r.width / 2,
-        y: r.top - wrapRect.top + r.height / 2
-      };
+      return { x: r.left - wrapRect.left + r.width/2, y: r.top - wrapRect.top + r.height/2 };
     }
 
-    const pts = dots.map(getCenter);
+    const pts = dots.map(center);
     if (pts.length < 2) return;
 
-    // Build zigzag snake: goes across a row, then curves DOWN to next row, reverses direction
-    // Detect cols per row by grouping dots with similar Y
-    const rows = [];
-    let currentRow = [pts[0]];
+    // Build path: straight lines within row, S-curve between rows
+    let d = `M ${pts[0].x} ${pts[0].y}`;
     for (let i = 1; i < pts.length; i++) {
-      if (Math.abs(pts[i].y - currentRow[0].y) < 30) {
-        currentRow.push(pts[i]);
+      const a = pts[i-1], b = pts[i];
+      const dy = Math.abs(b.y - a.y);
+      const dx = Math.abs(b.x - a.x);
+      if (dy < 20) {
+        // same row — straight line
+        d += ` L ${b.x} ${b.y}`;
+      } else if (dx < 20) {
+        // same side, going down — tight S curve
+        const mid = (a.y + b.y) / 2;
+        d += ` C ${a.x} ${mid}, ${b.x} ${mid}, ${b.x} ${b.y}`;
       } else {
-        rows.push(currentRow);
-        currentRow = [pts[i]];
-      }
-    }
-    rows.push(currentRow);
-
-    // Build ordered sequence: row 0 left→right, row 1 right→left, etc.
-    const ordered = [];
-    rows.forEach((row, ri) => {
-      const sorted = [...row].sort((a, b) => a.x - b.x);
-      if (ri % 2 === 0) ordered.push(...sorted);
-      else ordered.push(...sorted.reverse());
-    });
-
-    // Build smooth path through ordered points with nice curves
-    let d = `M ${ordered[0].x} ${ordered[0].y}`;
-    for (let i = 1; i < ordered.length; i++) {
-      const prev = ordered[i - 1];
-      const curr = ordered[i];
-      const dx = Math.abs(curr.x - prev.x);
-      const dy = Math.abs(curr.y - prev.y);
-      if (dy > dx) {
-        // vertical transition (between rows) — S-curve
-        const midy = (prev.y + curr.y) / 2;
-        d += ` C ${prev.x} ${midy}, ${curr.x} ${midy}, ${curr.x} ${curr.y}`;
-      } else {
-        // horizontal (within row) — gentle arc
-        const midy = Math.min(prev.y, curr.y) - 10;
-        d += ` C ${prev.x + (curr.x - prev.x) * 0.4} ${midy}, ${prev.x + (curr.x - prev.x) * 0.6} ${midy}, ${curr.x} ${curr.y}`;
+        // crossing — S curve
+        const mid = (a.y + b.y) / 2;
+        d += ` C ${a.x} ${mid}, ${b.x} ${mid}, ${b.x} ${b.y}`;
       }
     }
 
@@ -733,27 +746,27 @@ function switchProject(idx) {
     path.style.strokeDasharray = len;
     path.style.strokeDashoffset = len;
 
+    const allDots = wrap.querySelectorAll('.ctrack-dot');
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          observer.disconnect();
-          let start = null;
-          const duration = 2200;
-          function animSnake(ts) {
-            if (!start) start = ts;
-            const progress = Math.min((ts - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 2);
-            path.style.strokeDashoffset = len * (1 - eased);
-            ordered.forEach((pt, i) => {
-              const threshold = i / (ordered.length - 1);
-              if (progress >= threshold) dots[i] && dots[i].classList.add('dot-active');
-            });
-            if (progress < 1) requestAnimationFrame(animSnake);
-          }
-          requestAnimationFrame(animSnake);
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        let start = null;
+        const duration = 2400;
+        function anim(ts) {
+          if (!start) start = ts;
+          const p = Math.min((ts - start) / duration, 1);
+          const e = 1 - Math.pow(1 - p, 1.8);
+          path.style.strokeDashoffset = len * (1 - e);
+          dots.forEach((dot, i) => {
+            if (p >= i / (dots.length - 1)) dot.classList.add('dot-active');
+          });
+          if (p < 1) requestAnimationFrame(anim);
         }
+        requestAnimationFrame(anim);
       });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.15 });
 
     observer.observe(wrap);
   }
