@@ -103,8 +103,6 @@ a{color:inherit}
 
 /* ===== CONCIERGE TIMELINE ===== */
 .siman-steps{max-width:640px;margin:0 auto;position:relative}
-.siman-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
-.snake-path{fill:none;stroke:#0F5EFF;stroke-width:1.5;stroke-linecap:round;stroke-dasharray:3000;stroke-dashoffset:3000;opacity:.5;transition:stroke-dashoffset 0s}
 .siman-row{display:grid;grid-template-columns:1fr 1fr;gap:0;position:relative;z-index:1;margin-bottom:48px}
 .siman-step{text-align:center;padding:0 16px}
 .siman-step-label{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--blue);opacity:.6;margin-bottom:8px;text-transform:uppercase}
@@ -408,9 +406,6 @@ a{color:inherit}
     <p>A structured process for every property, every time.</p>
   </div>
   <div class="siman-steps" id="ctrackWrap">
-    <svg class="siman-svg" id="ctrackSvg" aria-hidden="true">
-      <path class="snake-path" id="snakePath"/>
-    </svg>
     <div class="siman-row">
       <div class="siman-step left reveal" id="step0">
         <div class="siman-step-label">STEP 01</div>
@@ -833,82 +828,7 @@ function switchProject(idx) {
   }
 }
 
-// ---- Snake path animation — zigzag row by row ----
-(function(){
-  function buildSnake() {
-    const wrap = document.getElementById('ctrackWrap');
-    const path = document.getElementById('snakePath');
-    if (!wrap || !path) return;
 
-    // Order: step0(L), step1(R), step3(R), step2(L), step4(L), step5(R)
-    const order = ['step0','step1','step3','step2','step4','step5'];
-    const dots = order.map(id => {
-      const el = document.getElementById(id);
-      return el ? el.querySelector('.ctrack-dot') : null;
-    }).filter(Boolean);
-
-    const wrapRect = wrap.getBoundingClientRect();
-    function center(el) {
-      const r = el.getBoundingClientRect();
-      return { x: r.left - wrapRect.left + r.width/2, y: r.top - wrapRect.top + r.height/2 };
-    }
-
-    const pts = dots.map(center);
-    if (pts.length < 2) return;
-
-    // Build path: straight lines within row, S-curve between rows
-    let d = `M ${pts[0].x} ${pts[0].y}`;
-    for (let i = 1; i < pts.length; i++) {
-      const a = pts[i-1], b = pts[i];
-      const dy = Math.abs(b.y - a.y);
-      const dx = Math.abs(b.x - a.x);
-      if (dy < 20) {
-        // same row — straight line
-        d += ` L ${b.x} ${b.y}`;
-      } else if (dx < 20) {
-        // same side, going down — tight S curve
-        const mid = (a.y + b.y) / 2;
-        d += ` C ${a.x} ${mid}, ${b.x} ${mid}, ${b.x} ${b.y}`;
-      } else {
-        // crossing — S curve
-        const mid = (a.y + b.y) / 2;
-        d += ` C ${a.x} ${mid}, ${b.x} ${mid}, ${b.x} ${b.y}`;
-      }
-    }
-
-    path.setAttribute('d', d);
-    const len = path.getTotalLength();
-    path.style.strokeDasharray = len;
-    path.style.strokeDashoffset = len;
-
-    const allDots = wrap.querySelectorAll('.ctrack-dot');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        observer.disconnect();
-        let start = null;
-        const duration = 2400;
-        function anim(ts) {
-          if (!start) start = ts;
-          const p = Math.min((ts - start) / duration, 1);
-          const e = 1 - Math.pow(1 - p, 1.8);
-          path.style.strokeDashoffset = len * (1 - e);
-          dots.forEach((dot, i) => {
-            if (p >= i / (dots.length - 1)) dot.classList.add('dot-active');
-          });
-          if (p < 1) requestAnimationFrame(anim);
-        }
-        requestAnimationFrame(anim);
-      });
-    }, { threshold: 0.15 });
-
-    observer.observe(wrap);
-  }
-
-  if (document.readyState === 'complete') buildSnake();
-  else window.addEventListener('load', buildSnake);
-})();
 
 // ---- Reviews carousel ----
 (function(){
