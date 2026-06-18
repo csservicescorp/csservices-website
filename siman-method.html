@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>The Siman Method™ — CS Services Corp</title>
+<meta name="description" content="A structured operational framework developed through hands-on HOA maintenance experience across South Florida communities.">
+<link rel="icon" type="image/png" href="images/logo-cs-services.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="theme-color" content="#081426">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#081426;color:#fff;min-height:100vh;line-height:1.5;overflow-x:hidden}
+:root{
+  --navy:#071D49;--navy2:#0D2E75;--navy3:#143a8c;--deep:#081426;
+  --blue:#0F5EFF;--blue-light:#4CC9FF;
+  --gold:#B8924A;--gold-bright:#D4A63A;
+  --white:#fff;--text2:rgba(255,255,255,.55);--text3:rgba(255,255,255,.35);
+  --border:rgba(255,255,255,.09);--light:#F4F6FA;--ink:#0B1024;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+::selection{background:var(--blue);color:var(--navy)}
+
+/* ===== TOPNAV ===== */
+.topnav{background:rgba(5,11,30,.7);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200}
+.tnlogo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.tnlogo img{height:30px;width:30px;object-fit:contain}
+.tnlogo .nm{font-size:13.5px;font-weight:700;color:#fff;letter-spacing:.5px}
+.tnlinks{display:flex;gap:4px}
+.tnl{padding:9px 16px;border-radius:6px;font-size:12.5px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .2s;text-decoration:none;letter-spacing:.2px}
+.tnl:hover{color:#fff;background:rgba(255,255,255,.06)}
+.tnl.active{color:var(--blue)}
+.tn-cta{background:transparent;color:var(--blue);padding:9px 20px;border-radius:6px;font-size:12.5px;font-weight:600;cursor:pointer;border:1px solid rgba(15,94,255,.4);font-family:'Inter',sans-serif;text-decoration:none;transition:all .2s;letter-spacing:.3px}
+.tn-cta:hover{background:rgba(15,94,255,.1);border-color:var(--blue)}
+
+/* ===== HERO — cinematic, layered depth ===== */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;justify-content:flex-start;overflow:hidden;background:#081426}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero-video-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.96) 0%,rgba(0,0,0,.85) 35%,rgba(0,0,0,.55) 65%,rgba(0,0,0,.35) 100%);z-index:1}
+.hero-grid{position:absolute;inset:0;z-index:2;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,black 30%,transparent 75%)}
+.hero-glow{display:none}
+.hero-inner{position:relative;z-index:3;max-width:600px;margin:0;text-align:left;padding:0 0 90px 64px}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.04);border:1px solid rgba(184,146,74,.3);border-radius:30px;padding:8px 20px;font-size:11px;font-weight:600;color:var(--gold-bright);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:32px}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold-bright);box-shadow:0 0 8px var(--gold-bright)}
+.hero-eyebrow-title{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,.5);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px}
+.hero h1{font-family:'Montserrat',sans-serif;font-size:clamp(28px,4.2vw,44px);font-weight:300;color:rgba(255,255,255,.92);letter-spacing:4px;text-transform:uppercase;line-height:1.3;margin-bottom:24px}
+.hero-sub{font-size:14.5px;color:var(--text2);max-width:480px;margin:0 0 42px;line-height:1.65;font-weight:300}
+.hero-ctas{display:flex;gap:16px;justify-content:flex-start;flex-wrap:wrap}
+.btn-gold{background:var(--blue);color:#fff;padding:16px 32px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;transition:all .25s;display:inline-flex;align-items:center;gap:9px;letter-spacing:.2px;box-shadow:0 8px 30px rgba(15,94,255,.25)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(15,94,255,.4)}
+.btn-ghost{background:rgba(255,255,255,.03);color:#fff;padding:16px 32px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,.16);transition:all .2s}
+.btn-ghost:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.3)}
+
+/* Hero: stats bar below the video */
+.hero-float-stats{display:none}
+
+.hero-stats-bar{position:absolute;bottom:0;left:0;right:0;z-index:3;background:rgba(7,15,36,.85);backdrop-filter:blur(10px);border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr);padding:22px 48px}
+.hstat{text-align:center;border-right:1px solid var(--border)}
+.hstat:last-child{border-right:none}
+.hstat-num{font-size:26px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums}
+.hstat-unit{font-size:15px;color:var(--blue);font-weight:700}
+.hstat-label{font-size:10.5px;color:var(--text2);margin-top:4px;letter-spacing:.3px;text-transform:uppercase}
+
+/* ===== SECTION SCAFFOLDING ===== */
+.section{position:relative;padding:120px 48px}
+.section-dark{background:var(--deep)}
+.section-light{background:#081426;color:#fff}
+.eyebrow{font-size:11px;letter-spacing:2.5px;color:var(--blue);text-transform:uppercase;font-weight:700;margin-bottom:18px;text-align:center}
+.section-head{max-width:640px;margin:0 auto 64px;text-align:center}
+.section-head h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:300;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;color:#fff;line-height:1.3}
+.section-light .section-head h2{color:#fff}
+.section-head p{font-size:15px;color:var(--text2);line-height:1.7}
+.section-light .section-head p{color:rgba(255,255,255,.65)}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.revealed{opacity:1;transform:translateY(0)}
+
+/* ===== BEFORE/AFTER HOLOGRAPHIC SLIDER ===== */
+.ba-wrap{max-width:920px;margin:0 auto}
+.ba-slider{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;cursor:ew-resize;box-shadow:0 30px 80px rgba(0,0,0,.5);border:1px solid var(--border);touch-action:none}
+.ba-layer{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);border:1px dashed rgba(255,255,255,.15)}
+.ba-before{background:linear-gradient(135deg,#1a1f2e 0%,#2b3450 100%)}
+.ba-after{background:linear-gradient(135deg,#0D2E75 0%,#1a4ba0 50%,#0F5EFF 140%);overflow:hidden}
+.ba-after-clip{position:absolute;inset:0;clip-path:inset(0 50% 0 0)}
+.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:linear-gradient(to bottom,transparent,var(--blue),transparent);z-index:5;box-shadow:0 0 20px rgba(15,94,255,.6)}
+.ba-handle::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(5,11,30,.9);border:1.5px solid var(--blue);box-shadow:0 0 30px rgba(15,94,255,.4)}
+.ba-handle::after{content:'⟷';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--blue);font-size:18px;font-weight:700}
+.ba-particles{position:absolute;inset:0;pointer-events:none;z-index:4}
+.ba-tag{position:absolute;top:18px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:20px;background:rgba(5,11,30,.85);border:1px solid rgba(255,255,255,.15);color:#fff;z-index:6}
+.ba-tag.left{left:18px}
+.ba-tag.right{right:18px;color:var(--blue);border-color:rgba(15,94,255,.4)}
+.ba-caption{text-align:center;margin-top:28px;font-size:13px;color:var(--text2)}
+.ba-stack{display:flex;flex-direction:column;gap:48px}
+.ba-projects{display:flex;justify-content:center;gap:12px;margin-bottom:32px;flex-wrap:wrap}
+.ba-proj-btn{padding:8px 20px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text2);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.ba-proj-btn.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.ba-proj-btn:hover:not(.active){border-color:var(--blue);color:var(--blue)}
+.ba-project{display:none}
+.ba-project.active{display:block}
+
+
+/* ===== CONCIERGE TIMELINE ===== */
+.siman-steps{max-width:640px;margin:0 auto;position:relative}
+.siman-row{display:grid;grid-template-columns:1fr 1fr;gap:0;position:relative;z-index:1;margin-bottom:48px}
+.siman-step{text-align:center;padding:0 16px}
+.siman-step-label{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--blue);opacity:.6;margin-bottom:8px;text-transform:uppercase}
+.ctrack-dot{width:12px;height:12px;border-radius:50%;background:var(--blue);margin:0 auto 14px;position:relative;z-index:2;box-shadow:0 0 0 5px rgba(8,20,38,1),0 0 0 6px rgba(15,94,255,.3);transition:box-shadow .3s ease}
+.ctrack-dot.dot-active{box-shadow:0 0 0 5px rgba(8,20,38,1),0 0 0 7px rgba(15,94,255,.7),0 0 16px rgba(15,94,255,.4)}
+.ctrack-item{position:relative;text-align:center;z-index:1}
+.ctrack-item h4{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;color:#fff;margin-bottom:6px}
+.ctrack-item p{font-size:11px;color:var(--text3);line-height:1.5}
+
+/* ===== SERVICES (light section for contrast) ===== */
+.svc-layout{max-width:1180px;margin:0 auto}
+.svc-intro{max-width:560px;margin-bottom:48px}
+.svc-intro h2{font-family:'Montserrat',sans-serif;font-size:30px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:#fff;margin:14px 0 14px;line-height:1.3}
+.svc-intro p{font-size:13.5px;color:rgba(255,255,255,.45);line-height:1.65;margin-bottom:18px}
+.svc-view-all{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--blue);text-decoration:none}
+.svc-view-all:hover{color:var(--navy)}
+.svc-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.svc-col{transition:opacity .7s ease,transform .7s ease}
+.svc-col-photo{width:100%;aspect-ratio:4/3;border-radius:14px;overflow:hidden;margin-bottom:20px;background:#E4E8F0}
+.svc-col-photo img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.svc-col:hover .svc-col-photo img{transform:scale(1.05)}
+.svc-col h4{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;color:#fff;margin-bottom:10px}
+.svc-col p{font-size:12px;color:rgba(255,255,255,.45);line-height:1.6;margin-bottom:14px}
+.svc-col p .hl{color:var(--blue);font-weight:600}
+.svc-learn{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;color:var(--blue);text-decoration:none}
+.svc-learn:hover{color:var(--navy)}
+
+/* ===== TEAM ===== */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;max-width:980px;margin:0 auto}
+.team-card{text-align:center}
+.team-photo{width:168px;height:168px;border-radius:50%;margin:0 auto 24px;overflow:hidden;border:1px solid rgba(15,94,255,.3);box-shadow:0 0 0 6px rgba(15,94,255,.06),0 20px 50px rgba(0,0,0,.4)}
+.team-photo img{width:100%;height:100%;object-fit:cover}
+.team-card h4{font-size:17.5px;font-weight:700;color:#fff;margin-bottom:5px}
+.team-role{font-size:11.5px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.8px;margin-bottom:16px}
+.team-bio{font-size:12.5px;color:var(--text2);line-height:1.7;max-width:280px;margin:0 auto}
+
+/* ===== TRUST WALL ===== */
+.trust-wall{max-width:1100px;margin:0 auto;overflow:hidden;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.02);padding:28px 0}
+.trust-track{display:flex;gap:48px;animation:scrollLeft 28s linear infinite;width:max-content}
+.trust-track:hover{animation-play-state:paused}
+@keyframes scrollLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.trust-item{display:flex;align-items:center;gap:10px;color:var(--text2);font-size:12.5px;font-weight:600;white-space:nowrap}
+.trust-item i{color:var(--blue);font-size:16px}
+
+/* ===== LEAD FORM ===== */
+.lead-section{max-width:880px;margin:0 auto}
+.lead-box{background:#0B1A30;border-radius:22px;padding:56px 52px;border:1px solid var(--border)}
+.lead-head{text-align:center;margin-bottom:40px}
+.lead-head h2{font-family:'Montserrat',sans-serif;font-size:26px;font-weight:300;color:#fff;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px}
+.lead-head p{font-size:13.5px;color:var(--text2)}
+.lead-form{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.lead-form .full{grid-column:1/-1}
+.lf-label{font-size:11.5px;font-weight:600;color:var(--text2);margin-bottom:8px;display:block;letter-spacing:.3px}
+.lf-input,.lf-textarea{width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:9px;font-family:'Inter',sans-serif;font-size:13.5px;color:#fff;outline:none;transition:border-color .2s;background:rgba(255,255,255,.03)}
+.lf-input::placeholder,.lf-textarea::placeholder{color:var(--text3)}
+.lf-input:focus,.lf-textarea:focus{border-color:var(--blue)}
+.lf-textarea{resize:vertical;min-height:96px}
+.lf-submit{grid-column:1/-1;background:var(--blue);color:#fff;border:none;padding:16px 0;border-radius:9px;font-size:14.5px;font-weight:700;cursor:pointer;margin-top:8px;transition:all .2s}
+.lf-submit:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(15,94,255,.3)}
+.lf-note{grid-column:1/-1;font-size:11px;color:var(--text3);text-align:center;margin-top:6px}
+
+/* ===== FOOTER ===== */
+.reviews-section{overflow:hidden}
+.reviews-track-wrap{overflow:hidden;position:relative}
+.reviews-track{display:flex;gap:20px;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.review-card{flex:0 0 calc(33.33% - 14px);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px;min-width:280px}
+.review-stars{color:#FBBC04;font-size:14px;margin-bottom:12px;letter-spacing:1px}
+.review-text{font-size:13px;color:rgba(255,255,255,.7);line-height:1.65;margin-bottom:16px}
+.review-author{display:flex;align-items:center;gap:10px}
+.review-avatar{width:36px;height:36px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
+.review-name{font-size:12px;font-weight:700;color:#fff}
+.review-meta{font-size:10px;color:rgba(255,255,255,.4);margin-top:2px}
+.reviews-nav{display:flex;justify-content:center;gap:8px;margin-top:32px}
+.reviews-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:all .2s}
+.reviews-dot.active{background:var(--blue);width:20px;border-radius:3px}
+.partners-wall{max-width:1100px;margin:0 auto;overflow:hidden;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.02);padding:28px 0}
+.partners-track{display:flex;gap:0;animation:scrollPartners 8s linear infinite}
+.partners-track:hover{animation-play-state:paused}
+.partner-item{flex:0 0 auto;padding:0 52px;display:flex;align-items:center;justify-content:center;border-right:1px solid rgba(255,255,255,.06);opacity:.8;filter:grayscale(1) brightness(2)}
+@keyframes scrollPartners{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.footer{background:#030712;padding:64px 48px 28px;color:var(--text2);border-top:1px solid var(--border)}
+.footer-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.footer-brand img{height:28px;width:28px}
+.footer-brand .nm{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:300;color:#fff;letter-spacing:2px;text-transform:uppercase}
+.footer-col h5{font-size:11.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1px;margin-bottom:18px}
+.footer-col a{display:block;font-size:12.5px;color:var(--text2);text-decoration:none;margin-bottom:11px;transition:color .2s}
+.footer-col a:hover{color:var(--blue)}
+.footer-desc{font-size:12.5px;line-height:1.75;max-width:320px;color:var(--text2)}
+.footer-bottom{max-width:1180px;margin:0 auto;border-top:1px solid var(--border);padding-top:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:11px;color:var(--text3)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:980px){
+
+  .team-grid{grid-template-columns:1fr;max-width:320px}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .hero-stats-bar{grid-template-columns:repeat(2,1fr);row-gap:18px;padding:18px 24px}
+  .hstat:nth-child(odd){border-right:1px solid var(--border)}
+  .hstat:nth-child(even){border-right:none}
+  .svc-columns{grid-template-columns:repeat(3,1fr);gap:20px}
+}
+@media(max-width:640px){
+  .hero{min-height:100vh;align-items:flex-start}
+  .hero-video-overlay{background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.25) 45%,rgba(0,0,0,.75) 100%)}
+  .topnav{padding:0 20px}
+  .tnlinks{display:none}
+  .section{padding:80px 20px}
+
+  .hero-inner{padding:90px 24px 0;max-width:100%}
+  .hero-eyebrow-title{display:block;font-size:11px;font-weight:500;color:rgba(255,255,255,.6);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:10px}
+  .hero h1{display:block;font-family:'Montserrat',sans-serif;font-size:24px;font-weight:300;letter-spacing:2.5px;text-transform:uppercase;line-height:1.35;color:rgba(255,255,255,.92);text-shadow:0 2px 10px rgba(0,0,0,.7);margin-bottom:0}
+  .hero-badge{font-size:8.5px;padding:5px 12px;position:static;width:fit-content;margin:0 0 16px;border-color:rgba(255,255,255,.3);color:#fff}
+  .hero-badge .dot{background:#fff;box-shadow:0 0 8px #fff}
+  .hero-sub{display:block;font-size:10.5px;text-shadow:0 1px 4px rgba(0,0,0,.8)}
+  .hero-stats-bar{display:none}
+  .hero-ctas{display:none}
+  .hero-float-stats{position:absolute;bottom:24px;left:24px;right:24px;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0;max-width:none;z-index:4}
+  .hfs-card{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;background:rgba(255,255,255,.08);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:16px 18px;box-shadow:0 4px 24px rgba(0,0,0,.15)}
+  .hfs-card.hfs-show{opacity:1;transform:translateY(0)}
+  .hfs-num{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;line-height:1}
+  .hfs-unit{font-family:'Montserrat',sans-serif;font-size:13px;color:var(--blue-light);font-weight:700}
+  .hfs-label{font-size:9.5px;color:rgba(255,255,255,.9);margin-top:4px;letter-spacing:.2px}
+
+  .lead-form{grid-template-columns:1fr}
+  .lead-box{padding:40px 26px}
+  .review-card{flex:0 0 calc(85% - 10px)}
+  .footer-inner{grid-template-columns:1fr}
+  .hstat-num{font-size:20px}
+  .hstat-label{font-size:9.5px}
+  .svc-columns{grid-template-columns:1fr;gap:28px}
+
+}
+</style>
+<style>
+.sm-hero{position:relative;min-height:65vh;display:flex;align-items:flex-end;justify-content:flex-start;text-align:left;padding:120px 48px 72px;overflow:hidden;background:linear-gradient(to bottom,rgba(8,20,38,.4),#081426),url('images/services/property-improvements.jpg') center/cover no-repeat}
+.sm-hero-inner{position:relative;z-index:1;max-width:680px}
+.sm-hero .eyebrow{margin-bottom:16px;text-align:left}
+.sm-hero h1{font-family:'Montserrat',sans-serif;font-size:clamp(24px,4.5vw,52px);font-weight:300;letter-spacing:6px;text-transform:uppercase;line-height:1.2;margin-bottom:16px}
+.sm-hero p{font-size:12px;color:rgba(255,255,255,.5);max-width:680px;margin:0 0 28px;line-height:1.7}
+.sm-intro{max-width:800px;margin:0 auto;text-align:center}
+.sm-intro p{font-size:14px;color:rgba(255,255,255,.6);line-height:1.8;margin-bottom:20px}
+.sm-intro p strong{color:#fff;font-weight:600}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px;margin:0 auto}
+.why-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:28px 24px}
+.why-card i{font-size:22px;color:var(--blue);margin-bottom:14px;display:block}
+.why-card h4{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;margin-bottom:10px}
+.why-card p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.65}
+.phases-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+.phase-item{display:grid;grid-template-columns:48px 1fr;gap:24px;padding:28px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.phase-item:last-child{border-bottom:none}
+.phase-num{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--blue);opacity:.7;padding-top:3px}
+.phase-content h4{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#fff;margin-bottom:8px}
+.phase-content p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.65}
+.pub-card{max-width:720px;margin:0 auto;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:36px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.pub-icon{width:56px;height:56px;border-radius:12px;background:rgba(15,94,255,.15);border:1px solid rgba(15,94,255,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pub-icon i{font-size:26px;color:var(--blue)}
+.pub-label{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--blue);opacity:.7;text-transform:uppercase;margin-bottom:8px}
+.pub-title{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;letter-spacing:1px;color:#fff;margin-bottom:12px;line-height:1.5}
+.news-card{max-width:720px;margin:24px auto 0;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:28px 36px}
+.news-card p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:14px}
+@media(max-width:640px){
+  .sm-hero{padding:100px 24px 48px}
+  .why-grid{grid-template-columns:1fr}
+  .pub-card{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="index.html" class="tnlogo">
+    <img src="images/logo-cs-services.png" alt="CS Services">
+    <div class="nm">CS SERVICES</div>
+  </a>
+  <div class="tnlinks">
+    <a href="index.html" class="tnl active">Home</a>
+    <a href="hoa-maintenance.html" class="tnl">HOA Maintenance</a>
+    <a href="projects.html" class="tnl">Projects</a>
+    <a href="testimonials.html" class="tnl">Through Clients' Eyes</a>
+    <a href="siman-method.html" class="tnl">The Siman Method™</a>
+  </div>
+  <a href="#lead-form" class="tn-cta">Schedule a Private Consultation</a>
+</nav>
+
+<!-- HERO -->
+<section class="sm-hero">
+  <div class="sm-hero-inner">
+    <div class="eyebrow">Operational Framework</div>
+    <h1>The Siman<br>Method™</h1>
+    <p>A structured framework designed to improve communication, coordination, documentation, and execution in property maintenance and remodeling projects.</p>
+    <a href="#lead-form" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--blue);color:#fff;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:.5px">Work With Us <i class="ti ti-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="section map-section">
+  <div class="sm-intro reveal">
+    <p>The Siman Method™ is a structured operational framework developed through hands-on experience coordinating maintenance operations, remodeling projects, service requests, and property workflows across South Florida communities.</p>
+    <p>The framework was designed to improve communication, documentation, coordination, scheduling visibility, and operational accountability in environments where multiple residents, vendors, approvals, and urgent situations must be managed efficiently.</p>
+  </div>
+</section>
+
+<!-- WHY IT WAS DEVELOPED -->
+<section class="section map-section">
+  <div class="eyebrow">Origin</div>
+  <div class="section-head reveal" style="margin-bottom:48px">
+    <h2>Why It Was Developed</h2>
+    <p>Recurring gaps identified through years of field operations.</p>
+  </div>
+  <div class="why-grid reveal">
+    <div class="why-card">
+      <i class="ti ti-message-x"></i>
+      <h4>Delayed Communication</h4>
+      <p>Property managers and residents were left without timely updates — creating frustration and eroding trust during active projects.</p>
+    </div>
+    <div class="why-card">
+      <i class="ti ti-file-x"></i>
+      <h4>Lack of Documentation</h4>
+      <p>Work was completed without photos, notes, or records — making it impossible to verify quality or trace what was done.</p>
+    </div>
+    <div class="why-card">
+      <i class="ti ti-clock-x"></i>
+      <h4>Inconsistent Follow-Through</h4>
+      <p>Jobs started but weren't tracked to completion — leading to unresolved issues and repeat visits.</p>
+    </div>
+    <div class="why-card">
+      <i class="ti ti-eye-off"></i>
+      <h4>Poor Operational Visibility</h4>
+      <p>No clear view of what was pending, approved, in progress, or completed — across properties, buildings, and units.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 PHASES -->
+<section class="section map-section">
+  <div class="eyebrow">The Framework</div>
+  <div class="section-head reveal" style="margin-bottom:48px">
+    <h2>Six Phases</h2>
+    <p>From diagnosis to delivery — every step documented.</p>
+  </div>
+  <div class="phases-list reveal">
+    <div class="phase-item">
+      <div class="phase-num">01</div>
+      <div class="phase-content">
+        <h4>Issue Detection & Intake</h4>
+        <p>Every request is received, logged, and categorized — whether it comes from a resident, manager, or field inspection. Nothing falls through the cracks.</p>
+      </div>
+    </div>
+    <div class="phase-item">
+      <div class="phase-num">02</div>
+      <div class="phase-content">
+        <h4>Priority Classification</h4>
+        <p>Issues are assessed by urgency, impact, and scope. Emergency requests are escalated immediately; scheduled work is organized by building and priority level.</p>
+      </div>
+    </div>
+    <div class="phase-item">
+      <div class="phase-num">03</div>
+      <div class="phase-content">
+        <h4>Work Order Generation</h4>
+        <p>A documented work order is created with scope, timeline, assigned team, and approval status — before any work begins.</p>
+      </div>
+    </div>
+    <div class="phase-item">
+      <div class="phase-num">04</div>
+      <div class="phase-content">
+        <h4>Live Field Execution</h4>
+        <p>Teams execute with real-time updates. Photos are captured throughout. Progress is tracked and visible to property managers as it happens.</p>
+      </div>
+    </div>
+    <div class="phase-item">
+      <div class="phase-num">05</div>
+      <div class="phase-content">
+        <h4>Quality Verification</h4>
+        <p>Every completed job is reviewed against the original scope before closure. No shortcuts, no assumptions — verification is built into the process.</p>
+      </div>
+    </div>
+    <div class="phase-item">
+      <div class="phase-num">06</div>
+      <div class="phase-content">
+        <h4>Documentation & Closure</h4>
+        <p>Final photos, notes, and records are saved and shared. The property manager receives a complete closure summary for every work order.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLISHED -->
+<section class="section map-section">
+  <div class="eyebrow">Published Framework</div>
+  <div class="section-head reveal" style="margin-bottom:48px">
+    <h2>Research & Press</h2>
+    <p>The Siman Method™ is documented and published as a professional operational framework.</p>
+  </div>
+  <div class="pub-card reveal">
+    <div class="pub-icon"><i class="ti ti-file-text"></i></div>
+    <div>
+      <div class="pub-label">SSRN Academic Publication</div>
+      <div class="pub-title">The Siman Method for HOA Maintenance Operations — A Client-Centered Framework for 24/7 Service Delivery, Lifecycle Visibility, and Standardized Coordination</div>
+      <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6577838" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none">Read on SSRN <i class="ti ti-arrow-right"></i></a>
+    </div>
+  </div>
+  <div class="news-card reveal">
+    <div class="pub-label">Press Coverage — Gazeta News</div>
+    <p>CS Services Stands Out in South Florida with Alvaro Siman's Innovative 24/7 HOA Operations Method. Founded by Brazilians, the company is transforming HOA building maintenance in the United States through a proprietary operational model, rapid response service, and technology-driven management.</p>
+    <a href="https://www.gazetanews.com/destaque-empresarial/2026/03/513525-cs-services-ganha-destaque-no-sul-da-florida-com-metodo-proprio-de-alvaro-siman-para-atendimento-24-horas-a-hoas.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none">Read Article <i class="ti ti-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- PROPERTYFLOW -->
+<section class="section map-section">
+  <div class="reveal" style="max-width:680px;margin:0 auto;text-align:center;background:rgba(15,94,255,.06);border:1px solid rgba(15,94,255,.2);border-radius:16px;padding:48px 32px">
+    <div class="eyebrow" style="margin-bottom:16px">Built Into A Platform</div>
+    <h2 style="font-family:'Montserrat',sans-serif;font-size:clamp(18px,3vw,28px);font-weight:300;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px">PropertyFlow</h2>
+    <p style="font-size:14px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:28px">The Siman Method™ is now the engine behind PropertyFlow — a property management operating system built for HOAs and property managers. Work orders, inspections, vendors, and documentation in one place.</p>
+    <a href="https://propertyflow-landing.vercel.app/" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--blue);color:#fff;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">Get Early Access <i class="ti ti-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section section-dark" id="lead-form">
+  <div class="lead-section">
+    <div class="lead-box reveal">
+      <div class="lead-head">
+        <h2>Work With Us</h2>
+        <p>We respond within one business day.</p>
+      </div>
+      <form class="lead-form" id="leadForm">
+        <div><label class="lf-label">Name</label><input class="lf-input" type="text" name="name" placeholder="Your name" required></div>
+        <div><label class="lf-label">Email</label><input class="lf-input" type="email" name="email" placeholder="you@email.com" required></div>
+        <div><label class="lf-label">Phone</label><input class="lf-input" type="tel" name="phone" placeholder="(954) 000-0000"></div>
+        <div><label class="lf-label">Property / HOA Name</label><input class="lf-input" type="text" name="address" placeholder="Property name or address"></div>
+        <div class="full"><label class="lf-label">Message</label><textarea class="lf-textarea" name="message" placeholder="Tell us about your project..." required></textarea></div>
+        <button class="lf-submit" type="submit">Send Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand"><img src="images/logo-cs-services.png" alt="CS Services"><div class="nm">CS SERVICES CORP</div></div>
+      <p class="footer-desc">Remodeling, maintenance, and property care for South Florida's finest homes and HOAs — run on the Siman Method™.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="index.html">Home</a>
+      <a href="hoa-maintenance.html">HOA Maintenance</a>
+      <a href="projects.html">Projects</a>
+      <a href="siman-method.html">The Siman Method™</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <a href="tel:9542631159">954-263-1159</a>
+      <a href="mailto:info@csservicecorp.com">info@csservicecorp.com</a>
+      <a href="https://wa.me/19542631159">WhatsApp</a>
+    </div>
+    <div class="footer-col">
+      <h5>Follow</h5>
+      <a href="https://www.facebook.com/csservicesfl">Facebook</a>
+      <a href="https://www.instagram.com/cs_servicess/">Instagram</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 CS Services Corp · South Florida Property Services</div>
+    <div>Open today · 09:00 AM – 05:00 PM</div>
+  </div>
+</footer>
+
+<script>
+// ---- Match hero-sub width to the rendered width of "Transformation" ----
+(function(){
+  const word = document.getElementById('transformWord');
+  const sub = document.querySelector('.hero-sub');
+  if (!word || !sub) return;
+  function syncWidth(){
+    const w = word.getBoundingClientRect().width;
+    if (w > 0) sub.style.maxWidth = w + 'px';
+  }
+  syncWidth();
+  window.addEventListener('resize', syncWidth);
+  // Re-check after fonts finish loading (Montserrat 300 may shift width)
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(syncWidth);
+  }
+})();
+
+// ---- Hero floating stat cards (mobile): appear one by one, ~1s apart ----
+(function(){
+  const cards = document.querySelectorAll('.hfs-card');
+  if (!cards.length) return;
+  cards.forEach((card, i) => {
+    setTimeout(() => {
+      card.classList.add('hfs-show');
+      // trigger count-up for counters inside this card
+      card.querySelectorAll('.count-target').forEach(el => {
+        const target = parseFloat(el.dataset.target);
+        const duration = 900;
+        const startTime = performance.now();
+        function tick(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 2.4);
+          el.textContent = Math.round(target * eased);
+          if (progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target;
+        }
+        requestAnimationFrame(tick);
+      });
+    }, 600 + i * 300);
+  });
+})();
+
+// ---- Scroll-reveal: fade + rise animation for elements with .reveal ----
+(function(){
+  const items = document.querySelectorAll('.reveal');
+  if (!items.length) return;
+
+  function setupObserver() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
+          const index = siblings.indexOf(entry.target);
+          setTimeout(() => entry.target.classList.add('revealed'), index * 130);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+    items.forEach(el => observer.observe(el));
+  }
+
+  // Wait for the page to finish its initial paint/layout before observing,
+  // so elements already in view on load don't fire instantly without a visible transition.
+  if (document.readyState === 'complete') {
+    requestAnimationFrame(() => requestAnimationFrame(setupObserver));
+  } else {
+    window.addEventListener('load', () => {
+      requestAnimationFrame(() => requestAnimationFrame(setupObserver));
+    });
+  }
+})();
+
+// ---- Animated count-up for all .count-target elements ----
+(function(){
+  function animateCount(el) {
+    if (el.dataset.animated) return;
+    el.dataset.animated = '1';
+    const target = parseFloat(el.dataset.target);
+    const duration = 1200;
+    const startTime = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 2.4);
+      el.textContent = Math.round(target * eased);
+      if (progress < 1) requestAnimationFrame(tick);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  window.addEventListener('load', function() {
+    const counters = document.querySelectorAll('.count-target');
+    if (!counters.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -10px 0px' });
+
+    counters.forEach(el => observer.observe(el));
+
+    // Also fire for anything already in viewport after 800ms (stats bar hero)
+    setTimeout(() => {
+      counters.forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) animateCount(el);
+      });
+    }, 800);
+  });
+})();
+
+// ---- Before/After sliders (multi-project) ----
+function initSlider(slider) {
+  const clip = slider.querySelector('.ba-after-clip');
+  const handle = slider.querySelector('.ba-handle-inst');
+  // add handle styles dynamically
+  handle.style.cssText = 'position:absolute;top:0;bottom:0;left:50%;width:2px;background:linear-gradient(to bottom,transparent,#0F5EFF,transparent);z-index:5;box-shadow:0 0 20px rgba(15,94,255,.6)';
+  let dragging = false;
+
+  function setPosition(clientX) {
+    const rect = slider.getBoundingClientRect();
+    let pct = ((clientX - rect.left) / rect.width) * 100;
+    pct = Math.max(0, Math.min(100, pct));
+    clip.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+    handle.style.left = pct + '%';
+  }
+
+  slider.addEventListener('mousedown', (e) => { dragging = true; setPosition(e.clientX); });
+  window.addEventListener('mousemove', (e) => { if (dragging) setPosition(e.clientX); });
+  window.addEventListener('mouseup', () => dragging = false);
+  slider.addEventListener('touchstart', (e) => { dragging = true; setPosition(e.touches[0].clientX); }, {passive:true});
+  slider.addEventListener('touchmove', (e) => { if (dragging) setPosition(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', () => dragging = false);
+}
+
+document.querySelectorAll('.ba-slider-inst').forEach(initSlider);
+
+
+
+function switchProject(idx) {
+  document.querySelectorAll('.ba-project').forEach((p, i) => p.classList.toggle('active', i === idx));
+  document.querySelectorAll('.ba-proj-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+  // re-init slider for newly shown project
+  const active = document.querySelectorAll('.ba-project')[idx];
+  if (active) {
+    const slider = active.querySelector('.ba-slider-inst');
+    if (slider && !slider.dataset.init) initSlider(slider);
+  }
+}
+
+
+
+// ---- Reviews carousel ----
+(function(){
+  const track = document.getElementById('reviewsTrack');
+  const nav = document.getElementById('reviewsNav');
+  if (!track || !nav) return;
+
+  const cards = track.querySelectorAll('.review-card');
+  let current = 0;
+  let perView = window.innerWidth < 640 ? 1 : window.innerWidth < 980 ? 2 : 3;
+  const total = Math.ceil(cards.length / perView);
+
+  // Build dots
+  for (let i = 0; i < total; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'reviews-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goTo(i);
+    nav.appendChild(dot);
+  }
+
+  function goTo(idx) {
+    current = idx;
+    const cardW = cards[0].offsetWidth + 20;
+    track.style.transform = `translateX(-${current * perView * cardW}px)`;
+    nav.querySelectorAll('.reviews-dot').forEach((d,i) => d.classList.toggle('active', i === current));
+  }
+
+  // Auto-advance every 4s
+  setInterval(() => goTo((current + 1) % total), 4000);
+
+  // Touch swipe
+  let startX = 0;
+  track.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive:true});
+  track.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(diff > 0 ? Math.min(current+1, total-1) : Math.max(current-1, 0));
+  }, {passive:true});
+})();
+
+// ---- Lead form (placeholder submit) ----
+document.getElementById('leadForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert('Thanks — this form is not yet connected to storage. See project notes for the Google Sheets integration step.');
+});
+</script>
+
+<script>
+// ---- Match hero-sub width to the rendered width of "Transformation" ----
+(function(){
+  const word = document.getElementById('transformWord');
+  const sub = document.querySelector('.hero-sub');
+  if (!word || !sub) return;
+  function syncWidth(){
+    const w = word.getBoundingClientRect().width;
+    if (w > 0) sub.style.maxWidth = w + 'px';
+  }
+  syncWidth();
+  window.addEventListener('resize', syncWidth);
+  // Re-check after fonts finish loading (Montserrat 300 may shift width)
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(syncWidth);
+  }
+})();
+
+// ---- Hero floating stat cards (mobile): appear one by one, ~1s apart ----
+(function(){
+  const cards = document.querySelectorAll('.hfs-card');
+  if (!cards.length) return;
+  cards.forEach((card, i) => {
+    setTimeout(() => {
+      card.classList.add('hfs-show');
+      // trigger count-up for counters inside this card
+      card.querySelectorAll('.count-target').forEach(el => {
+        const target = parseFloat(el.dataset.target);
+        const duration = 900;
+        const startTime = performance.now();
+        function tick(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 2.4);
+          el.textContent = Math.round(target * eased);
+          if (progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target;
+        }
+        requestAnimationFrame(tick);
+      });
+    }, 600 + i * 300);
+  });
+})();
+
+// ---- Scroll-reveal: fade + rise animation for elements with .reveal ----
+(function(){
+  const items = document.querySelectorAll('.reveal');
+  if (!items.length) return;
+
+  function setupObserver() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
+          const index = siblings.indexOf(entry.target);
+          setTimeout(() => entry.target.classList.add('revealed'), index * 130);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+    items.forEach(el => observer.observe(el));
+  }
+
+  // Wait for the page to finish its initial paint/layout before observing,
+  // so elements already in view on load don't fire instantly without a visible transition.
+  if (document.readyState === 'complete') {
+    requestAnimationFrame(() => requestAnimationFrame(setupObserver));
+  } else {
+    window.addEventListener('load', () => {
+      requestAnimationFrame(() => requestAnimationFrame(setupObserver));
+    });
+  }
+})();
+
+// ---- Animated count-up for all .count-target elements ----
+(function(){
+  function animateCount(el) {
+    if (el.dataset.animated) return;
+    el.dataset.animated = '1';
+    const target = parseFloat(el.dataset.target);
+    const duration = 1200;
+    const startTime = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 2.4);
+      el.textContent = Math.round(target * eased);
+      if (progress < 1) requestAnimationFrame(tick);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  window.addEventListener('load', function() {
+    const counters = document.querySelectorAll('.count-target');
+    if (!counters.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -10px 0px' });
+
+    counters.forEach(el => observer.observe(el));
+
+    // Also fire for anything already in viewport after 800ms (stats bar hero)
+    setTimeout(() => {
+      counters.forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) animateCount(el);
+      });
+    }, 800);
+  });
+})();
+
+// ---- Before/After sliders (multi-project) ----
+function initSlider(slider) {
+  const clip = slider.querySelector('.ba-after-clip');
+  const handle = slider.querySelector('.ba-handle-inst');
+  // add handle styles dynamically
+  handle.style.cssText = 'position:absolute;top:0;bottom:0;left:50%;width:2px;background:linear-gradient(to bottom,transparent,#0F5EFF,transparent);z-index:5;box-shadow:0 0 20px rgba(15,94,255,.6)';
+  let dragging = false;
+
+  function setPosition(clientX) {
+    const rect = slider.getBoundingClientRect();
+    let pct = ((clientX - rect.left) / rect.width) * 100;
+    pct = Math.max(0, Math.min(100, pct));
+    clip.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+    handle.style.left = pct + '%';
+  }
+
+  slider.addEventListener('mousedown', (e) => { dragging = true; setPosition(e.clientX); });
+  window.addEventListener('mousemove', (e) => { if (dragging) setPosition(e.clientX); });
+  window.addEventListener('mouseup', () => dragging = false);
+  slider.addEventListener('touchstart', (e) => { dragging = true; setPosition(e.touches[0].clientX); }, {passive:true});
+  slider.addEventListener('touchmove', (e) => { if (dragging) setPosition(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', () => dragging = false);
+}
+
+document.querySelectorAll('.ba-slider-inst').forEach(initSlider);
+
+
+
+function switchProject(idx) {
+  document.querySelectorAll('.ba-project').forEach((p, i) => p.classList.toggle('active', i === idx));
+  document.querySelectorAll('.ba-proj-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+  // re-init slider for newly shown project
+  const active = document.querySelectorAll('.ba-project')[idx];
+  if (active) {
+    const slider = active.querySelector('.ba-slider-inst');
+    if (slider && !slider.dataset.init) initSlider(slider);
+  }
+}
+
+
+
+// ---- Reviews carousel ----
+(function(){
+  const track = document.getElementById('reviewsTrack');
+  const nav = document.getElementById('reviewsNav');
+  if (!track || !nav) return;
+
+  const cards = track.querySelectorAll('.review-card');
+  let current = 0;
+  let perView = window.innerWidth < 640 ? 1 : window.innerWidth < 980 ? 2 : 3;
+  const total = Math.ceil(cards.length / perView);
+
+  // Build dots
+  for (let i = 0; i < total; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'reviews-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goTo(i);
+    nav.appendChild(dot);
+  }
+
+  function goTo(idx) {
+    current = idx;
+    const cardW = cards[0].offsetWidth + 20;
+    track.style.transform = `translateX(-${current * perView * cardW}px)`;
+    nav.querySelectorAll('.reviews-dot').forEach((d,i) => d.classList.toggle('active', i === current));
+  }
+
+  // Auto-advance every 4s
+  setInterval(() => goTo((current + 1) % total), 4000);
+
+  // Touch swipe
+  let startX = 0;
+  track.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive:true});
+  track.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(diff > 0 ? Math.min(current+1, total-1) : Math.max(current-1, 0));
+  }, {passive:true});
+})();
+
+// ---- Lead form (placeholder submit) ----
+document.getElementById('leadForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert('Thanks — this form is not yet connected to storage. See project notes for the Google Sheets integration step.');
+});
+</script>
+</body>
+</html>
