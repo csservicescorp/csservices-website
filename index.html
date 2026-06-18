@@ -103,9 +103,12 @@ a{color:inherit}
 
 /* ===== CONCIERGE TIMELINE ===== */
 .concierge-track{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:16px;position:relative}
-.concierge-track::before{content:'';position:absolute;top:23px;left:4%;right:4%;height:1px;background:linear-gradient(90deg,transparent,var(--border) 15%,var(--border) 85%,transparent)}
+.concierge-track::before{display:none}
 .ctrack-item{position:relative;text-align:center}
-.ctrack-dot{width:14px;height:14px;border-radius:50%;background:var(--blue);margin:0 auto 22px;position:relative;z-index:1;box-shadow:0 0 0 6px rgba(8,20,38,1),0 0 0 7px rgba(15,94,255,.3)}
+.ctrack-dot{width:14px;height:14px;border-radius:50%;background:var(--blue);margin:0 auto 22px;position:relative;z-index:2;box-shadow:0 0 0 6px rgba(8,20,38,1),0 0 0 7px rgba(15,94,255,.3);transition:box-shadow .3s ease}
+.ctrack-dot.dot-active{box-shadow:0 0 0 6px rgba(8,20,38,1),0 0 0 8px rgba(15,94,255,.6),0 0 18px rgba(15,94,255,.4)}
+.ctrack-snake{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:visible}
+.snake-path{fill:none;stroke:url(#snakeGrad);stroke-width:2;stroke-linecap:round;stroke-dasharray:2000;stroke-dashoffset:2000;transition:stroke-dashoffset 0s}
 .ctrack-item h4{font-size:13px;font-weight:700;color:#fff;margin-bottom:6px}
 .ctrack-item p{font-size:11px;color:var(--text3);line-height:1.5}
 
@@ -176,7 +179,6 @@ a{color:inherit}
 /* ===== RESPONSIVE ===== */
 @media(max-width:980px){
   .concierge-track{grid-template-columns:repeat(3,1fr);row-gap:40px}
-  .concierge-track::before{display:none}
   .team-grid{grid-template-columns:1fr;max-width:320px}
   .footer-inner{grid-template-columns:1fr 1fr}
   .hero-stats-bar{grid-template-columns:repeat(2,1fr);row-gap:18px;padding:18px 24px}
@@ -205,7 +207,7 @@ a{color:inherit}
   .hfs-num{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;line-height:1}
   .hfs-unit{font-family:'Montserrat',sans-serif;font-size:13px;color:var(--blue-light);font-weight:700}
   .hfs-label{font-size:9.5px;color:rgba(255,255,255,.9);margin-top:4px;letter-spacing:.2px}
-  .concierge-track{grid-template-columns:1fr 1fr}
+  .concierge-track{grid-template-columns:1fr 1fr;row-gap:40px}
   .lead-form{grid-template-columns:1fr}
   .lead-box{padding:40px 26px}
   .footer-inner{grid-template-columns:1fr}
@@ -384,7 +386,17 @@ a{color:inherit}
     <h2>From first call to ongoing care</h2>
     <p>A structured process for every property, every time.</p>
   </div>
-  <div class="concierge-track">
+  <div class="concierge-track" id="ctrackWrap">
+    <svg class="ctrack-snake" id="ctrackSvg" aria-hidden="true">
+      <defs>
+        <linearGradient id="snakeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#0F5EFF" stop-opacity="0.3"/>
+          <stop offset="50%" stop-color="#4CC9FF" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#0F5EFF" stop-opacity="0.3"/>
+        </linearGradient>
+      </defs>
+      <path class="snake-path" id="snakePath"/>
+    </svg>
     <div class="ctrack-item reveal"><div class="ctrack-dot"></div><h4>Consultation</h4><p>A direct conversation about your property and goals.</p></div>
     <div class="ctrack-item reveal"><div class="ctrack-dot"></div><h4>Inspection</h4><p>Full on-site assessment, documented in detail.</p></div>
     <div class="ctrack-item reveal"><div class="ctrack-dot"></div><h4>Digital Proposal</h4><p>A clear, itemized plan — no surprises.</p></div>
@@ -657,6 +669,75 @@ function switchProject(idx) {
     if (slider && !slider.dataset.init) initSlider(slider);
   }
 }
+
+// ---- Snake path animation connecting concierge dots ----
+(function(){
+  function buildSnake() {
+    const wrap = document.getElementById('ctrackWrap');
+    const path = document.getElementById('snakePath');
+    if (!wrap || !path) return;
+
+    const dots = Array.from(wrap.querySelectorAll('.ctrack-dot'));
+    const wrapRect = wrap.getBoundingClientRect();
+
+    // Build smooth SVG path through all dot centers
+    function getCenter(el) {
+      const r = el.getBoundingClientRect();
+      return {
+        x: r.left - wrapRect.left + r.width / 2,
+        y: r.top - wrapRect.top + r.height / 2
+      };
+    }
+
+    const pts = dots.map(getCenter);
+    if (pts.length < 2) return;
+
+    // Smooth bezier through points
+    let d = `M ${pts[0].x} ${pts[0].y}`;
+    for (let i = 1; i < pts.length; i++) {
+      const prev = pts[i - 1];
+      const curr = pts[i];
+      const cx = (prev.x + curr.x) / 2;
+      d += ` C ${cx} ${prev.y}, ${cx} ${curr.y}, ${curr.x} ${curr.y}`;
+    }
+    path.setAttribute('d', d);
+
+    // Measure total length and set dasharray
+    const len = path.getTotalLength();
+    path.style.strokeDasharray = len;
+    path.style.strokeDashoffset = len;
+
+    // Animate when section enters viewport
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          observer.disconnect();
+          // Animate the snake drawing
+          let start = null;
+          const duration = 1800;
+          function animSnake(ts) {
+            if (!start) start = ts;
+            const progress = Math.min((ts - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 2);
+            path.style.strokeDashoffset = len * (1 - eased);
+            // Light up each dot as snake reaches it
+            dots.forEach((dot, i) => {
+              const threshold = i / (dots.length - 1);
+              if (progress >= threshold) dot.classList.add('dot-active');
+            });
+            if (progress < 1) requestAnimationFrame(animSnake);
+          }
+          requestAnimationFrame(animSnake);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    observer.observe(wrap);
+  }
+
+  if (document.readyState === 'complete') buildSnake();
+  else window.addEventListener('load', buildSnake);
+})();
 
 // ---- Lead form (placeholder submit) ----
 document.getElementById('leadForm').addEventListener('submit', function(e){
