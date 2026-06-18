@@ -193,7 +193,7 @@ a{color:inherit}
   .hero-stats-bar{display:none}
   .hero-ctas{display:none}
   .hero-float-stats{position:absolute;bottom:24px;left:24px;right:24px;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0;max-width:none;z-index:4}
-  .hfs-card{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;background:rgba(255,255,255,.12);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:16px 18px;box-shadow:0 8px 32px rgba(0,0,0,.25)}
+  .hfs-card{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;background:rgba(255,255,255,.08);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:16px 18px;box-shadow:0 4px 24px rgba(0,0,0,.15)}
   .hfs-card.hfs-show{opacity:1;transform:translateY(0)}
   .hfs-num{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;line-height:1}
   .hfs-unit{font-family:'Montserrat',sans-serif;font-size:13px;color:var(--blue-light);font-weight:700}
@@ -509,7 +509,23 @@ a{color:inherit}
   const cards = document.querySelectorAll('.hfs-card');
   if (!cards.length) return;
   cards.forEach((card, i) => {
-    setTimeout(() => card.classList.add('hfs-show'), 600 + i * 1000);
+    setTimeout(() => {
+      card.classList.add('hfs-show');
+      // trigger count-up for counters inside this card
+      card.querySelectorAll('.count-target').forEach(el => {
+        const target = parseFloat(el.dataset.target);
+        const duration = 900;
+        const startTime = performance.now();
+        function tick(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 2.4);
+          el.textContent = Math.round(target * eased);
+          if (progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target;
+        }
+        requestAnimationFrame(tick);
+      });
+    }, 600 + i * 300);
   });
 })();
 
@@ -575,7 +591,7 @@ a{color:inherit}
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.4 });
+  }, { threshold: 0.1 });
 
   counters.forEach(el => observer.observe(el));
 })();
