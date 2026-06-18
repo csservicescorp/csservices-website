@@ -181,7 +181,7 @@ a{color:inherit}
   .topnav{padding:0 20px}
   .tnlinks{display:none}
   .section{padding:80px 20px}
-  .hero-inner{padding:0 24px;max-width:100%;padding-bottom:140px}
+  .hero-inner{padding:0 24px;max-width:100%;padding-bottom:60px}
   .hero h1{font-size:27px;letter-spacing:2.5px;text-shadow:0 0 16px rgba(255,255,255,.5),0 2px 8px rgba(0,0,0,.6)}
   .hero-badge{font-size:9px;padding:6px 14px;position:absolute;top:90px;left:24px;right:24px;width:fit-content;margin:0;border-color:rgba(255,255,255,.3);color:#fff}
   .hero-badge .dot{background:#fff;box-shadow:0 0 8px #fff}
@@ -189,16 +189,13 @@ a{color:inherit}
   .hero-inner{padding-top:140px}
   .hero-sub{font-size:10.5px;text-shadow:0 1px 4px rgba(0,0,0,.8)}
   .hero-stats-bar{display:none}
-  .hero-float-stats{display:block}
-  .hfs-card{position:absolute;opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;background:rgba(8,20,38,.55);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px 18px;z-index:3}
+  .hero-ctas{display:none}
+  .hero-float-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0 32px;max-width:380px}
+  .hfs-card{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;background:rgba(8,20,38,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px 20px}
   .hfs-card.hfs-show{opacity:1;transform:translateY(0)}
-  .hfs-num{font-size:24px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums;line-height:1}
-  .hfs-unit{font-size:13px;color:var(--blue-light);font-weight:700}
-  .hfs-label{font-size:10px;color:rgba(255,255,255,.7);margin-top:4px;letter-spacing:.2px}
-  .hfs-1{top:230px;left:24px}
-  .hfs-2{top:300px;right:24px}
-  .hfs-3{top:850px;left:24px}
-  .hfs-4{top:920px;right:24px}
+  .hfs-num{font-family:'Montserrat',sans-serif;font-size:32px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;line-height:1}
+  .hfs-unit{font-family:'Montserrat',sans-serif;font-size:17px;color:var(--blue-light);font-weight:700}
+  .hfs-label{font-size:11px;color:rgba(255,255,255,.7);margin-top:6px;letter-spacing:.2px}
   .concierge-track{grid-template-columns:1fr 1fr}
   .lead-form{grid-template-columns:1fr}
   .lead-box{padding:40px 26px}
@@ -241,17 +238,16 @@ a{color:inherit}
     <div class="hero-eyebrow-title">Excellence in</div>
     <h1>Property Care & Transformation</h1>
     <p class="hero-sub">Remodeling, maintenance & ongoing property care for South Florida's finest homes, delivered through a documented process, trusted craftsmanship, and long-term partnership.</p>
+    <div class="hero-float-stats">
+      <div class="hfs-card hfs-1"><div class="hfs-num"><span class="count-target" data-target="6">0</span><span class="hfs-unit">+</span></div><div class="hfs-label">Years of Excellence</div></div>
+      <div class="hfs-card hfs-2"><div class="hfs-num"><span class="count-target" data-target="450">0</span><span class="hfs-unit">+</span></div><div class="hfs-label">Projects Completed</div></div>
+      <div class="hfs-card hfs-3"><div class="hfs-num"><span class="count-target" data-target="98">0</span><span class="hfs-unit">%</span></div><div class="hfs-label">Client Satisfaction</div></div>
+      <div class="hfs-card hfs-4"><div class="hfs-num">24<span class="hfs-unit">/7</span></div><div class="hfs-label">Emergency Services</div></div>
+    </div>
     <div class="hero-ctas">
       <a href="#lead-form" class="btn-gold"><i class="ti ti-calendar"></i> Schedule a Private Consultation</a>
       <a href="siman-method.html" class="btn-ghost">See the Siman Method™</a>
     </div>
-  </div>
-
-  <div class="hero-float-stats">
-    <div class="hfs-card hfs-1"><div class="hfs-num"><span class="count-target" data-target="6">0</span><span class="hfs-unit">+</span></div><div class="hfs-label">Years of Excellence</div></div>
-    <div class="hfs-card hfs-2"><div class="hfs-num"><span class="count-target" data-target="450">0</span><span class="hfs-unit">+</span></div><div class="hfs-label">Projects Completed</div></div>
-    <div class="hfs-card hfs-3"><div class="hfs-num"><span class="count-target" data-target="98">0</span><span class="hfs-unit">%</span></div><div class="hfs-label">Client Satisfaction</div></div>
-    <div class="hfs-card hfs-4"><div class="hfs-num">24<span class="hfs-unit">/7</span></div><div class="hfs-label">Emergency Services</div></div>
   </div>
 
   <div class="hero-stats-bar reveal">
