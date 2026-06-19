@@ -264,6 +264,8 @@ a{color:inherit}
   .services-grid{grid-template-columns:1fr}
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init("0UbAC3h4lfmDB7YpU");</script>
 </head>
 <body>
 <nav class="topnav">
@@ -625,11 +627,36 @@ function switchProject(idx) {
   }, {passive:true});
 })();
 
-// ---- Lead form (placeholder submit) ----
-document.getElementById('leadForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  alert('Thanks — this form is not yet connected to storage. See project notes for the Google Sheets integration step.');
-});
+// ---- Lead form — EmailJS ----
+(function(){
+  const form = document.getElementById('leadForm');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('.lf-submit');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    const data = Object.fromEntries(new FormData(form));
+    emailjs.send('service_0bphc1j', 'template_fm9p52f', {
+      from_name: data.name || '',
+      from_email: data.email || '',
+      phone: data.phone || '',
+      address: data.address || '',
+      message: data.message || '',
+      to_email: 'info@csservicecorp.com'
+    }).then(function() {
+      btn.textContent = 'Message Sent ✓';
+      btn.style.background = '#16a34a';
+      form.reset();
+      setTimeout(() => { btn.textContent = 'Send Request'; btn.style.background = ''; btn.disabled = false; }, 4000);
+    }, function(err) {
+      btn.textContent = 'Send Request';
+      btn.disabled = false;
+      alert('Something went wrong. Please email us directly at info@csservicecorp.com');
+    });
+  });
+})();
 </script>
 
 <script>
@@ -828,11 +855,36 @@ function switchProject(idx) {
   }, {passive:true});
 })();
 
-// ---- Lead form (placeholder submit) ----
-document.getElementById('leadForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  alert('Thanks — this form is not yet connected to storage. See project notes for the Google Sheets integration step.');
-});
+// ---- Lead form — EmailJS ----
+(function(){
+  const form = document.getElementById('leadForm');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('.lf-submit');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    const data = Object.fromEntries(new FormData(form));
+    emailjs.send('service_0bphc1j', 'template_fm9p52f', {
+      from_name: data.name || '',
+      from_email: data.email || '',
+      phone: data.phone || '',
+      address: data.address || '',
+      message: data.message || '',
+      to_email: 'info@csservicecorp.com'
+    }).then(function() {
+      btn.textContent = 'Message Sent ✓';
+      btn.style.background = '#16a34a';
+      form.reset();
+      setTimeout(() => { btn.textContent = 'Send Request'; btn.style.background = ''; btn.disabled = false; }, 4000);
+    }, function(err) {
+      btn.textContent = 'Send Request';
+      btn.disabled = false;
+      alert('Something went wrong. Please email us directly at info@csservicecorp.com');
+    });
+  });
+})();
 </script>
 </body>
 </html>
