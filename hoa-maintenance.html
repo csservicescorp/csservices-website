@@ -627,7 +627,7 @@ function switchProject(idx) {
   }, {passive:true});
 })();
 
-// ---- Lead form — EmailJS ----
+// ---- Lead form — EmailJS + Google Sheets ----
 (function(){
   const form = document.getElementById('leadForm');
   if (!form) return;
@@ -638,6 +638,8 @@ function switchProject(idx) {
     btn.disabled = true;
 
     const data = Object.fromEntries(new FormData(form));
+
+    // Send to EmailJS
     emailjs.send('service_0bphc1j', 'template_fm9p52f', {
       from_name: data.name || '',
       from_email: data.email || '',
@@ -645,16 +647,25 @@ function switchProject(idx) {
       address: data.address || '',
       message: data.message || '',
       to_email: 'info@csservicecorp.com'
-    }).then(function() {
-      btn.textContent = 'Message Sent ✓';
-      btn.style.background = '#16a34a';
-      form.reset();
-      setTimeout(() => { btn.textContent = 'Send Request'; btn.style.background = ''; btn.disabled = false; }, 4000);
-    }, function(err) {
-      btn.textContent = 'Send Request';
-      btn.disabled = false;
-      alert('Something went wrong. Please email us directly at info@csservicecorp.com');
     });
+
+    // Send to Google Sheets
+    fetch('https://script.google.com/macros/s/AKfycbxlwLZ-rfnE0lVqFQB75FlWwNNjEm8A2iNb5Bcl_03xliVM52j-B0X9K62dWaW-9_3X/exec', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: data.name || '',
+        email: data.email || '',
+        phone: data.phone || '',
+        address: data.address || '',
+        message: data.message || '',
+        source: window.location.pathname.includes('hoa') ? 'HOA Page' : window.location.pathname.includes('siman') ? 'Siman Method Page' : 'Homepage'
+      })
+    }).catch(() => {});
+
+    btn.textContent = 'Message Sent ✓';
+    btn.style.background = '#16a34a';
+    form.reset();
+    setTimeout(() => { btn.textContent = 'Send Request'; btn.style.background = ''; btn.disabled = false; }, 4000);
   });
 })();
 </script>
@@ -855,7 +866,7 @@ function switchProject(idx) {
   }, {passive:true});
 })();
 
-// ---- Lead form — EmailJS ----
+// ---- Lead form — EmailJS + Google Sheets ----
 (function(){
   const form = document.getElementById('leadForm');
   if (!form) return;
@@ -866,6 +877,8 @@ function switchProject(idx) {
     btn.disabled = true;
 
     const data = Object.fromEntries(new FormData(form));
+
+    // Send to EmailJS
     emailjs.send('service_0bphc1j', 'template_fm9p52f', {
       from_name: data.name || '',
       from_email: data.email || '',
@@ -873,16 +886,25 @@ function switchProject(idx) {
       address: data.address || '',
       message: data.message || '',
       to_email: 'info@csservicecorp.com'
-    }).then(function() {
-      btn.textContent = 'Message Sent ✓';
-      btn.style.background = '#16a34a';
-      form.reset();
-      setTimeout(() => { btn.textContent = 'Send Request'; btn.style.background = ''; btn.disabled = false; }, 4000);
-    }, function(err) {
-      btn.textContent = 'Send Request';
-      btn.disabled = false;
-      alert('Something went wrong. Please email us directly at info@csservicecorp.com');
     });
+
+    // Send to Google Sheets
+    fetch('https://script.google.com/macros/s/AKfycbxlwLZ-rfnE0lVqFQB75FlWwNNjEm8A2iNb5Bcl_03xliVM52j-B0X9K62dWaW-9_3X/exec', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: data.name || '',
+        email: data.email || '',
+        phone: data.phone || '',
+        address: data.address || '',
+        message: data.message || '',
+        source: window.location.pathname.includes('hoa') ? 'HOA Page' : window.location.pathname.includes('siman') ? 'Siman Method Page' : 'Homepage'
+      })
+    }).catch(() => {});
+
+    btn.textContent = 'Message Sent ✓';
+    btn.style.background = '#16a34a';
+    form.reset();
+    setTimeout(() => { btn.textContent = 'Send Request'; btn.style.background = ''; btn.disabled = false; }, 4000);
   });
 })();
 </script>
