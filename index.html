@@ -108,23 +108,11 @@ a{color:inherit}
 .pf-feature p{font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.5}
 .pf-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;background:var(--blue);color:#fff;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.3px;transition:all .2s}
 .pf-cta:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(15,94,255,.35)}
-.pf-visual{display:flex;justify-content:center}
-.pf-mock{width:100%;max-width:340px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:20px;backdrop-filter:blur(10px);box-shadow:0 30px 80px rgba(0,0,0,.4)}
-.pf-mock-bar{display:flex;gap:6px;margin-bottom:18px}
-.pf-mock-bar span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15)}
-.pf-mock-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)}
-.pf-mock-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:rgba(255,255,255,.2)}
-.pf-mock-dot.ok{background:#22c55e}
-.pf-mock-dot.prog{background:#fbbf24}
-.pf-mock-dot.new{background:var(--blue)}
-.pf-mock-line{flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,.1)}
-.pf-mock-line.short{max-width:60%}
-.pf-mock-pill{font-size:9px;font-weight:700;padding:3px 9px;border-radius:20px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);letter-spacing:.3px}
-.pf-mock-pill.prog{background:rgba(251,191,36,.15);color:#fbbf24}
-.pf-mock-pill.new{background:rgba(15,94,255,.15);color:var(--blue-light)}
-.pf-mock-stat{margin-top:18px;padding-top:16px;text-align:center}
-.pf-mock-num{display:block;font-family:'Montserrat',sans-serif;font-size:28px;font-weight:700;color:#fff}
-.pf-mock-label{font-size:10px;color:rgba(255,255,255,.4);letter-spacing:1px;text-transform:uppercase}
+.pf-visual{display:flex;justify-content:center;padding-bottom:28px}
+.pf-screens{position:relative;width:100%;max-width:420px}
+.pf-screen{display:block;width:100%;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1)}
+.pf-screen-board{position:relative;z-index:1}
+.pf-screen-request{position:absolute;width:62%;bottom:-28px;right:-18px;z-index:2;box-shadow:0 24px 60px rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.15)}
 .ba-stack{display:flex;flex-direction:column;gap:48px}
 .ba-projects{display:flex;justify-content:center;gap:12px;margin-bottom:32px;flex-wrap:wrap}
 .ba-proj-btn{padding:8px 20px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text2);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .2s}
@@ -269,9 +257,11 @@ a{color:inherit}
   .pf-wrap{grid-template-columns:1fr;gap:36px}
   .pf-title,.pf-section .eyebrow{text-align:center}
   .pf-sub{margin:0 auto 28px;text-align:center}
-  .pf-features{grid-template-columns:1fr}
+  .pf-features{grid-template-columns:1fr;text-align:left}
   .pf-section .pf-content{text-align:center}
   .pf-cta{margin:0 auto;display:inline-flex}
+  .pf-screens{max-width:280px;margin:0 auto 36px}
+  .pf-screen-request{width:58%;bottom:-20px;right:-12px}
 
 }
 </style>
@@ -398,13 +388,9 @@ a{color:inherit}
       <a href="https://propertyflow-landing.vercel.app/" target="_blank" rel="noopener" class="pf-cta">Get Early Access <i class="ti ti-arrow-right"></i></a>
     </div>
     <div class="pf-visual">
-      <div class="pf-mock">
-        <div class="pf-mock-bar"><span></span><span></span><span></span></div>
-        <div class="pf-mock-row"><div class="pf-mock-dot ok"></div><div class="pf-mock-line"></div><div class="pf-mock-pill">Done</div></div>
-        <div class="pf-mock-row"><div class="pf-mock-dot prog"></div><div class="pf-mock-line short"></div><div class="pf-mock-pill prog">In Progress</div></div>
-        <div class="pf-mock-row"><div class="pf-mock-dot new"></div><div class="pf-mock-line"></div><div class="pf-mock-pill new">New</div></div>
-        <div class="pf-mock-row"><div class="pf-mock-dot ok"></div><div class="pf-mock-line short"></div><div class="pf-mock-pill">Done</div></div>
-        <div class="pf-mock-stat"><span class="pf-mock-num">400+</span><span class="pf-mock-label">Units Managed</span></div>
+      <div class="pf-screens">
+        <img src="images/pf-board-screenshot.jpg" alt="PropertyFlow maintenance board" class="pf-screen pf-screen-board">
+        <img src="images/pf-request-center.png" alt="PropertyFlow request center" class="pf-screen pf-screen-request">
       </div>
     </div>
   </div>
