@@ -269,6 +269,50 @@ a{color:inherit}
   .pf-features{grid-template-columns:1fr}
 
 }
+
+/* ===== CHAOS TO CONTROL ===== */
+.ctc-section{position:relative;height:280vh;background:#050b1a}
+.ctc-sticky{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center}
+
+/* Cloud layers */
+.ctc-cloud{position:absolute;inset:0;pointer-events:none;will-change:opacity,transform;transition:none}
+.ctc-cloud-1{background:radial-gradient(ellipse 60% 50% at 30% 35%,rgba(255,255,255,.35),transparent 60%),radial-gradient(ellipse 50% 40% at 70% 60%,rgba(255,255,255,.28),transparent 60%);filter:blur(40px)}
+.ctc-cloud-2{background:radial-gradient(ellipse 55% 45% at 60% 25%,rgba(220,230,255,.3),transparent 65%),radial-gradient(ellipse 45% 50% at 25% 70%,rgba(220,230,255,.25),transparent 60%);filter:blur(50px)}
+.ctc-cloud-3{background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(8,20,38,.0) 0%,#050b1a 75%);filter:blur(20px)}
+.ctc-noise{position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 40%,transparent 30%,#050b1a 90%);pointer-events:none}
+
+/* Building */
+.ctc-building-wrap{position:absolute;left:50%;top:50%;transform:translate(-50%,-46%);width:min(60vw,420px);will-change:opacity,filter,transform}
+.ctc-building{width:100%;height:auto;display:block;filter:drop-shadow(0 30px 60px rgba(0,0,0,.5))}
+
+/* Data nodes */
+.ctc-data-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:none}
+.ctc-line{stroke:rgba(76,201,255,.5);stroke-width:1;stroke-dasharray:6 4;opacity:0}
+.ctc-node{position:absolute;transform:translate(-50%,-50%) scale(.8);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;will-change:opacity,transform;pointer-events:none}
+.ctc-node i{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(76,201,255,.4);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;font-size:18px;color:#4CC9FF;box-shadow:0 0 24px rgba(76,201,255,.25)}
+.ctc-node span{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.7);white-space:nowrap}
+
+/* Text overlay */
+.ctc-text{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;opacity:0;max-width:680px;padding:0 24px;pointer-events:none;will-change:opacity,transform}
+.ctc-text h2{font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(24px,4.5vw,46px);letter-spacing:3px;text-transform:uppercase;color:#fff;line-height:1.3;margin-top:14px;text-shadow:0 4px 30px rgba(0,0,0,.7)}
+.ctc-text p{font-size:14px;color:rgba(255,255,255,.6);margin-top:18px;line-height:1.7}
+
+.ctc-scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:6;color:rgba(255,255,255,.4);font-size:22px;animation:ctcBounce 2s ease-in-out infinite;pointer-events:none}
+@keyframes ctcBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+@media(max-width:640px){
+  .ctc-section{height:220vh}
+  .ctc-text h2{font-size:20px;letter-spacing:2px}
+  .ctc-text p{font-size:12px}
+  .ctc-node i{width:36px;height:36px;font-size:15px}
+  .ctc-node span{font-size:8.5px}
+  .ctc-building-wrap{width:min(72vw,280px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .ctc-section{height:auto}
+  .ctc-sticky{position:relative;height:90vh}
+}
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>emailjs.init("0UbAC3h4lfmDB7YpU");</script>
@@ -300,6 +344,80 @@ a{color:inherit}
     <a href="#lead-form" class="mnav-cta">Schedule a Private Consultation</a>
   </div>
 </div>
+
+<!-- ===== CHAOS TO CONTROL — SCROLL EXPERIENCE ===== -->
+<section class="ctc-section" id="ctcSection">
+  <div class="ctc-sticky">
+    <!-- Cloud layers (dissipate on scroll) -->
+    <div class="ctc-cloud ctc-cloud-1"></div>
+    <div class="ctc-cloud ctc-cloud-2"></div>
+    <div class="ctc-cloud ctc-cloud-3"></div>
+    <div class="ctc-noise"></div>
+
+    <!-- Building silhouette (sharpens on scroll) -->
+    <div class="ctc-building-wrap">
+      <svg class="ctc-building" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="ctcGlass" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1a3a6e" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#0a1a36" stop-opacity="0.95"/>
+          </linearGradient>
+          <linearGradient id="ctcGlow" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#0F5EFF" stop-opacity="0"/>
+            <stop offset="50%" stop-color="#4CC9FF" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#0F5EFF" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <!-- Main tower -->
+        <rect x="140" y="60" width="120" height="420" fill="url(#ctcGlass)" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+        <!-- Side towers -->
+        <rect x="60" y="160" width="70" height="320" fill="url(#ctcGlass)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+        <rect x="270" y="200" width="70" height="280" fill="url(#ctcGlass)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+        <!-- Window grid main tower -->
+        <g class="ctc-windows" stroke="rgba(255,255,255,.12)" stroke-width="0.5">
+          <line x1="160" y1="60" x2="160" y2="480"/><line x1="180" y1="60" x2="180" y2="480"/>
+          <line x1="200" y1="60" x2="200" y2="480"/><line x1="220" y1="60" x2="220" y2="480"/>
+          <line x1="240" y1="60" x2="240" y2="480"/>
+          <line x1="140" y1="90" x2="260" y2="90"/><line x1="140" y1="120" x2="260" y2="120"/>
+          <line x1="140" y1="150" x2="260" y2="150"/><line x1="140" y1="180" x2="260" y2="180"/>
+          <line x1="140" y1="210" x2="260" y2="210"/><line x1="140" y1="240" x2="260" y2="240"/>
+          <line x1="140" y1="270" x2="260" y2="270"/><line x1="140" y1="300" x2="260" y2="300"/>
+          <line x1="140" y1="330" x2="260" y2="330"/><line x1="140" y1="360" x2="260" y2="360"/>
+          <line x1="140" y1="390" x2="260" y2="390"/><line x1="140" y1="420" x2="260" y2="420"/>
+          <line x1="140" y1="450" x2="260" y2="450"/>
+        </g>
+        <!-- Glow accent line -->
+        <rect x="140" y="60" width="120" height="3" fill="url(#ctcGlow)"/>
+      </svg>
+    </div>
+
+    <!-- Floating data nodes + connecting lines -->
+    <svg class="ctc-data-svg" id="ctcDataSvg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
+      <line class="ctc-line" data-line="0" x1="500" y1="300" x2="200" y2="120"/>
+      <line class="ctc-line" data-line="1" x1="500" y1="300" x2="800" y2="140"/>
+      <line class="ctc-line" data-line="2" x1="500" y1="300" x2="180" y2="440"/>
+      <line class="ctc-line" data-line="3" x1="500" y1="300" x2="820" y2="460"/>
+    </svg>
+    <div class="ctc-node" style="left:20%;top:20%" data-node="0"><i class="ti ti-clipboard-list"></i><span>Maintenance</span></div>
+    <div class="ctc-node" style="left:80%;top:23%" data-node="1"><i class="ti ti-checklist"></i><span>Inspections</span></div>
+    <div class="ctc-node" style="left:18%;top:73%" data-node="2"><i class="ti ti-tools"></i><span>Projects</span></div>
+    <div class="ctc-node" style="left:82%;top:76%" data-node="3"><i class="ti ti-message-circle"></i><span>Communication</span></div>
+
+    <!-- Text overlay -->
+    <div class="ctc-text ctc-text-1">
+      <div class="eyebrow">Operational Chaos</div>
+      <h2>Property Care Shouldn't<br>Feel Like Guesswork.</h2>
+    </div>
+    <div class="ctc-text ctc-text-2">
+      <div class="eyebrow">The Siman Method™</div>
+      <h2>From Chaos<br>to Control.</h2>
+      <p>Every request, inspection, and update, connected and visible.</p>
+    </div>
+
+    <div class="ctc-scroll-hint"><i class="ti ti-chevron-down"></i></div>
+  </div>
+</section>
+
 
 <!-- ===== HERO ===== -->
 <section class="hero">
@@ -761,6 +879,109 @@ a{color:inherit}
   close.addEventListener('click', closeMenu);
   overlay.querySelectorAll('.mnav-link, .mnav-cta').forEach(link => link.addEventListener('click', closeMenu));
   overlay.addEventListener('click', (e) => { if (e.target === overlay) closeMenu(); });
+})();
+
+// ---- Chaos to Control: scroll-driven cinematic sequence (lightweight, GPU-friendly) ----
+(function(){
+  const section = document.getElementById('ctcSection');
+  if (!section) return;
+
+  const cloud1 = section.querySelector('.ctc-cloud-1');
+  const cloud2 = section.querySelector('.ctc-cloud-2');
+  const cloud3 = section.querySelector('.ctc-cloud-3');
+  const buildingWrap = section.querySelector('.ctc-building-wrap');
+  const dataSvg = section.querySelector('.ctc-data-svg');
+  const nodes = section.querySelectorAll('.ctc-node');
+  const lines = section.querySelectorAll('.ctc-line');
+  const text1 = section.querySelector('.ctc-text-1');
+  const text2 = section.querySelector('.ctc-text-2');
+  const hint = section.querySelector('.ctc-scroll-hint');
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) {
+    if (cloud1) cloud1.style.opacity = '0';
+    if (cloud2) cloud2.style.opacity = '0';
+    if (cloud3) cloud3.style.opacity = '0';
+    if (buildingWrap) buildingWrap.style.opacity = '1';
+    if (dataSvg) dataSvg.style.opacity = '1';
+    nodes.forEach(n => { n.style.opacity = '1'; n.style.transform = 'translate(-50%,-50%) scale(1)'; });
+    lines.forEach(l => l.style.opacity = '1');
+    if (text2) { text2.style.opacity = '1'; }
+    return;
+  }
+
+  let ticking = false;
+  function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  function update() {
+    ticking = false;
+    const rect = section.getBoundingClientRect();
+    const sectionHeight = section.offsetHeight;
+    const viewportH = window.innerHeight;
+    const scrolled = -rect.top;
+    const total = sectionHeight - viewportH;
+    const progress = clamp(scrolled / total, 0, 1);
+
+    const p1 = clamp(progress / 0.4, 0, 1);
+    const p2 = clamp((progress - 0.35) / 0.35, 0, 1);
+    const p3 = clamp((progress - 0.65) / 0.35, 0, 1);
+
+    if (cloud1) {
+      cloud1.style.opacity = (1 - p1).toString();
+      cloud1.style.transform = `translate(${lerp(0,-60,p1)}px, ${lerp(0,-30,p1)}px) scale(${lerp(1,1.3,p1)})`;
+    }
+    if (cloud2) {
+      cloud2.style.opacity = (1 - p1).toString();
+      cloud2.style.transform = `translate(${lerp(0,70,p1)}px, ${lerp(0,40,p1)}px) scale(${lerp(1,1.3,p1)})`;
+    }
+    if (cloud3) {
+      cloud3.style.opacity = (1 - p1 * 0.7).toString();
+    }
+
+    if (buildingWrap) {
+      buildingWrap.style.opacity = clamp(p1 * 1.4, 0, 1).toString();
+      buildingWrap.style.filter = `blur(${lerp(8,0,p1)}px)`;
+      buildingWrap.style.transform = `translate(-50%,-46%) scale(${lerp(0.92,1,p1)})`;
+    }
+
+    if (text1) {
+      const t1opacity = clamp(p1 * 2, 0, 1) * (1 - clamp(p2 * 1.5, 0, 1));
+      text1.style.opacity = t1opacity.toString();
+      text1.style.transform = `translate(-50%,-50%) translateY(${lerp(20,0,clamp(p1*2,0,1))}px)`;
+    }
+
+    if (dataSvg) dataSvg.style.opacity = clamp(p2 * 1.3, 0, 1).toString();
+    nodes.forEach((node, i) => {
+      const delay = i * 0.08;
+      const local = clamp((p2 - delay) / (1 - delay), 0, 1);
+      node.style.opacity = local.toString();
+      node.style.transform = `translate(-50%,-50%) scale(${lerp(0.7,1,local)})`;
+    });
+    lines.forEach((line, i) => {
+      const delay = i * 0.08;
+      const local = clamp((p2 - delay) / (1 - delay), 0, 1);
+      line.style.opacity = (local * 0.6).toString();
+    });
+
+    if (text2) {
+      text2.style.opacity = clamp(p3 * 1.5, 0, 1).toString();
+      text2.style.transform = `translate(-50%,-50%) translateY(${lerp(20,0,clamp(p3*1.5,0,1))}px)`;
+    }
+
+    if (hint) hint.style.opacity = progress > 0.05 ? '0' : '1';
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
 })();
 
 // ---- Hero floating stat cards (mobile): appear one by one, ~1s apart ----
