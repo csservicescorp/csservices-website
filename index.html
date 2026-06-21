@@ -254,7 +254,7 @@ a{color:inherit}
   <div class="tnlinks">
     <a href="index.html" class="tnl active">Home</a>
     <a href="hoa-maintenance.html" class="tnl">HOA Maintenance</a>
-    <a href="testimonials.html" class="tnl">Through Clients' Eyes</a>
+    <a href="#reviews" class="tnl">Through Clients' Eyes</a>
     <a href="siman-method.html" class="tnl">The Siman Method™</a>
   </div>
   <a href="#lead-form" class="tn-cta">Schedule a Private Consultation</a>
@@ -503,7 +503,7 @@ a{color:inherit}
 </section>
 
 <!-- ===== GOOGLE REVIEWS ===== -->
-<section class="section map-section reviews-section">
+<section class="section map-section reviews-section" id="reviews">
   <div class="eyebrow">What Our Clients Say</div>
   <div class="section-head reveal" style="margin-bottom:48px">
     <h2>Real Reviews. Real Work.</h2>
@@ -747,12 +747,13 @@ a{color:inherit}
   }
 })();
 
-// ---- Animated count-up for all .count-target elements ----
+// ---- Animated count-up for all .count-target elements (bulletproof) ----
 (function(){
   function animateCount(el) {
     if (el.dataset.animated) return;
     el.dataset.animated = '1';
     const target = parseFloat(el.dataset.target);
+    if (isNaN(target)) return;
     const duration = 1200;
     const startTime = performance.now();
     function tick(now) {
@@ -765,7 +766,7 @@ a{color:inherit}
     requestAnimationFrame(tick);
   }
 
-  window.addEventListener('load', function() {
+  function setupCounters() {
     const counters = document.querySelectorAll('.count-target');
     if (!counters.length) return;
 
@@ -776,18 +777,31 @@ a{color:inherit}
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0, rootMargin: '0px 0px -10px 0px' });
+    }, { threshold: 0 });
 
     counters.forEach(el => observer.observe(el));
 
-    // Also fire for anything already in viewport after 800ms (stats bar hero)
+    // Failsafe 1: fire anything already in viewport shortly after setup
     setTimeout(() => {
       counters.forEach(el => {
         const r = el.getBoundingClientRect();
         if (r.top < window.innerHeight && r.bottom > 0) animateCount(el);
       });
-    }, 800);
-  });
+    }, 500);
+
+    // Failsafe 2: force ALL counters to animate after 2.5s no matter what
+    // (covers slow video load, blocked observer, etc.)
+    setTimeout(() => {
+      counters.forEach(el => animateCount(el));
+    }, 2500);
+  }
+
+  // Run as early as possible — don't wait for full page load (video etc.)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupCounters);
+  } else {
+    setupCounters();
+  }
 })();
 
 // ---- Before/After sliders (multi-project) ----
