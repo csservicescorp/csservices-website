@@ -301,12 +301,17 @@ a{color:inherit}
 @keyframes ctcBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
 
 @media(max-width:640px){
-  .ctc-section{height:220vh}
-  .ctc-text h2{font-size:20px;letter-spacing:2px}
-  .ctc-text p{font-size:12px}
-  .ctc-node i{width:36px;height:36px;font-size:15px}
-  .ctc-node span{font-size:8.5px}
-  .ctc-building-wrap{width:min(72vw,280px)}
+  .ctc-section{height:260vh}
+  .ctc-text h2{font-size:19px;letter-spacing:2px}
+  .ctc-text p{font-size:11.5px}
+  .ctc-node i{width:32px;height:32px;font-size:13px}
+  .ctc-node span{font-size:7.5px;letter-spacing:.5px}
+  .ctc-building-wrap{width:min(58vw,220px)}
+  .ctc-node[data-node="0"]{left:10%;top:18%}
+  .ctc-node[data-node="1"]{left:50%;top:6%}
+  .ctc-node[data-node="2"]{left:90%;top:18%}
+  .ctc-node[data-node="3"]{left:8%;top:80%}
+  .ctc-node[data-node="4"]{left:92%;top:80%}
 }
 @media(prefers-reduced-motion:reduce){
   .ctc-section{height:auto}
@@ -344,6 +349,41 @@ a{color:inherit}
     <a href="#lead-form" class="mnav-cta">Schedule a Private Consultation</a>
   </div>
 </div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline poster="images/logo-cs-services.png">
+    <source src="videos/hero-drone-v2.mp4" type="video/mp4">
+  </video>
+  <div class="hero-video-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="dot"></span> Miami · Fort Lauderdale · Boca Raton · Palm Beach</div>
+    <h1 class="hero-h1-tight">Finally, a Contractor<br>Who Keeps You Informed.</h1>
+    <p class="hero-sub">Every project follows the Siman Method™, a proven system built on clear communication, documented progress, defined timelines, and complete transparency from start to finish.</p>
+    <div class="hero-ctas">
+      <a href="#lead-form" class="btn-gold"><i class="ti ti-calendar"></i> Schedule a Private Consultation</a>
+      <a href="siman-method.html" class="btn-ghost">See the Siman Method™</a>
+    </div>
+  </div>
+
+  <div class="hero-float-stats">
+    <div class="hfs-card hfs-1"><div class="hfs-num"><span class="count-target" data-target="6">0</span><span class="hfs-unit">+</span></div><div class="hfs-label">Years of Excellence</div></div>
+    <div class="hfs-card hfs-2"><div class="hfs-num"><span class="count-target" data-target="450">0</span><span class="hfs-unit">+</span></div><div class="hfs-label">Projects Completed</div></div>
+    <div class="hfs-card hfs-3"><div class="hfs-num"><span class="count-target" data-target="98">0</span><span class="hfs-unit">%</span></div><div class="hfs-label">Client Satisfaction</div></div>
+    <div class="hfs-card hfs-4"><div class="hfs-num">24<span class="hfs-unit">/7</span></div><div class="hfs-label">Emergency Services</div></div>
+  </div>
+
+  <div class="hero-stats-bar reveal">
+    <div class="hstat"><div class="hstat-num"><span class="count-target" data-target="6">0</span><span class="hstat-unit">+</span></div><div class="hstat-label">Years of Excellence</div></div>
+    <div class="hstat"><div class="hstat-num"><span class="count-target" data-target="450">0</span><span class="hstat-unit">+</span></div><div class="hstat-label">Projects Completed</div></div>
+    <div class="hstat"><div class="hstat-num"><span class="count-target" data-target="98">0</span><span class="hstat-unit">%</span></div><div class="hstat-label">Client Satisfaction</div></div>
+    <div class="hstat"><div class="hstat-num">24<span class="hstat-unit">/7</span></div><div class="hstat-label">Emergency Services</div></div>
+  </div>
+
+
+</section>
 
 <!-- ===== CHAOS TO CONTROL — SCROLL EXPERIENCE ===== -->
 <section class="ctc-section" id="ctcSection">
@@ -393,15 +433,17 @@ a{color:inherit}
 
     <!-- Floating data nodes + connecting lines -->
     <svg class="ctc-data-svg" id="ctcDataSvg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
-      <line class="ctc-line" data-line="0" x1="500" y1="300" x2="200" y2="120"/>
-      <line class="ctc-line" data-line="1" x1="500" y1="300" x2="800" y2="140"/>
-      <line class="ctc-line" data-line="2" x1="500" y1="300" x2="180" y2="440"/>
-      <line class="ctc-line" data-line="3" x1="500" y1="300" x2="820" y2="460"/>
+      <line class="ctc-line" data-line="0" x1="500" y1="300" x2="180" y2="130"/>
+      <line class="ctc-line" data-line="1" x1="500" y1="300" x2="500" y2="80"/>
+      <line class="ctc-line" data-line="2" x1="500" y1="300" x2="820" y2="130"/>
+      <line class="ctc-line" data-line="3" x1="500" y1="300" x2="170" y2="460"/>
+      <line class="ctc-line" data-line="4" x1="500" y1="300" x2="830" y2="460"/>
     </svg>
-    <div class="ctc-node" style="left:20%;top:20%" data-node="0"><i class="ti ti-clipboard-list"></i><span>Maintenance</span></div>
-    <div class="ctc-node" style="left:80%;top:23%" data-node="1"><i class="ti ti-checklist"></i><span>Inspections</span></div>
-    <div class="ctc-node" style="left:18%;top:73%" data-node="2"><i class="ti ti-tools"></i><span>Projects</span></div>
-    <div class="ctc-node" style="left:82%;top:76%" data-node="3"><i class="ti ti-message-circle"></i><span>Communication</span></div>
+    <div class="ctc-node" style="left:16%;top:22%" data-node="0"><i class="ti ti-clipboard-list"></i><span>Maintenance</span></div>
+    <div class="ctc-node" style="left:50%;top:10%" data-node="1"><i class="ti ti-checklist"></i><span>Inspections</span></div>
+    <div class="ctc-node" style="left:84%;top:22%" data-node="2"><i class="ti ti-tools"></i><span>Projects</span></div>
+    <div class="ctc-node" style="left:15%;top:76%" data-node="3"><i class="ti ti-message-circle"></i><span>Communication</span></div>
+    <div class="ctc-node" style="left:85%;top:76%" data-node="4"><i class="ti ti-report"></i><span>Reports</span></div>
 
     <!-- Text overlay -->
     <div class="ctc-text ctc-text-1">
@@ -416,42 +458,6 @@ a{color:inherit}
 
     <div class="ctc-scroll-hint"><i class="ti ti-chevron-down"></i></div>
   </div>
-</section>
-
-
-<!-- ===== HERO ===== -->
-<section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline poster="images/logo-cs-services.png">
-    <source src="videos/hero-drone-v2.mp4" type="video/mp4">
-  </video>
-  <div class="hero-video-overlay"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-inner">
-    <div class="hero-badge"><span class="dot"></span> Miami · Fort Lauderdale · Boca Raton · Palm Beach</div>
-    <h1 class="hero-h1-tight">Finally, a Contractor<br>Who Keeps You Informed.</h1>
-    <p class="hero-sub">Every project follows the Siman Method™, a proven system built on clear communication, documented progress, defined timelines, and complete transparency from start to finish.</p>
-    <div class="hero-ctas">
-      <a href="#lead-form" class="btn-gold"><i class="ti ti-calendar"></i> Schedule a Private Consultation</a>
-      <a href="siman-method.html" class="btn-ghost">See the Siman Method™</a>
-    </div>
-  </div>
-
-  <div class="hero-float-stats">
-    <div class="hfs-card hfs-1"><div class="hfs-num"><span class="count-target" data-target="6">0</span><span class="hfs-unit">+</span></div><div class="hfs-label">Years of Excellence</div></div>
-    <div class="hfs-card hfs-2"><div class="hfs-num"><span class="count-target" data-target="450">0</span><span class="hfs-unit">+</span></div><div class="hfs-label">Projects Completed</div></div>
-    <div class="hfs-card hfs-3"><div class="hfs-num"><span class="count-target" data-target="98">0</span><span class="hfs-unit">%</span></div><div class="hfs-label">Client Satisfaction</div></div>
-    <div class="hfs-card hfs-4"><div class="hfs-num">24<span class="hfs-unit">/7</span></div><div class="hfs-label">Emergency Services</div></div>
-  </div>
-
-  <div class="hero-stats-bar reveal">
-    <div class="hstat"><div class="hstat-num"><span class="count-target" data-target="6">0</span><span class="hstat-unit">+</span></div><div class="hstat-label">Years of Excellence</div></div>
-    <div class="hstat"><div class="hstat-num"><span class="count-target" data-target="450">0</span><span class="hstat-unit">+</span></div><div class="hstat-label">Projects Completed</div></div>
-    <div class="hstat"><div class="hstat-num"><span class="count-target" data-target="98">0</span><span class="hstat-unit">%</span></div><div class="hstat-label">Client Satisfaction</div></div>
-    <div class="hstat"><div class="hstat-num">24<span class="hstat-unit">/7</span></div><div class="hstat-label">Emergency Services</div></div>
-  </div>
-
-
 </section>
 
 <!-- ===== CONCIERGE EXPERIENCE ===== -->
@@ -942,7 +948,7 @@ a{color:inherit}
     if (buildingWrap) {
       buildingWrap.style.opacity = clamp(p1 * 1.4, 0, 1).toString();
       buildingWrap.style.filter = `blur(${lerp(8,0,p1)}px)`;
-      buildingWrap.style.transform = `translate(-50%,-46%) scale(${lerp(0.92,1,p1)})`;
+      buildingWrap.style.transform = `translate(-50%,${lerp(-42,-48,progress)}%) scale(${lerp(0.92,1,p1)})`;
     }
 
     if (text1) {
