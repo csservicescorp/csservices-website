@@ -156,6 +156,12 @@ a{color:inherit}
 
 /* ===== TEAM ===== */
 .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;max-width:980px;margin:0 auto}
+.wws-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:980px;margin:0 auto}
+.wws-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:36px 28px;text-align:center;transition:all .2s}
+.wws-card:hover{border-color:rgba(15,94,255,.35);background:rgba(15,94,255,.04);transform:translateY(-2px)}
+.wws-card i{font-size:28px;color:var(--blue);margin-bottom:18px;display:block}
+.wws-card h4{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#fff;margin-bottom:10px}
+.wws-card p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6}
 .team-card{text-align:center}
 .team-photo{width:168px;height:168px;border-radius:50%;margin:0 auto 24px;overflow:hidden;border:1px solid rgba(15,94,255,.3);box-shadow:0 0 0 6px rgba(15,94,255,.06),0 20px 50px rgba(0,0,0,.4)}
 .team-photo img{width:100%;height:100%;object-fit:cover}
@@ -222,6 +228,7 @@ a{color:inherit}
 @media(max-width:980px){
 
   .team-grid{grid-template-columns:1fr;max-width:320px}
+  .wws-grid{grid-template-columns:1fr;max-width:340px;margin:0 auto}
   .footer-inner{grid-template-columns:1fr 1fr}
   .hero-stats-bar{grid-template-columns:repeat(2,1fr);row-gap:18px;padding:18px 24px}
   .hstat:nth-child(odd){border-right:1px solid var(--border)}
@@ -451,52 +458,52 @@ a{color:inherit}
 
 <!-- ===== CONCIERGE EXPERIENCE ===== -->
 <section class="section map-section">
-  <div class="eyebrow">The Concierge Experience</div>
+  <div class="eyebrow">The Siman Method™</div>
   <div class="section-head reveal">
-    <h2>From first call to ongoing care</h2>
-    <p>A structured process for every property, every time.</p>
+    <h2>A documented process</h2>
+    <p>Designed to eliminate uncertainty from property projects.</p>
   </div>
   <div class="siman-steps" id="ctrackWrap">
     <div class="siman-row">
       <div class="siman-step left reveal" id="step0">
-        <div class="siman-step-label">STEP 01</div>
+        <div class="siman-step-label">01</div>
         <div class="ctrack-dot"></div>
-        <h4>Consultation</h4>
-        <p>A direct conversation about your property and goals.</p>
+        <h4>Request</h4>
+        <p>Every request is logged and reviewed, no calls lost, no requests forgotten.</p>
       </div>
       <div class="siman-step right reveal" id="step1">
-        <div class="siman-step-label">STEP 02</div>
+        <div class="siman-step-label">02</div>
         <div class="ctrack-dot"></div>
-        <h4>Inspection</h4>
-        <p>Full on-site assessment, documented in detail.</p>
+        <h4>Planning</h4>
+        <p>A clear, itemized plan with defined scope and timeline, before work begins.</p>
       </div>
     </div>
     <div class="siman-row reverse">
       <div class="siman-step left reveal" id="step2">
-        <div class="siman-step-label">STEP 04</div>
+        <div class="siman-step-label">04</div>
         <div class="ctrack-dot"></div>
-        <h4>Execution</h4>
-        <p>Skilled teams, scheduled and supervised.</p>
+        <h4>Progress Updates</h4>
+        <p>Documented updates throughout, so you always know exactly where things stand.</p>
       </div>
       <div class="siman-step right reveal" id="step3">
-        <div class="siman-step-label">STEP 03</div>
+        <div class="siman-step-label">03</div>
         <div class="ctrack-dot"></div>
-        <h4>Digital Proposal</h4>
-        <p>A clear, itemized plan with no surprises.</p>
+        <h4>Execution</h4>
+        <p>Skilled teams, scheduled and supervised from start to finish.</p>
       </div>
     </div>
     <div class="siman-row">
       <div class="siman-step left reveal" id="step4">
-        <div class="siman-step-label">STEP 05</div>
+        <div class="siman-step-label">05</div>
         <div class="ctrack-dot"></div>
-        <h4>Quality Audit</h4>
-        <p>Verification against the original scope.</p>
+        <h4>Walkthrough</h4>
+        <p>A final review against the original scope before anything is signed off.</p>
       </div>
       <div class="siman-step right reveal" id="step5">
-        <div class="siman-step-label">STEP 06</div>
+        <div class="siman-step-label">06</div>
         <div class="ctrack-dot"></div>
-        <h4>Ongoing Care</h4>
-        <p>Maintenance that continues after handoff.</p>
+        <h4>Completion Report</h4>
+        <p>A full record of the work, delivered and kept on file for every property.</p>
       </div>
     </div>
   </div>
@@ -512,6 +519,32 @@ a{color:inherit}
         <div class="partner-item"><img src="images/logo-homedepot.png" alt="The Home Depot" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
         <div class="partner-item"><img src="images/logo-lowes.png" alt="Lowe's" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHO WE SERVE ===== -->
+<section class="section section-dark">
+  <div class="eyebrow">Who We Serve</div>
+  <div class="section-head reveal" style="margin-bottom:48px">
+    <h2>Built for every kind of property</h2>
+    <p>One method, applied with the same discipline across every relationship.</p>
+  </div>
+  <div class="wws-grid reveal">
+    <div class="wws-card">
+      <i class="ti ti-home"></i>
+      <h4>Homeowners</h4>
+      <p>Luxury remodeling and maintenance.</p>
+    </div>
+    <div class="wws-card">
+      <i class="ti ti-building-community"></i>
+      <h4>HOAs</h4>
+      <p>Reliable maintenance and capital improvement projects.</p>
+    </div>
+    <div class="wws-card">
+      <i class="ti ti-user-check"></i>
+      <h4>Property Managers</h4>
+      <p>One contractor. One point of contact. Full accountability.</p>
     </div>
   </div>
 </section>
