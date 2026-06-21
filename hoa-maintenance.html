@@ -640,7 +640,7 @@ function switchProject(idx) {
     const data = Object.fromEntries(new FormData(form));
 
     // Send to EmailJS
-    emailjs.send('service_0bphc1j', 'template_fm9p52f', {
+    const emailPromise = emailjs.send('service_0bphc1j', 'template_t6r44vb', {
       from_name: data.name || '',
       from_email: data.email || '',
       phone: data.phone || '',
@@ -662,10 +662,17 @@ function switchProject(idx) {
       })
     }).catch(() => {});
 
-    btn.textContent = 'Message Sent ✓';
-    btn.style.background = '#16a34a';
-    form.reset();
-    setTimeout(() => { btn.textContent = 'Send Request'; btn.style.background = ''; btn.disabled = false; }, 4000);
+    emailPromise.then(function() {
+      btn.textContent = 'Message Sent ✓';
+      btn.style.background = '#16a34a';
+      form.reset();
+      setTimeout(() => { btn.textContent = 'Send Request'; btn.style.background = ''; btn.disabled = false; }, 4000);
+    }).catch(function(err) {
+      console.error('EmailJS error:', err);
+      btn.textContent = 'Send Request';
+      btn.disabled = false;
+      alert('Something went wrong sending your message. Please call us at 954-263-1159 or email info@csservicecorp.com directly.');
+    });
   });
 })();
 </script>
@@ -879,7 +886,7 @@ function switchProject(idx) {
     const data = Object.fromEntries(new FormData(form));
 
     // Send to EmailJS
-    emailjs.send('service_0bphc1j', 'template_fm9p52f', {
+    const emailPromise = emailjs.send('service_0bphc1j', 'template_t6r44vb', {
       from_name: data.name || '',
       from_email: data.email || '',
       phone: data.phone || '',
@@ -901,10 +908,17 @@ function switchProject(idx) {
       })
     }).catch(() => {});
 
-    btn.textContent = 'Message Sent ✓';
-    btn.style.background = '#16a34a';
-    form.reset();
-    setTimeout(() => { btn.textContent = 'Send Request'; btn.style.background = ''; btn.disabled = false; }, 4000);
+    emailPromise.then(function() {
+      btn.textContent = 'Message Sent ✓';
+      btn.style.background = '#16a34a';
+      form.reset();
+      setTimeout(() => { btn.textContent = 'Send Request'; btn.style.background = ''; btn.disabled = false; }, 4000);
+    }).catch(function(err) {
+      console.error('EmailJS error:', err);
+      btn.textContent = 'Send Request';
+      btn.disabled = false;
+      alert('Something went wrong sending your message. Please call us at 954-263-1159 or email info@csservicecorp.com directly.');
+    });
   });
 })();
 </script>
