@@ -29,6 +29,13 @@ a{color:inherit}
 .tnlogo img{height:30px;width:30px;object-fit:contain}
 .tnlogo .nm{font-size:13.5px;font-weight:700;color:#fff;letter-spacing:.5px}
 .tnlinks{display:flex;gap:4px}
+.tn-burger{display:none;background:none;border:1px solid var(--border);color:#fff;width:40px;height:40px;border-radius:8px;align-items:center;justify-content:center;font-size:20px;cursor:pointer}
+.mnav-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(5,11,30,.98);backdrop-filter:blur(10px)}
+.mnav-overlay.open{display:flex}
+.mnav-panel{margin:auto;width:100%;max-width:340px;display:flex;flex-direction:column;gap:6px;padding:24px}
+.mnav-close{position:absolute;top:24px;right:24px;background:none;border:1px solid var(--border);color:#fff;width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer}
+.mnav-link{display:block;padding:18px 8px;color:#fff;text-decoration:none;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.mnav-cta{display:block;text-align:center;margin-top:24px;padding:16px;background:var(--blue);color:#fff;text-decoration:none;border-radius:8px;font-size:13px;font-weight:700;letter-spacing:.5px}
 .tnl{padding:9px 16px;border-radius:6px;font-size:12.5px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .2s;text-decoration:none;letter-spacing:.2px}
 .tnl:hover{color:#fff;background:rgba(255,255,255,.06)}
 .tn-cta{background:transparent;color:var(--blue);padding:9px 20px;border-radius:6px;font-size:12.5px;font-weight:600;cursor:pointer;border:1px solid rgba(15,94,255,.4);font-family:'Inter',sans-serif;text-decoration:none;transition:all .2s;letter-spacing:.3px}
@@ -111,6 +118,8 @@ a{color:inherit}
 @media(max-width:640px){
   .topnav{padding:0 20px}
   .tnlinks{display:none}
+  .tn-cta{display:none}
+  .tn-burger{display:flex}
   .svc-hero{padding:70px 20px 50px}
   .section{padding:70px 20px}
   .gal-grid{grid-template-columns:1fr 1fr;gap:10px}
@@ -119,6 +128,8 @@ a{color:inherit}
   .footer-inner{grid-template-columns:1fr}
 }
 </style>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>emailjs.init("0UbAC3h4lfmDB7YpU");</script>
 </head>
 <body>
 
@@ -128,14 +139,27 @@ a{color:inherit}
     <div class="nm">CS SERVICES</div>
   </a>
   <div class="tnlinks">
-    <a href="index.html" class="tnl">Home</a>
+    <a href="index.html" class="tnl active">Home</a>
     <a href="hoa-maintenance.html" class="tnl">HOA Maintenance</a>
-    <a href="projects.html" class="tnl">Projects</a>
     <a href="testimonials.html" class="tnl">Through Clients' Eyes</a>
     <a href="siman-method.html" class="tnl">The Siman Method™</a>
   </div>
   <a href="#lead-form" class="tn-cta">Schedule a Private Consultation</a>
+  <button class="tn-burger" id="tnBurger" aria-label="Open menu"><i class="ti ti-menu-2"></i></button>
 </nav>
+
+<div class="mnav-overlay" id="mnavOverlay">
+  <div class="mnav-panel">
+    <button class="mnav-close" id="mnavClose" aria-label="Close menu"><i class="ti ti-x"></i></button>
+    <a href="index.html" class="mnav-link">Home</a>
+    <a href="hoa-maintenance.html" class="mnav-link">HOA Maintenance</a>
+    <a href="testimonials.html" class="mnav-link">Through Clients' Eyes</a>
+    <a href="siman-method.html" class="mnav-link">The Siman Method™</a>
+    <a href="#lead-form" class="mnav-cta">Schedule a Private Consultation</a>
+  </div>
+</div>
+
+
 
 <!-- ===== PAGE HERO ===== -->
 <section class="svc-hero">
@@ -257,5 +281,59 @@ document.getElementById('leadForm').addEventListener('submit', function(e){
 });
 </script>
 
+
+<script>
+// ---- Lead form: EmailJS + Google Sheets ----
+(function(){
+  const form = document.getElementById('leadForm');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('.lf-submit');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    const data = {
+      name: form.querySelector('[name="name"]')?.value || '',
+      email: form.querySelector('[name="email"]')?.value || '',
+      phone: form.querySelector('[name="phone"]')?.value || '',
+      address: form.querySelector('[name="address"]')?.value || '',
+      message: form.querySelector('[name="message"]')?.value || '',
+    };
+    const emailPromise = emailjs.send('service_0bphc1j', 'template_t6r44vb', {
+      from_name: data.name, from_email: data.email, phone: data.phone,
+      address: data.address, message: data.message, to_email: 'info@csservicecorp.com'
+    });
+    fetch('https://script.google.com/macros/s/AKfycbyUeCVIqlc7CG6uSFsvm2cEG15Eo5YqVVRjk2ZJSf7TmD_bWjJCeZ_-p1uSYWIJIItV/exec', {
+      method: 'POST',
+      body: JSON.stringify(Object.assign({}, data, {source: 'custom-remodeling.html'}))
+    }).catch(() => {});
+    emailPromise.then(function() {
+      btn.textContent = 'Message Sent ✓';
+      btn.style.background = '#16a34a';
+      form.reset();
+      setTimeout(() => { btn.textContent = 'Send Request'; btn.style.background = ''; btn.disabled = false; }, 4000);
+    }).catch(function(err) {
+      btn.textContent = 'Send Request';
+      btn.disabled = false;
+      alert('Something went wrong. Please call us at 954-263-1159 or email info@csservicecorp.com.');
+    });
+  });
+})();
+</script>
+<script>
+// ---- Mobile hamburger menu ----
+(function(){
+  const burger = document.getElementById('tnBurger');
+  const overlay = document.getElementById('mnavOverlay');
+  const close = document.getElementById('mnavClose');
+  if (!burger || !overlay) return;
+  function openMenu() { overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeMenu() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+  burger.addEventListener('click', openMenu);
+  close.addEventListener('click', closeMenu);
+  overlay.querySelectorAll('.mnav-link, .mnav-cta').forEach(link => link.addEventListener('click', closeMenu));
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeMenu(); });
+})();
+</script>
 </body>
 </html>
