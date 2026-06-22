@@ -466,7 +466,7 @@ a{color:inherit}
         <div><label class="lf-label">Full Name</label><input class="lf-input" type="text" name="name" placeholder="Your name" required></div>
         <div><label class="lf-label">Email</label><input class="lf-input" type="email" name="email" placeholder="you@email.com" required></div>
         <div><label class="lf-label">Phone</label><input class="lf-input" type="tel" name="phone" placeholder="(954) 000-0000" required></div>
-        <div><label class="lf-label">Position of Interest</label><input class="lf-input" type="text" name="address" placeholder="e.g. Field Technician, Painter, Office Staff"></div>
+        <div><label class="lf-label">Position of Interest</label><input class="lf-input" type="text" name="position" placeholder="e.g. Field Technician, Painter, Office Staff"></div>
         <div class="full"><label class="lf-label">Tell us about your experience</label><textarea class="lf-textarea" name="message" placeholder="Relevant experience, availability, and why you'd like to join CS Services..." required></textarea></div>
         <button class="lf-submit" type="submit">Submit Application</button>
       </form>
@@ -718,7 +718,7 @@ function switchProject(idx) {
   }, {passive:true});
 })();
 
-// ---- Lead form — EmailJS + Google Sheets ----
+// ---- Job Application form — EmailJS + Google Sheets ----
 (function(){
   const form = document.getElementById('leadForm');
   if (!form) return;
@@ -730,39 +730,38 @@ function switchProject(idx) {
 
     const data = Object.fromEntries(new FormData(form));
 
-    // Send to EmailJS
-    const emailPromise = emailjs.send('service_0bphc1j', 'template_t6r44vb', {
+    // Send to EmailJS — Job Application template
+    const emailPromise = emailjs.send('service_0bphc1j', 'template_z0409cp', {
       from_name: data.name || '',
       from_email: data.email || '',
       phone: data.phone || '',
-      address: data.address || '',
-      message: data.message || '',
-      to_email: 'info@csservicecorp.com'
+      position: data.position || '',
+      message: data.message || ''
     });
 
-    // Send to Google Sheets
+    // Send to Google Sheets — source = Job Application routes to Job Applications tab
     fetch('https://script.google.com/macros/s/AKfycbyUeCVIqlc7CG6uSFsvm2cEG15Eo5YqVVRjk2ZJSf7TmD_bWjJCeZ_-p1uSYWIJIItV/exec', {
       method: 'POST',
       body: JSON.stringify({
         name: data.name || '',
         email: data.email || '',
         phone: data.phone || '',
-        address: data.address || '',
+        address: data.position || '',
         message: data.message || '',
-        source: window.location.pathname.includes('hoa') ? 'HOA Page' : window.location.pathname.includes('siman') ? 'Siman Method Page' : 'Homepage'
+        source: 'Job Application'
       })
     }).catch(() => {});
 
     emailPromise.then(function() {
-      btn.textContent = 'Message Sent ✓';
+      btn.textContent = 'Application Sent ✓';
       btn.style.background = '#16a34a';
       form.reset();
-      setTimeout(() => { btn.textContent = 'Send Request'; btn.style.background = ''; btn.disabled = false; }, 4000);
+      setTimeout(() => { btn.textContent = 'Submit Application'; btn.style.background = ''; btn.disabled = false; }, 4000);
     }).catch(function(err) {
       console.error('EmailJS error:', err);
-      btn.textContent = 'Send Request';
+      btn.textContent = 'Submit Application';
       btn.disabled = false;
-      alert('Something went wrong sending your message. Please call us at 954-263-1159 or email info@csservicecorp.com directly.');
+      alert('Something went wrong sending your application. Please call us at 954-263-1159 or email info@csservicecorp.com directly.');
     });
   });
 })();
@@ -964,7 +963,7 @@ function switchProject(idx) {
   }, {passive:true});
 })();
 
-// ---- Lead form — EmailJS + Google Sheets ----
+// ---- Job Application form — EmailJS + Google Sheets ----
 (function(){
   const form = document.getElementById('leadForm');
   if (!form) return;
@@ -976,39 +975,38 @@ function switchProject(idx) {
 
     const data = Object.fromEntries(new FormData(form));
 
-    // Send to EmailJS
-    const emailPromise = emailjs.send('service_0bphc1j', 'template_t6r44vb', {
+    // Send to EmailJS — Job Application template
+    const emailPromise = emailjs.send('service_0bphc1j', 'template_z0409cp', {
       from_name: data.name || '',
       from_email: data.email || '',
       phone: data.phone || '',
-      address: data.address || '',
-      message: data.message || '',
-      to_email: 'info@csservicecorp.com'
+      position: data.position || '',
+      message: data.message || ''
     });
 
-    // Send to Google Sheets
+    // Send to Google Sheets — source = Job Application routes to Job Applications tab
     fetch('https://script.google.com/macros/s/AKfycbyUeCVIqlc7CG6uSFsvm2cEG15Eo5YqVVRjk2ZJSf7TmD_bWjJCeZ_-p1uSYWIJIItV/exec', {
       method: 'POST',
       body: JSON.stringify({
         name: data.name || '',
         email: data.email || '',
         phone: data.phone || '',
-        address: data.address || '',
+        address: data.position || '',
         message: data.message || '',
-        source: window.location.pathname.includes('hoa') ? 'HOA Page' : window.location.pathname.includes('siman') ? 'Siman Method Page' : 'Homepage'
+        source: 'Job Application'
       })
     }).catch(() => {});
 
     emailPromise.then(function() {
-      btn.textContent = 'Message Sent ✓';
+      btn.textContent = 'Application Sent ✓';
       btn.style.background = '#16a34a';
       form.reset();
-      setTimeout(() => { btn.textContent = 'Send Request'; btn.style.background = ''; btn.disabled = false; }, 4000);
+      setTimeout(() => { btn.textContent = 'Submit Application'; btn.style.background = ''; btn.disabled = false; }, 4000);
     }).catch(function(err) {
       console.error('EmailJS error:', err);
-      btn.textContent = 'Send Request';
+      btn.textContent = 'Submit Application';
       btn.disabled = false;
-      alert('Something went wrong sending your message. Please call us at 954-263-1159 or email info@csservicecorp.com directly.');
+      alert('Something went wrong sending your application. Please call us at 954-263-1159 or email info@csservicecorp.com directly.');
     });
   });
 })();
