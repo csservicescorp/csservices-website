@@ -341,7 +341,7 @@ async function submitJobForm() {
   try {
     await fetch('https://script.google.com/macros/s/AKfycbyUeCVIqlc7CG6uSFsvm2cEG15Eo5YqVVRjk2ZJSf7TmD_bWjJCeZ_-p1uSYWIJIItV/exec', {
       method:'POST',
-      body: JSON.stringify({name, email, phone, address:'', message: msg || position, source:'Siman Method Page', position, from_name: name, from_email: email})
+      body: JSON.stringify({name, email, phone, address:'', message: msg || position, source:'Instagram Bio', position, from_name: name, from_email: email})
     });
   } catch(e) {}
 
