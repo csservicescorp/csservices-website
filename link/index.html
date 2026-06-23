@@ -201,6 +201,10 @@ body::before{
 }
 .footer a{color:rgba(255,255,255,.3);text-decoration:none}
 .footer a:hover{color:rgba(255,255,255,.6)}
+
+.job-input{width:100%;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:8px;padding:11px 14px;font-family:'Inter',sans-serif;font-size:13px;color:#fff;outline:none;transition:border .15s}
+.job-input::placeholder{color:rgba(255,255,255,.25)}
+.job-input:focus{border-color:rgba(15,94,255,.5);background:rgba(255,255,255,.09)}
 </style>
 </head>
 <body>
@@ -273,27 +277,30 @@ body::before{
 
     <hr class="divider">
 
-    <!-- PropertyFlow -->
-    <a href="https://propertyflow-landing.vercel.app/" target="_blank" class="link-btn">
-      <div class="link-icon cyan"><i class="ti ti-building-skyscraper"></i></div>
-      <div class="link-text">
-        <div class="link-title">PropertyFlow — Early Access</div>
-        <div class="link-sub">The OS built from 400+ real units</div>
-      </div>
-      <i class="ti ti-arrow-right link-arrow"></i>
-    </a>
-
-    <hr class="divider">
-
-    <!-- Join the Team -->
-    <a href="https://csservicesfl.com/siman-method.html#join" target="_blank" class="link-btn">
+    <!-- Join the Team — opens inline form -->
+    <div class="link-btn" onclick="toggleJobForm()" style="cursor:pointer" id="joinBtn">
       <div class="link-icon orange"><i class="ti ti-users"></i></div>
       <div class="link-text">
         <div class="link-title">Join Our Team · Faça Parte do Time</div>
         <div class="link-sub">We're hiring · Estamos contratando</div>
       </div>
-      <i class="ti ti-arrow-right link-arrow"></i>
-    </a>
+      <i class="ti ti-chevron-down link-arrow" id="joinArrow"></i>
+    </div>
+
+    <!-- Inline job form -->
+    <div id="jobForm" style="display:none;width:100%;background:var(--dark-3);border:1px solid var(--border);border-radius:14px;padding:20px 18px;margin-top:-4px">
+      <div style="display:flex;flex-direction:column;gap:11px" id="jobFields">
+        <input class="job-input" type="text" id="jName" placeholder="Full name / Nome completo *">
+        <input class="job-input" type="email" id="jEmail" placeholder="Email *">
+        <input class="job-input" type="tel" id="jPhone" placeholder="Phone / Telefone">
+        <input class="job-input" type="text" id="jPosition" placeholder="Position of interest / Cargo de interesse">
+        <textarea class="job-input" id="jMsg" rows="3" placeholder="Tell us about yourself / Fale um pouco sobre você" style="resize:vertical"></textarea>
+        <button onclick="submitJobForm()" id="jBtn" style="background:var(--blue);color:#fff;border:none;border-radius:9px;padding:13px;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 0 20px rgba(15,94,255,.3)">
+          Apply Now · Candidatar-se
+        </button>
+      </div>
+      <p id="jSuccess" style="display:none;color:#4ade80;font-size:14px;font-weight:600;text-align:center;padding:10px 0">✓ Application sent! We'll be in touch.<br><span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">Candidatura enviada! Entraremos em contato.</span></p>
+    </div>
 
   </div>
 
@@ -303,5 +310,54 @@ body::before{
   </div>
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init({publicKey:"0UbAC3h4lfmDB7YpU"});</script>
+
+<script>
+function toggleJobForm() {
+  const form = document.getElementById('jobForm');
+  const arrow = document.getElementById('joinArrow');
+  const open = form.style.display === 'none';
+  form.style.display = open ? 'block' : 'none';
+  arrow.className = open ? 'ti ti-chevron-up link-arrow' : 'ti ti-chevron-down link-arrow';
+  if (open) form.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+async function submitJobForm() {
+  const name = document.getElementById('jName').value.trim();
+  const email = document.getElementById('jEmail').value.trim();
+  const phone = document.getElementById('jPhone').value.trim();
+  const position = document.getElementById('jPosition').value.trim();
+  const msg = document.getElementById('jMsg').value.trim();
+  if (!name || !email) { alert('Please fill in name and email.'); return; }
+
+  const btn = document.getElementById('jBtn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  // Google Sheets
+  try {
+    await fetch('https://script.google.com/macros/s/AKfycbyUeCVIqlc7CG6uSFsvm2cEG15Eo5YqVVRjk2ZJSf7TmD_bWjJCeZ_-p1uSYWIJIItV/exec', {
+      method:'POST',
+      body: JSON.stringify({name, email, phone, address:'', message: msg || position, source:'Siman Method Page', position, from_name: name, from_email: email})
+    });
+  } catch(e) {}
+
+  // EmailJS
+  try {
+    emailjs.send('service_0bphc1j', 'template_z0409cp', {
+      from_name: name,
+      from_email: email,
+      phone: phone || '—',
+      position: position || '—',
+      message: msg || '—',
+      reply_to: email
+    });
+  } catch(e) {}
+
+  document.getElementById('jobFields').style.display = 'none';
+  document.getElementById('jSuccess').style.display = 'block';
+}
+</script>
 </body>
 </html>
