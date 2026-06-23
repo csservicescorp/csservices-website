@@ -11,13 +11,14 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --blue:#0F5EFF;
-  --blue-light:#4CC9FF;
-  --dark:#03080f;
-  --dark-2:#07111f;
-  --dark-3:#0a1828;
-  --border:rgba(255,255,255,.08);
-  --muted:rgba(255,255,255,.45);
+  --dark:#05090f;
+  --dark-2:#090f1a;
+  --dark-3:#0c1420;
+  --border:rgba(255,255,255,.06);
+  --border-hover:rgba(255,255,255,.13);
+  --muted:rgba(255,255,255,.38);
+  --muted2:rgba(255,255,255,.55);
+  --accent:#4CC9FF;
 }
 html{scroll-behavior:smooth}
 body{
@@ -25,206 +26,136 @@ body{
   background:var(--dark);
   color:#fff;
   min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-  padding:48px 20px 60px;
-  position:relative;
-  overflow-x:hidden;
+  display:flex;flex-direction:column;align-items:center;
+  padding:52px 20px 64px;
+  position:relative;overflow-x:hidden;
 }
-
-/* BG glow */
 body::before{
-  content:'';
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(ellipse at 50% 0%,rgba(15,94,255,.12) 0%,transparent 55%),
-    radial-gradient(ellipse at 80% 80%,rgba(76,201,255,.05) 0%,transparent 45%);
-  pointer-events:none;
-  z-index:0;
+  content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse at 50% -10%,rgba(15,94,255,.07) 0%,transparent 55%);
+  pointer-events:none;z-index:0;
 }
-
-/* grid */
 .grid{
   position:fixed;inset:0;
   background-image:
-    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
-  background-size:60px 60px;
+    linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);
+  background-size:72px 72px;
   pointer-events:none;z-index:0;
 }
-
-.wrap{
-  position:relative;z-index:1;
-  width:100%;max-width:420px;
-  display:flex;flex-direction:column;align-items:center;gap:0;
-}
+.wrap{position:relative;z-index:1;width:100%;max-width:400px;display:flex;flex-direction:column;align-items:center;}
 
 /* PROFILE */
-.profile{
-  display:flex;flex-direction:column;align-items:center;
-  margin-bottom:28px;
-  text-align:center;
-}
+.profile{display:flex;flex-direction:column;align-items:center;margin-bottom:32px;text-align:center;}
 .logo-ring{
-  width:80px;height:80px;
-  border-radius:50%;
-  border:2px solid rgba(15,94,255,.4);
-  padding:3px;
-  background:var(--dark-2);
-  margin-bottom:14px;
-  box-shadow:0 0 32px rgba(15,94,255,.25);
+  width:76px;height:76px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.12);
+  padding:3px;background:var(--dark-2);
+  margin-bottom:16px;
 }
-.logo-ring img{
-  width:100%;height:100%;
-  border-radius:50%;
-  object-fit:cover;
+.logo-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;}
+.profile-name{font-size:19px;font-weight:700;letter-spacing:-.4px;color:#fff;margin-bottom:4px;}
+.profile-handle{font-size:12px;color:var(--muted);font-weight:400;letter-spacing:.2px;margin-bottom:10px;}
+.profile-bio{font-size:12.5px;color:var(--muted);line-height:1.65;max-width:280px;}
+.profile-bio em{color:rgba(255,255,255,.6);font-style:normal;}
+
+/* STATS */
+.badge-row{display:flex;gap:8px;width:100%;margin-bottom:8px;}
+.badge-card{
+  flex:1;background:var(--dark-2);
+  border:1px solid var(--border);
+  border-radius:10px;padding:14px 10px;text-align:center;
 }
-.profile-name{
-  font-size:20px;font-weight:800;
-  letter-spacing:-.5px;
-  color:#fff;
-  margin-bottom:4px;
+.badge-num{font-size:20px;font-weight:700;color:#fff;letter-spacing:-.5px;}
+.badge-num span{color:var(--muted2);}
+.badge-lbl{font-size:8.5px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:3px;}
+
+/* AREA BADGE */
+.area-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--dark-2);border:1px solid var(--border);
+  border-radius:8px;padding:8px 14px;
+  font-size:9.5px;font-weight:500;color:var(--muted);
+  letter-spacing:.6px;text-transform:uppercase;
+  width:100%;justify-content:center;
 }
-.profile-handle{
-  font-size:13px;color:var(--blue-light);
-  font-weight:500;letter-spacing:.3px;
-  margin-bottom:8px;
-}
-.profile-bio{
-  font-size:13px;
-  color:var(--muted);
-  line-height:1.6;
-  max-width:300px;
-}
+
+/* DIVIDER */
+.section-gap{height:28px;}
+.divider{width:100%;border:none;border-top:1px solid var(--border);margin:4px 0 12px;}
 
 /* EYEBROW */
 .eyebrow{
-  font-size:9px;font-weight:700;
-  letter-spacing:2.5px;text-transform:uppercase;
-  color:var(--blue-light);
-  margin-bottom:16px;
-  display:flex;align-items:center;gap:7px;
+  font-size:8.5px;font-weight:500;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--muted);
+  margin-bottom:14px;display:flex;align-items:center;gap:7px;
 }
-.eyebrow-dot{
-  width:5px;height:5px;
-  background:var(--blue-light);
-  border-radius:50%;
-  animation:pulse 2s infinite;
-}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
+.eyebrow-dot{width:4px;height:4px;background:var(--muted);border-radius:50%;}
 
 /* LINKS */
-.links{width:100%;display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
+.links{width:100%;display:flex;flex-direction:column;gap:8px;margin-bottom:24px;}
 
 .link-btn{
-  width:100%;
-  display:flex;align-items:center;gap:14px;
-  background:var(--dark-2);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:15px 18px;
-  text-decoration:none;
-  color:#fff;
-  transition:all .22s;
-  position:relative;
-  overflow:hidden;
-}
-.link-btn::before{
-  content:'';
-  position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(15,94,255,.08) 0%,transparent 60%);
-  opacity:0;transition:opacity .22s;
+  width:100%;display:flex;align-items:center;gap:13px;
+  background:var(--dark-2);border:1px solid var(--border);
+  border-radius:12px;padding:14px 16px;
+  text-decoration:none;color:#fff;
+  transition:all .2s;cursor:pointer;
 }
 .link-btn:hover{
-  border-color:rgba(15,94,255,.4);
-  transform:translateY(-2px);
-  box-shadow:0 8px 32px rgba(0,0,0,.4),0 0 0 1px rgba(15,94,255,.15);
+  background:var(--dark-3);
+  border-color:var(--border-hover);
+  transform:translateY(-1px);
 }
-.link-btn:hover::before{opacity:1}
-
 .link-icon{
-  width:40px;height:40px;flex-shrink:0;
-  border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:18px;
-  background:rgba(15,94,255,.12);
-  border:1px solid rgba(15,94,255,.2);
-  color:var(--blue-light);
+  width:36px;height:36px;flex-shrink:0;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);
+  color:rgba(255,255,255,.55);
 }
-.link-icon.green{background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.2);color:#4ade80;}
-.link-icon.purple{background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.2);color:#a78bfa;}
-.link-icon.orange{background:rgba(249,115,22,.1);border-color:rgba(249,115,22,.2);color:#fb923c;}
-.link-icon.cyan{background:rgba(76,201,255,.1);border-color:rgba(76,201,255,.2);color:var(--blue-light);}
-
-.link-text{flex:1}
-.link-title{font-size:14px;font-weight:700;color:#fff;letter-spacing:-.1px}
+.link-text{flex:1;}
+.link-title{font-size:13.5px;font-weight:600;color:#fff;letter-spacing:-.1px;}
 .link-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.link-arrow{font-size:13px;color:rgba(255,255,255,.2);flex-shrink:0;transition:transform .2s;}
+.link-btn:hover .link-arrow{transform:translateX(2px);color:rgba(255,255,255,.4);}
 
-.link-arrow{
-  font-size:14px;color:rgba(255,255,255,.25);
-  flex-shrink:0;transition:transform .2s;
+/* JOB FORM */
+.job-form-wrap{
+  width:100%;background:var(--dark-2);
+  border:1px solid var(--border);border-top:none;
+  border-radius:0 0 12px 12px;padding:18px 16px;
+  margin-top:-8px;
 }
-.link-btn:hover .link-arrow{transform:translateX(3px);color:var(--blue-light)}
-
-/* DIVIDER */
-.divider{
-  width:100%;
-  border:none;
-  border-top:1px solid var(--border);
-  margin:6px 0 16px;
+.job-input{
+  width:100%;background:rgba(255,255,255,.04);
+  border:1px solid var(--border);border-radius:7px;
+  padding:10px 13px;font-family:'Inter',sans-serif;
+  font-size:12.5px;color:#fff;outline:none;transition:border .15s;
 }
-
-/* BADGE section */
-.badge-row{
-  display:flex;gap:10px;width:100%;margin-bottom:10px;
-}
-.badge-card{
-  flex:1;
-  background:var(--dark-2);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:14px;
-  text-align:center;
-}
-.badge-num{font-size:22px;font-weight:800;color:#fff;letter-spacing:-1px}
-.badge-num span{color:var(--blue-light)}
-.badge-lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-top:3px}
+.job-input::placeholder{color:rgba(255,255,255,.2);}
+.job-input:focus{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.06);}
 
 /* FOOTER */
-.footer{
-  margin-top:32px;
-  font-size:10px;color:rgba(255,255,255,.2);
-  text-align:center;letter-spacing:.5px;
-}
-.footer a{color:rgba(255,255,255,.3);text-decoration:none}
-.footer a:hover{color:rgba(255,255,255,.6)}
-
-.job-input{width:100%;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:8px;padding:11px 14px;font-family:'Inter',sans-serif;font-size:13px;color:#fff;outline:none;transition:border .15s}
-.job-input::placeholder{color:rgba(255,255,255,.25)}
-.job-input:focus{border-color:rgba(15,94,255,.5);background:rgba(255,255,255,.09)}
-
-.area-badge{display:inline-flex;align-items:center;gap:7px;background:var(--dark-2);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:10.5px;font-weight:600;color:rgba(255,255,255,.45);letter-spacing:.5px;text-transform:uppercase;margin-top:2px;width:100%;justify-content:center}
+.footer{margin-top:32px;font-size:9.5px;color:rgba(255,255,255,.18);text-align:center;letter-spacing:.4px;}
+.footer a{color:rgba(255,255,255,.22);text-decoration:none;}
 </style>
 </head>
 <body>
 <div class="grid"></div>
-
 <div class="wrap">
 
-  <!-- PROFILE -->
   <div class="profile">
     <div class="logo-ring">
       <img src="/favicon.png" alt="CS Services Corp">
     </div>
     <div class="profile-name">CS Services Corp</div>
     <div class="profile-handle">@csservicesfl</div>
-    <div class="profile-bio">Remodeling &amp; Maintenance. Powered by the Siman Method™.<br><span style="color:rgba(255,255,255,.4)">Built on Systems. Powered by Trust.</span></div>
+    <div class="profile-bio">
+      <em>Remodeling &amp; Maintenance. Powered by the Siman Method™.</em><br>
+      Built on Systems. Powered by Trust.
+    </div>
   </div>
 
-  <!-- STATS -->
   <div class="badge-row">
     <div class="badge-card">
       <div class="badge-num">400<span>+</span></div>
@@ -236,18 +167,15 @@ body::before{
     </div>
   </div>
   <div class="area-badge">
-    <i class="ti ti-map-pin" style="font-size:11px;color:var(--blue-light)"></i>
+    <i class="ti ti-map-pin" style="font-size:10px;opacity:.5"></i>
     Palm Beach &nbsp;·&nbsp; Miami &nbsp;·&nbsp; Fort Lauderdale &nbsp;·&nbsp; Delray Beach
   </div>
 
-  <div style="height:20px"></div>
-
-  <!-- MAIN LINKS -->
+  <div class="section-gap"></div>
   <div class="eyebrow"><span class="eyebrow-dot"></span>Connect with us</div>
 
   <div class="links">
 
-    <!-- Website -->
     <a href="https://csservicesfl.com" target="_blank" class="link-btn">
       <div class="link-icon"><i class="ti ti-world"></i></div>
       <div class="link-text">
@@ -257,7 +185,6 @@ body::before{
       <i class="ti ti-arrow-right link-arrow"></i>
     </a>
 
-    <!-- Instagram -->
     <a href="https://www.instagram.com/csservicesfl" target="_blank" class="link-btn">
       <div class="link-icon"><i class="ti ti-brand-instagram"></i></div>
       <div class="link-text">
@@ -267,7 +194,6 @@ body::before{
       <i class="ti ti-arrow-right link-arrow"></i>
     </a>
 
-    <!-- WhatsApp -->
     <a href="https://wa.me/19542631159" target="_blank" class="link-btn">
       <div class="link-icon"><i class="ti ti-brand-whatsapp"></i></div>
       <div class="link-text">
@@ -279,29 +205,27 @@ body::before{
 
     <hr class="divider">
 
-    <!-- Join the Team — opens inline form -->
-    <div class="link-btn" onclick="toggleJobForm()" style="cursor:pointer" id="joinBtn">
+    <div class="link-btn" onclick="toggleJobForm()" id="joinBtn">
       <div class="link-icon"><i class="ti ti-users"></i></div>
       <div class="link-text">
-        <div class="link-title">Join Our Team · Faça Parte do Time</div>
-        <div class="link-sub">We're hiring · Estamos contratando</div>
+        <div class="link-title">Join Our Team &nbsp;·&nbsp; Faça Parte do Time</div>
+        <div class="link-sub">We're hiring &nbsp;·&nbsp; Estamos contratando</div>
       </div>
       <i class="ti ti-chevron-down link-arrow" id="joinArrow"></i>
     </div>
 
-    <!-- Inline job form -->
-    <div id="jobForm" style="display:none;width:100%;background:var(--dark-3);border:1px solid var(--border);border-radius:14px;padding:20px 18px;margin-top:-4px">
-      <div style="display:flex;flex-direction:column;gap:11px" id="jobFields">
+    <div id="jobForm" style="display:none;width:100%;background:var(--dark-2);border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;padding:18px 16px;margin-top:-8px;">
+      <div style="display:flex;flex-direction:column;gap:10px" id="jobFields">
         <input class="job-input" type="text" id="jName" placeholder="Full name / Nome completo *">
         <input class="job-input" type="email" id="jEmail" placeholder="Email *">
         <input class="job-input" type="tel" id="jPhone" placeholder="Phone / Telefone">
-        <input class="job-input" type="text" id="jPosition" placeholder="Position of interest / Cargo de interesse">
-        <textarea class="job-input" id="jMsg" rows="3" placeholder="Tell us about yourself / Fale um pouco sobre você" style="resize:vertical"></textarea>
-        <button onclick="submitJobForm()" id="jBtn" style="background:var(--blue);color:#fff;border:none;border-radius:9px;padding:13px;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 0 20px rgba(15,94,255,.3)">
-          Apply Now · Candidatar-se
+        <input class="job-input" type="text" id="jPosition" placeholder="Position / Cargo de interesse">
+        <textarea class="job-input" id="jMsg" rows="3" placeholder="Tell us about yourself / Fale sobre você" style="resize:vertical"></textarea>
+        <button onclick="submitJobForm()" id="jBtn" style="background:rgba(255,255,255,.07);color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;letter-spacing:.2px;">
+          Apply Now &nbsp;·&nbsp; Candidatar-se
         </button>
       </div>
-      <p id="jSuccess" style="display:none;color:#4ade80;font-size:14px;font-weight:600;text-align:center;padding:10px 0">✓ Application sent! We'll be in touch.<br><span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">Candidatura enviada! Entraremos em contato.</span></p>
+      <p id="jSuccess" style="display:none;color:rgba(255,255,255,.6);font-size:13px;font-weight:500;text-align:center;padding:10px 0;line-height:1.7">Application sent.<br><span style="font-size:11px;color:var(--muted)">We'll be in touch. · Entraremos em contato.</span></p>
     </div>
 
   </div>
@@ -312,9 +236,9 @@ body::before{
   </div>
 
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>emailjs.init({publicKey:"0UbAC3h4lfmDB7YpU"});</script>
-
 <script>
 function toggleJobForm() {
   const form = document.getElementById('jobForm');
@@ -322,7 +246,7 @@ function toggleJobForm() {
   const open = form.style.display === 'none';
   form.style.display = open ? 'block' : 'none';
   arrow.className = open ? 'ti ti-chevron-up link-arrow' : 'ti ti-chevron-down link-arrow';
-  if (open) form.scrollIntoView({behavior:'smooth', block:'nearest'});
+  if (open) setTimeout(() => form.scrollIntoView({behavior:'smooth', block:'nearest'}), 50);
 }
 
 async function submitJobForm() {
@@ -337,7 +261,6 @@ async function submitJobForm() {
   btn.textContent = 'Sending...';
   btn.disabled = true;
 
-  // Google Sheets
   try {
     await fetch('https://script.google.com/macros/s/AKfycbyUeCVIqlc7CG6uSFsvm2cEG15Eo5YqVVRjk2ZJSf7TmD_bWjJCeZ_-p1uSYWIJIItV/exec', {
       method:'POST',
@@ -345,15 +268,11 @@ async function submitJobForm() {
     });
   } catch(e) {}
 
-  // EmailJS
   try {
     emailjs.send('service_0bphc1j', 'template_z0409cp', {
-      from_name: name,
-      from_email: email,
-      phone: phone || '—',
-      position: position || '—',
-      message: msg || '—',
-      reply_to: email
+      from_name: name, from_email: email,
+      phone: phone || '—', position: position || '—',
+      message: msg || '—', reply_to: email
     });
   } catch(e) {}
 
