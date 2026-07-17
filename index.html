@@ -11,8 +11,13 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="CS Services">
 <meta name="theme-color" content="#081426">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"></noscript>
+<link rel="preload" as="video" href="videos/hero-drone-v2.mp4" fetchpriority="high">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -42,10 +47,8 @@ a{color:inherit}
 .mnav-link{display:block;padding:18px 8px;color:#fff;text-decoration:none;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border)}
 .mnav-cta{display:block;text-align:center;margin-top:24px;padding:16px;background:var(--blue);color:#fff;text-decoration:none;border-radius:8px;font-size:13px;font-weight:700;letter-spacing:.5px}
 .tnl{padding:9px 16px;border-radius:6px;font-size:12.5px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .2s;text-decoration:none;letter-spacing:.2px}
-.tnl:hover{color:#fff;background:rgba(255,255,255,.06)}
 .tnl.active{color:var(--blue)}
 .tn-cta{background:transparent;color:var(--blue);padding:9px 20px;border-radius:6px;font-size:12.5px;font-weight:600;cursor:pointer;border:1px solid rgba(15,94,255,.4);font-family:'Inter',sans-serif;text-decoration:none;transition:all .2s;letter-spacing:.3px}
-.tn-cta:hover{background:rgba(15,94,255,.1);border-color:var(--blue)}
 
 /* ===== HERO — cinematic, layered depth ===== */
 .hero{position:relative;min-height:92vh;display:flex;align-items:center;justify-content:flex-start;overflow:hidden;background:#081426}
@@ -62,9 +65,7 @@ a{color:inherit}
 .hero-sub{font-size:17px;color:var(--text2);max-width:600px;margin:0 0 42px;line-height:1.6;font-weight:300}
 .hero-ctas{display:flex;gap:16px;justify-content:flex-start;flex-wrap:wrap}
 .btn-gold{background:var(--blue);color:#fff;padding:16px 32px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;transition:all .25s;display:inline-flex;align-items:center;gap:9px;letter-spacing:.2px;box-shadow:0 8px 30px rgba(15,94,255,.25)}
-.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(15,94,255,.4)}
 .btn-ghost{background:rgba(255,255,255,.03);color:#fff;padding:16px 32px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,.16);transition:all .2s}
-.btn-ghost:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.3)}
 
 /* Hero: stats bar below the video */
 .hero-float-stats{display:none}
@@ -115,12 +116,10 @@ a{color:inherit}
 .pf-feature h5{font-size:12px;font-weight:700;color:#fff;margin-bottom:4px;letter-spacing:.3px}
 .pf-feature p{font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.5}
 .pf-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;background:var(--blue);color:#fff;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.3px;transition:all .2s}
-.pf-cta:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(15,94,255,.35)}
 .ba-stack{display:flex;flex-direction:column;gap:48px}
 .ba-projects{display:flex;justify-content:center;gap:12px;margin-bottom:32px;flex-wrap:wrap}
 .ba-proj-btn{padding:8px 20px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text2);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .2s}
 .ba-proj-btn.active{background:var(--blue);color:#fff;border-color:var(--blue)}
-.ba-proj-btn:hover:not(.active){border-color:var(--blue);color:var(--blue)}
 .ba-project{display:none}
 .ba-project.active{display:block}
 
@@ -143,17 +142,27 @@ a{color:inherit}
 .svc-intro h2{font-family:'Montserrat',sans-serif;font-size:30px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:#fff;margin:14px 0 14px;line-height:1.3}
 .svc-intro p{font-size:13.5px;color:rgba(255,255,255,.45);line-height:1.65;margin-bottom:18px}
 .svc-view-all{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--blue);text-decoration:none}
-.svc-view-all:hover{color:var(--navy)}
 .svc-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
 .svc-col{transition:opacity .7s ease,transform .7s ease}
 .svc-col-photo{width:100%;aspect-ratio:4/3;border-radius:14px;overflow:hidden;margin-bottom:20px;background:#E4E8F0}
 .svc-col-photo img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
-.svc-col:hover .svc-col-photo img{transform:scale(1.05)}
 .svc-col h4{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;color:#fff;margin-bottom:10px}
 .svc-col p{font-size:12px;color:rgba(255,255,255,.45);line-height:1.6;margin-bottom:14px}
 .svc-col p .hl{color:var(--blue);font-weight:600}
 .svc-learn{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;color:var(--blue);text-decoration:none}
+@media (hover:hover) and (pointer:fine){
+.svc-view-all:hover{color:var(--navy)}
+.svc-col:hover .svc-col-photo img{transform:scale(1.05)}
 .svc-learn:hover{color:var(--navy)}
+.tnl:hover{color:#fff;background:rgba(255,255,255,.06)}
+.tn-cta:hover{background:rgba(15,94,255,.1);border-color:var(--blue)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(15,94,255,.4)}
+.btn-ghost:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.3)}
+.pf-cta:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(15,94,255,.35)}
+.ba-proj-btn:hover:not(.active){border-color:var(--blue);color:var(--blue)}
+.lf-submit:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(15,94,255,.3)}
+.footer-col a:hover{color:var(--blue)}
+}
 
 /* ===== TEAM ===== */
 .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;max-width:980px;margin:0 auto}
@@ -192,7 +201,6 @@ a{color:inherit}
 .lf-input:focus,.lf-textarea:focus{border-color:var(--blue)}
 .lf-textarea{resize:vertical;min-height:96px}
 .lf-submit{grid-column:1/-1;background:var(--blue);color:#fff;border:none;padding:16px 0;border-radius:9px;font-size:14.5px;font-weight:700;cursor:pointer;margin-top:8px;transition:all .2s}
-.lf-submit:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(15,94,255,.3)}
 .lf-note{grid-column:1/-1;font-size:11px;color:var(--text3);text-align:center;margin-top:6px}
 
 /* ===== FOOTER ===== */
@@ -221,7 +229,6 @@ a{color:inherit}
 .footer-brand .nm{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:300;color:#fff;letter-spacing:2px;text-transform:uppercase}
 .footer-col h5{font-size:11.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1px;margin-bottom:18px}
 .footer-col a{display:block;font-size:12.5px;color:var(--text2);text-decoration:none;margin-bottom:11px;transition:color .2s}
-.footer-col a:hover{color:var(--blue)}
 .footer-desc{font-size:12.5px;line-height:1.75;max-width:320px;color:var(--text2)}
 .footer-bottom{max-width:1180px;margin:0 auto;border-top:1px solid var(--border);padding-top:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:11px;color:var(--text3)}
 
@@ -281,8 +288,6 @@ a{color:inherit}
 .pf-early-note{font-size:11px;color:rgba(255,255,255,.3);margin-top:10px}
 .pf-early-success{font-size:14px;color:#4ade80;font-weight:600;margin-top:12px}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>emailjs.init("0UbAC3h4lfmDB7YpU");</script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D7FQXH0TTJ"></script>
 <script>
@@ -296,7 +301,10 @@ a{color:inherit}
 
 <nav class="topnav">
   <a href="index.html" class="tnlogo">
-    <img src="images/logo-cs-services.png" alt="CS Services">
+    <picture>
+      <source srcset="images/logo-cs-services-sm.webp" type="image/webp">
+      <img src="images/logo-cs-services-sm.png" alt="CS Services" width="200" height="200">
+    </picture>
     <div class="nm">CS SERVICES</div>
   </a>
   <div class="tnlinks">
@@ -322,7 +330,7 @@ a{color:inherit}
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline poster="images/logo-cs-services.png">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" fetchpriority="high" poster="images/logo-cs-services.png">
     <source src="videos/hero-drone-v2.mp4" type="video/mp4">
   </video>
   <div class="hero-video-overlay"></div>
@@ -405,12 +413,12 @@ a{color:inherit}
     <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--blue);opacity:.7;text-transform:uppercase;text-align:center;margin-bottom:20px">Brands We Trust</div>
     <div class="partners-wall" style="border:none;background:none;padding:0;border-radius:0">
       <div class="partners-track">
-        <div class="partner-item"><img src="images/logo-sherwin.png" alt="Sherwin-Williams" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
-        <div class="partner-item"><img src="images/logo-homedepot.png" alt="The Home Depot" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
-        <div class="partner-item"><img src="images/logo-lowes.png" alt="Lowe's" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
-        <div class="partner-item"><img src="images/logo-sherwin.png" alt="Sherwin-Williams" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
-        <div class="partner-item"><img src="images/logo-homedepot.png" alt="The Home Depot" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
-        <div class="partner-item"><img src="images/logo-lowes.png" alt="Lowe's" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
+        <div class="partner-item"><img src="images/logo-sherwin.png" alt="Sherwin-Williams" width="106" height="60" loading="lazy" decoding="async" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
+        <div class="partner-item"><img src="images/logo-homedepot.png" alt="The Home Depot" width="80" height="80" loading="lazy" decoding="async" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
+        <div class="partner-item"><img src="images/logo-lowes.png" alt="Lowe's" width="152" height="80" loading="lazy" decoding="async" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
+        <div class="partner-item"><img src="images/logo-sherwin.png" alt="Sherwin-Williams" width="106" height="60" loading="lazy" decoding="async" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
+        <div class="partner-item"><img src="images/logo-homedepot.png" alt="The Home Depot" width="80" height="80" loading="lazy" decoding="async" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
+        <div class="partner-item"><img src="images/logo-lowes.png" alt="Lowe's" width="152" height="80" loading="lazy" decoding="async" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
       </div>
     </div>
   </div>
@@ -427,37 +435,37 @@ a{color:inherit}
     </div>
     <div class="svc-columns">
       <div class="svc-col reveal">
-        <div class="svc-col-photo"><img src="images/services/hoa-building.jpg" alt="HOA building maintenance" loading="lazy"></div>
+        <div class="svc-col-photo"><picture><source srcset="images/services/hoa-building.webp" type="image/webp"><img src="images/services/hoa-building.jpg" alt="HOA building maintenance" width="941" height="1672" loading="lazy" decoding="async"></picture></div>
         <h4>HOA &amp; Building Maintenance 24/7</h4>
         <p><span class="hl">24/7 maintenance support</span> for HOAs, condominiums, and managed properties. We coordinate requests, document progress, share updates, and <span class="hl">keep property managers informed from start to finish</span>.</p>
         <a href="property-maintenance.html" class="svc-learn">Learn More <i class="ti ti-arrow-right"></i></a>
       </div>
       <div class="svc-col reveal">
-        <div class="svc-col-photo"><img src="images/services/property-improvements.jpg" alt="Property repairs and improvements" loading="lazy"></div>
+        <div class="svc-col-photo"><picture><source srcset="images/services/property-improvements.webp" type="image/webp"><img src="images/services/property-improvements.jpg" alt="Property repairs and improvements" width="1400" height="1050" loading="lazy" decoding="async"></picture></div>
         <h4>Property Repairs &amp; Improvements</h4>
         <p>Reliable repairs for common areas, units, walkways, doors, lighting, drywall, stucco, gutters, and other property needs, handled with <span class="hl">organized communication and professional follow-through</span>.</p>
         <a href="property-maintenance.html" class="svc-learn">Learn More <i class="ti ti-arrow-right"></i></a>
       </div>
       <div class="svc-col reveal">
-        <div class="svc-col-photo"><img src="images/services/exterior-painting.jpg" alt="Exterior and interior painting" loading="lazy"></div>
+        <div class="svc-col-photo"><picture><source srcset="images/services/exterior-painting.webp" type="image/webp"><img src="images/services/exterior-painting.jpg" alt="Exterior and interior painting" width="1023" height="1537" loading="lazy" decoding="async"></picture></div>
         <h4>Exterior &amp; Interior Painting</h4>
         <p>Professional painting for homes, buildings, common areas, railings, walkways, and interiors using <span class="hl">quality materials, proper preparation, and clean execution</span>.</p>
         <a href="custom-remodeling.html" class="svc-learn">Learn More <i class="ti ti-arrow-right"></i></a>
       </div>
       <div class="svc-col reveal">
-        <div class="svc-col-photo"><img src="images/services/parking-lot.png" alt="Parking lot painting and striping" loading="lazy"></div>
+        <div class="svc-col-photo"><picture><source srcset="images/services/parking-lot.webp" type="image/webp"><img src="images/services/parking-lot.png" alt="Parking lot painting and striping" width="1320" height="2868" loading="lazy" decoding="async"></picture></div>
         <h4>Parking Lot Painting</h4>
         <p>Precise line striping, ADA compliance markings, directional arrows, and <span class="hl">full lot repainting</span> for HOAs and commercial properties. Clean results that improve safety and curb appeal.</p>
         <a href="property-maintenance.html" class="svc-learn">Learn More <i class="ti ti-arrow-right"></i></a>
       </div>
       <div class="svc-col reveal">
-        <div class="svc-col-photo"><img src="images/services/cabinetry-finish.jpg" alt="Cabinetry and finish upgrades" loading="lazy"></div>
+        <div class="svc-col-photo"><picture><source srcset="images/services/cabinetry-finish.webp" type="image/webp"><img src="images/services/cabinetry-finish.jpg" alt="Cabinetry and finish upgrades" width="1024" height="1024" loading="lazy" decoding="async"></picture></div>
         <h4>Cabinetry &amp; Finish Upgrades</h4>
         <p>Cabinet refinishing, hardware replacement, countertop upgrades, and interior finish improvements that <span class="hl">modernize units and common areas</span> without full renovation cost.</p>
         <a href="custom-remodeling.html" class="svc-learn">Learn More <i class="ti ti-arrow-right"></i></a>
       </div>
       <div class="svc-col reveal">
-        <div class="svc-col-photo"><img src="images/services/remodeling-kitchen.png" alt="Custom kitchen remodeling project" loading="lazy"></div>
+        <div class="svc-col-photo"><picture><source srcset="images/services/remodeling-kitchen.webp" type="image/webp"><img src="images/services/remodeling-kitchen.png" alt="Custom kitchen remodeling project" width="941" height="1672" loading="lazy" decoding="async"></picture></div>
         <h4>Custom Remodeling</h4>
         <p>Kitchens, bathrooms, and whole home renovations <span class="hl">built around your lifestyle</span>. From initial design through final walkthrough, every detail is planned, documented, and executed with <span class="hl">skilled craftsmanship</span>.</p>
         <a href="custom-remodeling.html" class="svc-learn">Learn More <i class="ti ti-arrow-right"></i></a>
@@ -697,19 +705,19 @@ a{color:inherit}
   </div>
   <div class="team-grid">
     <div class="team-card reveal">
-      <div class="team-photo"><img src="images/team/alvaro-siman.jpg" alt="Álvaro Siman"></div>
+      <div class="team-photo"><picture><source srcset="images/team/alvaro-siman.webp" type="image/webp"><img src="images/team/alvaro-siman.jpg" alt="Álvaro Siman" width="600" height="600" loading="lazy" decoding="async"></picture></div>
       <h4>Álvaro Siman</h4>
       <div class="team-role">CEO & Founder</div>
       <p class="team-bio">Built CS Services from the field up, creating the Siman Method™ to bring documented, repeatable discipline to property care across South Florida.</p>
     </div>
     <div class="team-card reveal">
-      <div class="team-photo"><img src="images/team/beatriz-cunha.jpg" alt="Beatriz Cunha"></div>
+      <div class="team-photo"><picture><source srcset="images/team/beatriz-cunha.webp" type="image/webp"><img src="images/team/beatriz-cunha.jpg" alt="Beatriz Cunha" width="800" height="1106" loading="lazy" decoding="async"></picture></div>
       <h4>Beatriz Cunha</h4>
       <div class="team-role">Co-Founder & Operations</div>
       <p class="team-bio">Runs day-to-day operations and technology, turning the Siman Method™ into the systems that keep every property on schedule and on record.</p>
     </div>
     <div class="team-card reveal">
-      <div class="team-photo"><img src="images/team/laiana-diretora.jpg" alt="Laiana Siman"></div>
+      <div class="team-photo"><picture><source srcset="images/team/laiana-diretora.webp" type="image/webp"><img src="images/team/laiana-diretora.jpg" alt="Laiana Siman" width="600" height="600" loading="lazy" decoding="async"></picture></div>
       <h4>Laiana Siman</h4>
       <div class="team-role">Commercial Director</div>
       <p class="team-bio">Leads client relationships and new business across South Florida HOAs and luxury property groups.</p>
@@ -742,7 +750,7 @@ a{color:inherit}
 <footer class="footer">
   <div class="footer-inner">
     <div>
-      <div class="footer-brand"><img src="images/logo-cs-services.png" alt="CS Services"><div class="nm">CS SERVICES CORP</div></div>
+      <div class="footer-brand"><picture><source srcset="images/logo-cs-services-sm.webp" type="image/webp"><img src="images/logo-cs-services-sm.png" alt="CS Services" width="200" height="200" loading="lazy" decoding="async"></picture><div class="nm">CS SERVICES CORP</div></div>
       <p class="footer-desc">Remodeling, maintenance, and property care for South Florida's finest homes and HOAs, run on the Siman Method™.</p>
     </div>
     <div class="footer-col">
@@ -772,6 +780,8 @@ a{color:inherit}
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init("0UbAC3h4lfmDB7YpU");</script>
 <script>
 // ---- Mobile hamburger menu ----
 (function(){

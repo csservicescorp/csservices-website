@@ -6,8 +6,13 @@
 <title>CS Services Corp</title>
 <meta name="description" content="High-end remodeling & maintenance for HOAs across South Florida.">
 <link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"></noscript>
+<link rel="preload" as="image" href="/images/logo-cs-services-sm.webp" fetchpriority="high">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -102,11 +107,6 @@ body::before{
   text-decoration:none;color:#fff;
   transition:all .2s;cursor:pointer;
 }
-.link-btn:hover{
-  background:var(--dark-3);
-  border-color:var(--border-hover);
-  transform:translateY(-1px);
-}
 .link-icon{
   width:36px;height:36px;flex-shrink:0;border-radius:9px;
   display:flex;align-items:center;justify-content:center;font-size:16px;
@@ -117,7 +117,14 @@ body::before{
 .link-title{font-size:13.5px;font-weight:600;color:#fff;letter-spacing:-.1px;}
 .link-sub{font-size:11px;color:var(--muted);margin-top:2px;}
 .link-arrow{font-size:13px;color:rgba(255,255,255,.2);flex-shrink:0;transition:transform .2s;}
+@media (hover:hover) and (pointer:fine){
+.link-btn:hover{
+  background:var(--dark-3);
+  border-color:var(--border-hover);
+  transform:translateY(-1px);
+}
 .link-btn:hover .link-arrow{transform:translateX(2px);color:rgba(255,255,255,.4);}
+}
 
 /* JOB FORM */
 .job-form-wrap{
@@ -146,7 +153,10 @@ body::before{
 
   <div class="profile">
     <div class="logo-ring">
-      <img src="/favicon.png" alt="CS Services Corp">
+      <picture>
+        <source srcset="/images/logo-cs-services-sm.webp" type="image/webp">
+        <img src="/images/logo-cs-services-sm.png" alt="CS Services Corp" width="200" height="200" fetchpriority="high">
+      </picture>
     </div>
     <div class="profile-name">CS Services Corp</div>
     <div class="profile-handle">@csservicesfl</div>
