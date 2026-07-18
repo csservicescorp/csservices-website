@@ -354,7 +354,7 @@ a{color:inherit}
     <div class="eyebrow">Operational Framework</div>
     <h1>The Siman<br>Method™</h1>
     <p>A structured framework designed to improve communication, coordination, documentation, and execution in property maintenance and remodeling projects.</p>
-    <a href="#lead-form" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--blue);color:#fff;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:.5px">Join Our Team <i class="ti ti-arrow-right"></i></a>
+    <a href="#lead-form" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--blue);color:#fff;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:.5px">Schedule a Private Consultation <i class="ti ti-arrow-right"></i></a>
   </div>
 </section>
 
@@ -481,16 +481,17 @@ a{color:inherit}
   <div class="lead-section">
     <div class="lead-box reveal">
       <div class="lead-head">
-        <h2>Join Our Team</h2>
-        <p>Tell us about yourself. We respond within one business day.</p>
+        <h2>Schedule a Private Consultation</h2>
+        <p>We respond fast — most requests get a reply within one business day.</p>
       </div>
       <form class="lead-form" id="leadForm">
-        <div><label class="lf-label">Full Name</label><input class="lf-input" type="text" name="name" placeholder="Your name" required></div>
+        <div><label class="lf-label">Name</label><input class="lf-input" type="text" name="name" placeholder="Your name" required></div>
         <div><label class="lf-label">Email</label><input class="lf-input" type="email" name="email" placeholder="you@email.com" required></div>
-        <div><label class="lf-label">Phone</label><input class="lf-input" type="tel" name="phone" placeholder="(954) 000-0000" required></div>
-        <div><label class="lf-label">Position of Interest</label><input class="lf-input" type="text" name="position" placeholder="e.g. Field Technician, Painter, Office Staff"></div>
-        <div class="full"><label class="lf-label">Tell us about your experience</label><textarea class="lf-textarea" name="message" placeholder="Relevant experience, availability, and why you'd like to join CS Services..." required></textarea></div>
-        <button class="lf-submit" type="submit">Submit Application</button>
+        <div><label class="lf-label">Phone</label><input class="lf-input" type="tel" name="phone" placeholder="(954) 000-0000"></div>
+        <div><label class="lf-label">Property Address</label><input class="lf-input" type="text" name="address" placeholder="Street, City, Zip"></div>
+        <div class="full"><label class="lf-label">What do you need help with?</label><textarea class="lf-textarea" name="message" placeholder="Tell us about your project..." required></textarea></div>
+        <button class="lf-submit" type="submit">Send Request</button>
+        <div class="lf-note">By submitting, you agree to be contacted about your request. Interested in working with us instead? <a href="careers.html" style="color:var(--blue)">Join Our Team</a></div>
       </form>
     </div>
   </div>
@@ -510,6 +511,7 @@ a{color:inherit}
       <a href="testimonials.html">Through Clients' Eyes</a>
       <a href="siman-method.html">The Siman Method™</a>
       <a href="emergency-services.html">Emergency Services</a>
+      <a href="careers.html">Careers</a>
     </div>
     <div class="footer-col">
       <h5>Contact</h5>
@@ -743,7 +745,7 @@ function switchProject(idx) {
   }, {passive:true});
 })();
 
-// ---- Job Application form — EmailJS + Google Sheets ----
+// ---- Lead form — EmailJS + Google Sheets ----
 (function(){
   const form = document.getElementById('leadForm');
   if (!form) return;
@@ -755,283 +757,36 @@ function switchProject(idx) {
 
     const data = Object.fromEntries(new FormData(form));
 
-    // Send to EmailJS — Job Application template
-    const emailPromise = emailjs.send('service_0bphc1j', 'template_z0409cp', {
+    const emailPromise = emailjs.send('service_0bphc1j', 'template_t6r44vb', {
       from_name: data.name || '',
       from_email: data.email || '',
       phone: data.phone || '',
-      position: data.position || '',
+      address: data.address || '',
       message: data.message || ''
     });
 
-    // Send to Google Sheets — source = Job Application routes to Job Applications tab
     fetch('https://script.google.com/macros/s/AKfycbyUeCVIqlc7CG6uSFsvm2cEG15Eo5YqVVRjk2ZJSf7TmD_bWjJCeZ_-p1uSYWIJIItV/exec', {
       method: 'POST',
       body: JSON.stringify({
         name: data.name || '',
         email: data.email || '',
         phone: data.phone || '',
-        address: data.position || '',
+        address: data.address || '',
         message: data.message || '',
-        source: 'Job Application'
+        source: 'Siman Method Page'
       })
     }).catch(() => {});
 
     emailPromise.then(function() {
-      btn.textContent = 'Application Sent ✓';
+      btn.textContent = 'Message Sent ✓';
       btn.style.background = '#16a34a';
       form.reset();
-      setTimeout(() => { btn.textContent = 'Submit Application'; btn.style.background = ''; btn.disabled = false; }, 4000);
+      setTimeout(() => { btn.textContent = 'Send Request'; btn.style.background = ''; btn.disabled = false; }, 4000);
     }).catch(function(err) {
       console.error('EmailJS error:', err);
-      btn.textContent = 'Submit Application';
+      btn.textContent = 'Send Request';
       btn.disabled = false;
-      alert('Something went wrong sending your application. Please call us at 954-263-1159 or email info@csservicecorp.com directly.');
-    });
-  });
-})();
-</script>
-
-<script>
-// ---- Match hero-sub width to the rendered width of "Transformation" ----
-(function(){
-  const word = document.getElementById('transformWord');
-  const sub = document.querySelector('.hero-sub');
-  if (!word || !sub) return;
-  function syncWidth(){
-    const w = word.getBoundingClientRect().width;
-    if (w > 0) sub.style.maxWidth = w + 'px';
-  }
-  syncWidth();
-  window.addEventListener('resize', syncWidth);
-  // Re-check after fonts finish loading (Montserrat 300 may shift width)
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(syncWidth);
-  }
-})();
-
-// ---- Hero floating stat cards (mobile): appear one by one, ~1s apart ----
-(function(){
-  const cards = document.querySelectorAll('.hfs-card');
-  if (!cards.length) return;
-  cards.forEach((card, i) => {
-    setTimeout(() => {
-      card.classList.add('hfs-show');
-      // trigger count-up for counters inside this card
-      card.querySelectorAll('.count-target').forEach(el => {
-        const target = parseFloat(el.dataset.target);
-        const duration = 900;
-        const startTime = performance.now();
-        function tick(now) {
-          const progress = Math.min((now - startTime) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 2.4);
-          el.textContent = Math.round(target * eased);
-          if (progress < 1) requestAnimationFrame(tick);
-          else el.textContent = target;
-        }
-        requestAnimationFrame(tick);
-      });
-    }, 600 + i * 300);
-  });
-})();
-
-// ---- Scroll-reveal: fade + rise animation for elements with .reveal ----
-(function(){
-  const items = document.querySelectorAll('.reveal');
-  if (!items.length) return;
-
-  function setupObserver() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
-          const index = siblings.indexOf(entry.target);
-          setTimeout(() => entry.target.classList.add('revealed'), index * 130);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
-
-    items.forEach(el => observer.observe(el));
-  }
-
-  // Wait for the page to finish its initial paint/layout before observing,
-  // so elements already in view on load don't fire instantly without a visible transition.
-  if (document.readyState === 'complete') {
-    requestAnimationFrame(() => requestAnimationFrame(setupObserver));
-  } else {
-    window.addEventListener('load', () => {
-      requestAnimationFrame(() => requestAnimationFrame(setupObserver));
-    });
-  }
-})();
-
-// ---- Animated count-up for all .count-target elements ----
-(function(){
-  function animateCount(el) {
-    if (el.dataset.animated) return;
-    el.dataset.animated = '1';
-    const target = parseFloat(el.dataset.target);
-    const duration = 1200;
-    const startTime = performance.now();
-    function tick(now) {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 2.4);
-      el.textContent = Math.round(target * eased);
-      if (progress < 1) requestAnimationFrame(tick);
-      else el.textContent = target;
-    }
-    requestAnimationFrame(tick);
-  }
-
-  window.addEventListener('load', function() {
-    const counters = document.querySelectorAll('.count-target');
-    if (!counters.length) return;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCount(entry.target);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0, rootMargin: '0px 0px -10px 0px' });
-
-    counters.forEach(el => observer.observe(el));
-
-    // Also fire for anything already in viewport after 800ms (stats bar hero)
-    setTimeout(() => {
-      counters.forEach(el => {
-        const r = el.getBoundingClientRect();
-        if (r.top < window.innerHeight && r.bottom > 0) animateCount(el);
-      });
-    }, 800);
-  });
-})();
-
-// ---- Before/After sliders (multi-project) ----
-function initSlider(slider) {
-  const clip = slider.querySelector('.ba-after-clip');
-  const handle = slider.querySelector('.ba-handle-inst');
-  // add handle styles dynamically
-  handle.style.cssText = 'position:absolute;top:0;bottom:0;left:50%;width:2px;background:linear-gradient(to bottom,transparent,#0F5EFF,transparent);z-index:5;box-shadow:0 0 20px rgba(15,94,255,.6)';
-  let dragging = false;
-
-  function setPosition(clientX) {
-    const rect = slider.getBoundingClientRect();
-    let pct = ((clientX - rect.left) / rect.width) * 100;
-    pct = Math.max(0, Math.min(100, pct));
-    clip.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
-    handle.style.left = pct + '%';
-  }
-
-  slider.addEventListener('mousedown', (e) => { dragging = true; setPosition(e.clientX); });
-  window.addEventListener('mousemove', (e) => { if (dragging) setPosition(e.clientX); });
-  window.addEventListener('mouseup', () => dragging = false);
-  slider.addEventListener('touchstart', (e) => { dragging = true; setPosition(e.touches[0].clientX); }, {passive:true});
-  slider.addEventListener('touchmove', (e) => { if (dragging) setPosition(e.touches[0].clientX); }, {passive:true});
-  window.addEventListener('touchend', () => dragging = false);
-}
-
-document.querySelectorAll('.ba-slider-inst').forEach(initSlider);
-
-
-
-function switchProject(idx) {
-  document.querySelectorAll('.ba-project').forEach((p, i) => p.classList.toggle('active', i === idx));
-  document.querySelectorAll('.ba-proj-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
-  // re-init slider for newly shown project
-  const active = document.querySelectorAll('.ba-project')[idx];
-  if (active) {
-    const slider = active.querySelector('.ba-slider-inst');
-    if (slider && !slider.dataset.init) initSlider(slider);
-  }
-}
-
-
-
-// ---- Reviews carousel ----
-(function(){
-  const track = document.getElementById('reviewsTrack');
-  const nav = document.getElementById('reviewsNav');
-  if (!track || !nav) return;
-
-  const cards = track.querySelectorAll('.review-card');
-  let current = 0;
-  let perView = window.innerWidth < 640 ? 1 : window.innerWidth < 980 ? 2 : 3;
-  const total = Math.ceil(cards.length / perView);
-
-  // Build dots
-  for (let i = 0; i < total; i++) {
-    const dot = document.createElement('div');
-    dot.className = 'reviews-dot' + (i === 0 ? ' active' : '');
-    dot.onclick = () => goTo(i);
-    nav.appendChild(dot);
-  }
-
-  function goTo(idx) {
-    current = idx;
-    const cardW = cards[0].offsetWidth + 20;
-    track.style.transform = `translateX(-${current * perView * cardW}px)`;
-    nav.querySelectorAll('.reviews-dot').forEach((d,i) => d.classList.toggle('active', i === current));
-  }
-
-  // Auto-advance every 4s
-  setInterval(() => goTo((current + 1) % total), 4000);
-
-  // Touch swipe
-  let startX = 0;
-  track.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive:true});
-  track.addEventListener('touchend', e => {
-    const diff = startX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) goTo(diff > 0 ? Math.min(current+1, total-1) : Math.max(current-1, 0));
-  }, {passive:true});
-})();
-
-// ---- Job Application form — EmailJS + Google Sheets ----
-(function(){
-  const form = document.getElementById('leadForm');
-  if (!form) return;
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const btn = form.querySelector('.lf-submit');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-
-    const data = Object.fromEntries(new FormData(form));
-
-    // Send to EmailJS — Job Application template
-    const emailPromise = emailjs.send('service_0bphc1j', 'template_z0409cp', {
-      from_name: data.name || '',
-      from_email: data.email || '',
-      phone: data.phone || '',
-      position: data.position || '',
-      message: data.message || ''
-    });
-
-    // Send to Google Sheets — source = Job Application routes to Job Applications tab
-    fetch('https://script.google.com/macros/s/AKfycbyUeCVIqlc7CG6uSFsvm2cEG15Eo5YqVVRjk2ZJSf7TmD_bWjJCeZ_-p1uSYWIJIItV/exec', {
-      method: 'POST',
-      body: JSON.stringify({
-        name: data.name || '',
-        email: data.email || '',
-        phone: data.phone || '',
-        address: data.position || '',
-        message: data.message || '',
-        source: 'Job Application'
-      })
-    }).catch(() => {});
-
-    emailPromise.then(function() {
-      btn.textContent = 'Application Sent ✓';
-      btn.style.background = '#16a34a';
-      form.reset();
-      setTimeout(() => { btn.textContent = 'Submit Application'; btn.style.background = ''; btn.disabled = false; }, 4000);
-    }).catch(function(err) {
-      console.error('EmailJS error:', err);
-      btn.textContent = 'Submit Application';
-      btn.disabled = false;
-      alert('Something went wrong sending your application. Please call us at 954-263-1159 or email info@csservicecorp.com directly.');
+      alert('Something went wrong. Please call us at 954-263-1159 or email info@csservicecorp.com directly.');
     });
   });
 })();
