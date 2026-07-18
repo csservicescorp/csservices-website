@@ -78,6 +78,9 @@ a{color:inherit}
 .hero-ctas{display:flex;gap:16px;justify-content:flex-start;flex-wrap:wrap}
 .btn-gold{background:var(--blue);color:#fff;padding:16px 32px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;transition:all .25s;display:inline-flex;align-items:center;gap:9px;letter-spacing:.2px;box-shadow:0 8px 30px rgba(15,94,255,.25)}
 .btn-ghost{background:rgba(255,255,255,.03);color:#fff;padding:16px 32px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,.16);transition:all .2s}
+.hero-badge-short{display:none}
+.hero-sub-short{display:none}
+.hero-ghost-arrow{display:none}
 
 /* Hero: stats bar below the video */
 .hero-float-stats{display:none}
@@ -265,20 +268,26 @@ a{color:inherit}
   .section{padding:80px 20px}
 
   .hero-inner{padding:90px 24px 0;max-width:100%}
-  .hero-h1-tight{line-height:1.18;margin-bottom:14px}
+  .hero-h1-tight{line-height:1.18;margin-bottom:8px}
   .hero h1{display:block;font-family:'Montserrat',sans-serif;font-size:24px;font-weight:300;letter-spacing:2.5px;text-transform:uppercase;line-height:1.2;color:rgba(255,255,255,.92);text-shadow:0 2px 10px rgba(0,0,0,.7);margin-bottom:0}
   .hero-badge{font-size:8.5px;padding:5px 12px;position:static;width:fit-content;margin:0 0 16px;border-color:rgba(255,255,255,.3);color:#fff}
   .hero-badge .dot{background:#fff;box-shadow:0 0 8px #fff}
-  .hero-sub{display:block;font-size:13px;line-height:1.55;text-shadow:0 1px 4px rgba(0,0,0,.8);margin-bottom:22px}
+  .hero-badge-full{display:none}
+  .hero-badge-short{display:inline}
+  .hero-sub{display:block;font-size:12px;line-height:1.5;text-shadow:0 1px 4px rgba(0,0,0,.8);margin-bottom:22px}
+  .hero-sub-full{display:none}
+  .hero-sub-short{display:block}
   .hero-stats-bar{display:none}
-  .hero-ctas{display:flex;flex-direction:column;gap:12px;width:100%;justify-content:flex-start;margin-bottom:32px}
-  .hero-ctas .btn-gold,.hero-ctas .btn-ghost{width:100%;justify-content:center;padding:15px 24px;font-size:13px}
+  .hero-ctas{display:flex;flex-direction:column;gap:10px;width:100%;justify-content:flex-start;margin-bottom:36px}
+  .hero-ctas .btn-gold{width:100%;justify-content:center;padding:15px 24px;font-size:13px}
+  .hero-ctas .btn-ghost{width:auto;align-self:center;background:none;border:none;box-shadow:none;padding:4px 0;font-size:12px;font-weight:500;color:rgba(255,255,255,.7);text-decoration:underline;text-underline-offset:3px}
+  .hero-ghost-arrow{display:inline}
   .hero-float-stats{position:static;margin:0 0 24px;display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:none;z-index:4}
-  .hfs-card{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;background:rgba(255,255,255,.08);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:16px 18px;box-shadow:0 4px 24px rgba(0,0,0,.15)}
+  .hfs-card{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;background:rgba(255,255,255,.08);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:11px 14px;box-shadow:0 4px 24px rgba(0,0,0,.15)}
   .hfs-card.hfs-show{opacity:1;transform:translateY(0)}
-  .hfs-num{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;line-height:1}
-  .hfs-unit{font-family:'Montserrat',sans-serif;font-size:13px;color:var(--blue-light);font-weight:700}
-  .hfs-label{font-size:9.5px;color:rgba(255,255,255,.9);margin-top:4px;letter-spacing:.2px}
+  .hfs-num{font-family:'Montserrat',sans-serif;font-size:19px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;line-height:1}
+  .hfs-unit{font-family:'Montserrat',sans-serif;font-size:11px;color:var(--blue-light);font-weight:700}
+  .hfs-label{font-size:8.5px;color:rgba(255,255,255,.9);margin-top:3px;letter-spacing:.2px}
 
   .lead-form{grid-template-columns:1fr}
   .lead-box{padding:40px 26px}
@@ -406,12 +415,13 @@ a{color:inherit}
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="hero-inner">
-    <div class="hero-badge"><span class="dot"></span> Delray Beach · Boca Raton · Fort Lauderdale · Miami</div>
+    <div class="hero-badge"><span class="dot"></span> <span class="hero-badge-full">Delray Beach · Boca Raton · Fort Lauderdale · Miami</span><span class="hero-badge-short">Delray Beach · South Florida</span></div>
     <h1 class="hero-h1-tight">Finally, a Contractor<br>Who Keeps You Informed.</h1>
-    <p class="hero-sub">CS Services serves HOAs, property managers, and homeowners throughout Delray Beach and South Florida, running every project through the Siman Method™, a documented system built on organized communication and visible progress from first call to final walkthrough.</p>
+    <p class="hero-sub hero-sub-full">CS Services serves HOAs, property managers, and homeowners throughout Delray Beach and South Florida, running every project through the Siman Method™, a documented system built on organized communication and visible progress from first call to final walkthrough.</p>
+    <p class="hero-sub hero-sub-short">Maintenance, repairs, and remodeling for HOAs, property managers, and homeowners across South Florida.</p>
     <div class="hero-ctas">
       <a href="#lead-form" class="btn-gold"><i class="ti ti-calendar"></i> Schedule a Private Consultation</a>
-      <a href="siman-method.html" class="btn-ghost">See the Siman Method™</a>
+      <a href="siman-method.html" class="btn-ghost">See the Siman Method™<span class="hero-ghost-arrow"> →</span></a>
     </div>
 
     <div class="hero-float-stats">
