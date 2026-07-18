@@ -36,11 +36,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://csservicesfl.com/emergency-services.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://csservicesfl.com/careers.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

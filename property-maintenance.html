@@ -44,7 +44,7 @@ a{color:inherit}
 .tn-burger{display:none;background:none;border:1px solid var(--border);color:#fff;width:40px;height:40px;border-radius:8px;align-items:center;justify-content:center;font-size:20px;cursor:pointer}
 .mnav-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(5,11,30,.98);backdrop-filter:blur(10px)}
 .mnav-overlay.open{display:flex}
-.mnav-panel{margin:auto;width:100%;max-width:340px;display:flex;flex-direction:column;gap:6px;padding:24px}
+.mnav-panel{margin:auto;width:100%;max-width:340px;max-height:calc(100vh - 48px);overflow-y:auto;display:flex;flex-direction:column;gap:6px;padding:24px 24px 32px}
 .mnav-close{position:absolute;top:24px;right:24px;background:none;border:1px solid var(--border);color:#fff;width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer}
 .mnav-link{display:block;padding:18px 8px;color:#fff;text-decoration:none;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border)}
 .mnav-cta{display:block;text-align:center;margin-top:24px;padding:16px;background:var(--blue);color:#fff;text-decoration:none;border-radius:8px;font-size:13px;font-weight:700;letter-spacing:.5px}
@@ -150,6 +150,15 @@ a{color:inherit}
 .lf-submit:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(15,94,255,.3)}
 .footer-col a:hover{color:#fff}
 }
+
+/* ===== FAQ ===== */
+.faq-list{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:12px;padding:22px 26px}
+.faq-item summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:'Montserrat',sans-serif;font-size:13.5px;font-weight:600;letter-spacing:.3px;color:#fff}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary i{color:var(--blue);flex-shrink:0;transition:transform .2s}
+.faq-item[open] summary i{transform:rotate(180deg)}
+.faq-item p{font-size:13px;color:var(--text2);line-height:1.75;margin-top:14px}
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D7FQXH0TTJ"></script>
@@ -221,8 +230,12 @@ a{color:inherit}
     <button class="mnav-close" id="mnavClose" aria-label="Close menu"><i class="ti ti-x"></i></button>
     <a href="index.html" class="mnav-link">Home</a>
     <a href="hoa-maintenance.html" class="mnav-link">HOA Maintenance</a>
+    <a href="hoa-maintenance-delray-beach.html" class="mnav-link">HOA Maintenance in Delray Beach</a>
+    <a href="property-maintenance.html" class="mnav-link">Property Maintenance</a>
+    <a href="custom-remodeling.html" class="mnav-link">Custom Remodeling</a>
     <a href="testimonials.html" class="mnav-link">Through Clients' Eyes</a>
     <a href="siman-method.html" class="mnav-link">The Siman Method™</a>
+    <a href="careers.html" class="mnav-link">Careers</a>
     <a href="#lead-form" class="mnav-cta">Schedule a Private Consultation</a>
   </div>
 </div>
@@ -265,7 +278,7 @@ a{color:inherit}
       <div class="svc-details-eyebrow">How It Works</div>
       <h2>What's Included</h2>
       <p>Every maintenance plan follows the <span class="hl">Siman Method™</span>, with scheduled inspections that catch issues early and a documented history of every visit, so you always know the condition of your property.</p>
-      <p>We handle ongoing maintenance for homes, HOAs, and managed properties, working with <span class="hl">licensed trades and dedicated field teams</span> who treat every property like their own. For urgent issues between scheduled visits, our <a href="emergency-services.html" style="color:var(--blue);font-weight:600">emergency services</a> team is available 24/7.</p>
+      <p>We handle ongoing maintenance for homes, HOAs, and managed properties, working with <span class="hl">licensed trades and dedicated field teams</span> who treat every property like their own, with support available for urgent issues between scheduled visits.</p>
     </div>
     <div>
       <ul class="svc-list">
@@ -364,7 +377,6 @@ a{color:inherit}
       <a href="hoa-maintenance.html">HOA Maintenance</a>
       <a href="testimonials.html">Through Clients' Eyes</a>
       <a href="siman-method.html">The Siman Method™</a>
-      <a href="emergency-services.html">Emergency Services</a>
       <a href="careers.html">Careers</a>
     </div>
     <div class="footer-col">
