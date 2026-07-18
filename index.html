@@ -47,11 +47,16 @@ a{color:inherit}
 .tnlogo img{height:30px;width:30px;object-fit:contain}
 .tnlogo .nm{font-size:13.5px;font-weight:700;color:#fff;letter-spacing:.5px}
 .tnlinks{display:flex;gap:4px}
-.tn-burger{display:none;background:none;border:1px solid var(--border);color:#fff;width:40px;height:40px;border-radius:8px;align-items:center;justify-content:center;font-size:20px;cursor:pointer}
+.tn-actions{display:flex;align-items:center;gap:14px}
+.tn-burger{display:flex;background:none;border:1px solid var(--border);color:#fff;width:40px;height:40px;border-radius:8px;align-items:center;justify-content:center;font-size:20px;cursor:pointer;flex-shrink:0}
 .mnav-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(5,11,30,.98);backdrop-filter:blur(10px)}
 .mnav-overlay.open{display:flex}
 .mnav-panel{margin:auto;width:100%;max-width:340px;max-height:calc(100vh - 48px);overflow-y:auto;display:flex;flex-direction:column;gap:6px;padding:24px 24px 32px}
 .mnav-close{position:absolute;top:24px;right:24px;background:none;border:1px solid var(--border);color:#fff;width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer}
+@media(min-width:641px){
+  .mnav-overlay{justify-content:flex-end;background:rgba(5,11,30,.55)}
+  .mnav-panel{margin:0;width:380px;max-width:380px;height:100vh;max-height:100vh;border-radius:0;border-left:1px solid var(--border);background:#0B1A30;box-shadow:-24px 0 60px rgba(0,0,0,.45);padding:88px 28px 32px}
+}
 .mnav-link{display:block;padding:18px 8px;color:#fff;text-decoration:none;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border)}
 .mnav-cta{display:block;text-align:center;margin-top:24px;padding:16px;background:var(--blue);color:#fff;text-decoration:none;border-radius:8px;font-size:13px;font-weight:700;letter-spacing:.5px}
 .tnl{padding:9px 16px;border-radius:6px;font-size:12.5px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .2s;text-decoration:none;letter-spacing:.2px}
@@ -253,7 +258,7 @@ a{color:inherit}
 }
 @media(max-width:640px){
   .hero{min-height:100vh;align-items:flex-start}
-  .hero-video-overlay{background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.25) 45%,rgba(0,0,0,.75) 100%)}
+  .hero-video-overlay{background:linear-gradient(180deg,rgba(8,20,38,.82) 0%,rgba(8,20,38,.62) 45%,rgba(8,20,38,.93) 100%)}
   .topnav{padding:0 20px}
   .tnlinks{display:none}
   .tn-cta{display:none}
@@ -265,10 +270,11 @@ a{color:inherit}
   .hero h1{display:block;font-family:'Montserrat',sans-serif;font-size:24px;font-weight:300;letter-spacing:2.5px;text-transform:uppercase;line-height:1.2;color:rgba(255,255,255,.92);text-shadow:0 2px 10px rgba(0,0,0,.7);margin-bottom:0}
   .hero-badge{font-size:8.5px;padding:5px 12px;position:static;width:fit-content;margin:0 0 16px;border-color:rgba(255,255,255,.3);color:#fff}
   .hero-badge .dot{background:#fff;box-shadow:0 0 8px #fff}
-  .hero-sub{display:block;font-size:13px;line-height:1.55;text-shadow:0 1px 4px rgba(0,0,0,.8)}
+  .hero-sub{display:block;font-size:13px;line-height:1.55;text-shadow:0 1px 4px rgba(0,0,0,.8);margin-bottom:22px}
   .hero-stats-bar{display:none}
-  .hero-ctas{display:none}
-  .hero-float-stats{position:absolute;bottom:24px;left:24px;right:24px;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0;max-width:none;z-index:4}
+  .hero-ctas{display:flex;flex-direction:column;gap:12px;width:100%;justify-content:flex-start;margin-bottom:32px}
+  .hero-ctas .btn-gold,.hero-ctas .btn-ghost{width:100%;justify-content:center;padding:15px 24px;font-size:13px}
+  .hero-float-stats{position:static;margin:0 0 24px;display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:none;z-index:4}
   .hfs-card{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;background:rgba(255,255,255,.08);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:16px 18px;box-shadow:0 4px 24px rgba(0,0,0,.15)}
   .hfs-card.hfs-show{opacity:1;transform:translateY(0)}
   .hfs-num{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;line-height:1}
@@ -358,8 +364,13 @@ a{color:inherit}
     <a href="testimonials.html" class="tnl">Through Clients' Eyes</a>
     <a href="siman-method.html" class="tnl">The Siman Method™</a>
   </div>
-  <a href="#lead-form" class="tn-cta">Schedule a Private Consultation</a>
-  <button class="tn-burger" id="tnBurger" aria-label="Open menu"><i class="ti ti-menu-2"></i></button>
+  <div class="tn-actions">
+
+    <button class="tn-burger" id="tnBurger" aria-label="Open menu"><i class="ti ti-menu-2"></i></button>
+
+    <a href="#lead-form" class="tn-cta">Schedule a Private Consultation</a>
+
+  </div>
 </nav>
 
 <div class="mnav-overlay" id="mnavOverlay">
@@ -393,13 +404,13 @@ a{color:inherit}
       <a href="#lead-form" class="btn-gold"><i class="ti ti-calendar"></i> Schedule a Private Consultation</a>
       <a href="siman-method.html" class="btn-ghost">See the Siman Method™</a>
     </div>
-  </div>
 
-  <div class="hero-float-stats">
-    <div class="hfs-card hfs-1"><div class="hfs-num"><span class="count-target" data-target="6">0</span><span class="hfs-unit">+</span></div><div class="hfs-label">Years of Excellence</div></div>
-    <div class="hfs-card hfs-2"><div class="hfs-num"><span class="count-target" data-target="450">0</span><span class="hfs-unit">+</span></div><div class="hfs-label">Projects Completed</div></div>
-    <div class="hfs-card hfs-3"><div class="hfs-num"><span class="count-target" data-target="100">0</span><span class="hfs-unit">%</span></div><div class="hfs-label">Client Satisfaction</div></div>
-    <div class="hfs-card hfs-4"><div class="hfs-num">24<span class="hfs-unit">/7</span></div><div class="hfs-label">Availability</div></div>
+    <div class="hero-float-stats">
+      <div class="hfs-card hfs-1"><div class="hfs-num"><span class="count-target" data-target="6">0</span><span class="hfs-unit">+</span></div><div class="hfs-label">Years of Excellence</div></div>
+      <div class="hfs-card hfs-2"><div class="hfs-num"><span class="count-target" data-target="450">0</span><span class="hfs-unit">+</span></div><div class="hfs-label">Projects Completed</div></div>
+      <div class="hfs-card hfs-3"><div class="hfs-num"><span class="count-target" data-target="100">0</span><span class="hfs-unit">%</span></div><div class="hfs-label">Client Satisfaction</div></div>
+      <div class="hfs-card hfs-4"><div class="hfs-num">24<span class="hfs-unit">/7</span></div><div class="hfs-label">Availability</div></div>
+    </div>
   </div>
 
   <div class="hero-stats-bar reveal">
@@ -854,6 +865,7 @@ a{color:inherit}
   close.addEventListener('click', closeMenu);
   overlay.querySelectorAll('.mnav-link, .mnav-cta').forEach(link => link.addEventListener('click', closeMenu));
   overlay.addEventListener('click', (e) => { if (e.target === overlay) closeMenu(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('open')) closeMenu(); });
 })();
 
 // ---- Hero floating stat cards (mobile): appear one by one, ~1s apart ----

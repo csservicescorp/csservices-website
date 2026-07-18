@@ -43,11 +43,16 @@ a{color:inherit}
 .tnlogo img{height:30px;width:30px;object-fit:contain}
 .tnlogo .nm{font-size:13.5px;font-weight:700;color:#fff;letter-spacing:.5px}
 .tnlinks{display:flex;gap:4px}
-.tn-burger{display:none;background:none;border:1px solid var(--border);color:#fff;width:40px;height:40px;border-radius:8px;align-items:center;justify-content:center;font-size:20px;cursor:pointer}
+.tn-actions{display:flex;align-items:center;gap:14px}
+.tn-burger{display:flex;background:none;border:1px solid var(--border);color:#fff;width:40px;height:40px;border-radius:8px;align-items:center;justify-content:center;font-size:20px;cursor:pointer;flex-shrink:0}
 .mnav-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(5,11,30,.98);backdrop-filter:blur(10px)}
 .mnav-overlay.open{display:flex}
 .mnav-panel{margin:auto;width:100%;max-width:340px;max-height:calc(100vh - 48px);overflow-y:auto;display:flex;flex-direction:column;gap:6px;padding:24px 24px 32px}
 .mnav-close{position:absolute;top:24px;right:24px;background:none;border:1px solid var(--border);color:#fff;width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer}
+@media(min-width:641px){
+  .mnav-overlay{justify-content:flex-end;background:rgba(5,11,30,.55)}
+  .mnav-panel{margin:0;width:380px;max-width:380px;height:100vh;max-height:100vh;border-radius:0;border-left:1px solid var(--border);background:#0B1A30;box-shadow:-24px 0 60px rgba(0,0,0,.45);padding:88px 28px 32px}
+}
 .mnav-link{display:block;padding:18px 8px;color:#fff;text-decoration:none;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border)}
 .mnav-cta{display:block;text-align:center;margin-top:24px;padding:16px;background:var(--blue);color:#fff;text-decoration:none;border-radius:8px;font-size:13px;font-weight:700;letter-spacing:.5px}
 .tnl{padding:9px 16px;border-radius:6px;font-size:12.5px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .2s;text-decoration:none;letter-spacing:.2px}
@@ -333,8 +338,13 @@ a{color:inherit}
     <a href="testimonials.html" class="tnl">Through Clients' Eyes</a>
     <a href="siman-method.html" class="tnl active">The Siman Method™</a>
   </div>
-  <a href="#lead-form" class="tn-cta">Schedule a Private Consultation</a>
-  <button class="tn-burger" id="tnBurger" aria-label="Open menu"><i class="ti ti-menu-2"></i></button>
+  <div class="tn-actions">
+
+    <button class="tn-burger" id="tnBurger" aria-label="Open menu"><i class="ti ti-menu-2"></i></button>
+
+    <a href="#lead-form" class="tn-cta">Schedule a Private Consultation</a>
+
+  </div>
 </nav>
 
 <div class="mnav-overlay" id="mnavOverlay">
@@ -551,6 +561,7 @@ a{color:inherit}
   close.addEventListener('click', closeMenu);
   overlay.querySelectorAll('.mnav-link, .mnav-cta').forEach(link => link.addEventListener('click', closeMenu));
   overlay.addEventListener('click', (e) => { if (e.target === overlay) closeMenu(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('open')) closeMenu(); });
 })();
 
 // ---- Match hero-sub width to the rendered width of "Transformation" ----
