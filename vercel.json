@@ -1,0 +1,20 @@
+{
+  "redirects": [
+    { "source": "/home", "destination": "/", "statusCode": 301 },
+
+    { "source": "/through-clients-eyes", "destination": "/testimonials.html", "statusCode": 301 },
+    { "source": "/through-clients'-eyes", "destination": "/testimonials.html", "statusCode": 301 },
+    { "source": "/through-clients%27-eyes", "destination": "/testimonials.html", "statusCode": 301 },
+    { "source": "/through-clients’-eyes", "destination": "/testimonials.html", "statusCode": 301 },
+    { "source": "/through-clients%E2%80%99-eyes", "destination": "/testimonials.html", "statusCode": 301 },
+    { "source": "/through-clients-eyes.html", "destination": "/testimonials.html", "statusCode": 301 },
+
+    { "source": "/projects", "destination": "/custom-remodeling.html", "statusCode": 301 },
+
+    { "source": "/hoa-maintenance", "destination": "/hoa-maintenance.html", "statusCode": 301 },
+
+    { "source": "/the-siman-method", "destination": "/siman-method.html", "statusCode": 301 },
+    { "source": "/the-siman-method™", "destination": "/siman-method.html", "statusCode": 301 },
+    { "source": "/the-siman-method%E2%84%A2", "destination": "/siman-method.html", "statusCode": 301 }
+  ]
+}
