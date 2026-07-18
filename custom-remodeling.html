@@ -150,6 +150,15 @@ a{color:inherit}
 .lf-submit:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(15,94,255,.3)}
 .footer-col a:hover{color:#fff}
 }
+
+/* ===== FAQ ===== */
+.faq-list{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:12px;padding:22px 26px}
+.faq-item summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:'Montserrat',sans-serif;font-size:13.5px;font-weight:600;letter-spacing:.3px;color:#fff}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary i{color:var(--blue);flex-shrink:0;transition:transform .2s}
+.faq-item[open] summary i{transform:rotate(180deg)}
+.faq-item p{font-size:13px;color:var(--text2);line-height:1.75;margin-top:14px}
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D7FQXH0TTJ"></script>
@@ -190,6 +199,36 @@ a{color:inherit}
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://csservicesfl.com/" },
         { "@type": "ListItem", "position": 2, "name": "Custom Remodeling in South Florida", "item": "https://csservicesfl.com/custom-remodeling.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://csservicesfl.com/custom-remodeling.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What types of remodeling projects does CS Services handle?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CS Services handles kitchens, bathrooms, and whole home renovations, built around your lifestyle."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is a remodeling project managed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every remodeling project follows the Siman Method™, with planning, documented progress, communication, a final walkthrough, and a completion report."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will I receive an estimate before work begins?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Every remodeling project includes a transparent, itemized estimate before work begins."
+          }
+        }
       ]
     }
   ]
@@ -341,6 +380,29 @@ a{color:inherit}
   </div>
   <div style="text-align:center;margin-top:40px">
     <a href="siman-method.html" style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--blue);text-decoration:none">Learn more about the Method <i class="ti ti-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section section-light" id="faq">
+  <div class="gal-head">
+    <div class="gal-eyebrow">Frequently Asked Questions</div>
+    <h2>Common Questions</h2>
+    <p>Answers about kitchen, bathroom, and whole-home remodeling projects.</p>
+  </div>
+  <div class="faq-list reveal">
+    <details class="faq-item" style="border-color:#E4E8F0;background:#fff">
+      <summary style="color:var(--navy)">What types of remodeling projects does CS Services handle? <i class="ti ti-chevron-down"></i></summary>
+      <p style="color:#5A6478">CS Services handles kitchens, bathrooms, and whole home renovations, built around your lifestyle.</p>
+    </details>
+    <details class="faq-item" style="border-color:#E4E8F0;background:#fff">
+      <summary style="color:var(--navy)">How is a remodeling project managed? <i class="ti ti-chevron-down"></i></summary>
+      <p style="color:#5A6478">Every remodeling project follows the Siman Method™, with planning, documented progress, communication, a final walkthrough, and a completion report.</p>
+    </details>
+    <details class="faq-item" style="border-color:#E4E8F0;background:#fff">
+      <summary style="color:var(--navy)">Will I receive an estimate before work begins? <i class="ti ti-chevron-down"></i></summary>
+      <p style="color:#5A6478">Yes. Every remodeling project includes a transparent, itemized estimate before work begins.</p>
+    </details>
   </div>
 </section>
 
