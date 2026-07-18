@@ -415,6 +415,7 @@ a{color:inherit}
         <p>Tell us about your property and maintenance needs. We respond fast, most requests get a reply within one business day.</p>
       </div>
       <form class="lead-form" id="leadForm">
+        <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true"><label for="hp_website">Leave this field empty</label><input type="text" id="hp_website" name="website" tabindex="-1" autocomplete="off"></div>
         <div><label class="lf-label">Name</label><input class="lf-input" type="text" name="name" placeholder="Your name" required></div>
         <div><label class="lf-label">Email</label><input class="lf-input" type="email" name="email" placeholder="you@email.com" required></div>
         <div><label class="lf-label">Phone</label><input class="lf-input" type="tel" name="phone" placeholder="(954) 000-0000"></div>
@@ -456,21 +457,12 @@ a{color:inherit}
   </div>
   <div class="footer-bottom">
     <div>© 2026 CS Services Corp · South Florida Property Services</div>
-    <div>Open today · 09:00 AM – 05:00 PM</div>
+    <div>Business Hours: 09:00 AM – 05:00 PM</div>
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>emailjs.init("0UbAC3h4lfmDB7YpU");</script>
-<script>
-document.getElementById('leadForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  alert('Thank you! Your request has been received. We will be in touch within one business day.');
-  this.reset();
-});
-</script>
-
-
 <script>
 // ---- Lead form: EmailJS + Google Sheets ----
 (function(){
@@ -478,6 +470,7 @@ document.getElementById('leadForm').addEventListener('submit', function(e){
   if (!form) return;
   form.addEventListener('submit', function(e) {
     e.preventDefault();
+    if (form.querySelector('[name="website"]')?.value) { return; }
     const btn = form.querySelector('.lf-submit');
     btn.disabled = true;
     btn.textContent = 'Sending...';
@@ -497,6 +490,7 @@ document.getElementById('leadForm').addEventListener('submit', function(e){
       body: JSON.stringify(Object.assign({}, data, {source: 'property-maintenance.html'}))
     }).catch(() => {});
     emailPromise.then(function() {
+      if (typeof gtag === 'function') { gtag('event', 'form_submit_success'); }
       btn.textContent = 'Message Sent ✓';
       btn.style.background = '#16a34a';
       form.reset();
@@ -523,6 +517,39 @@ document.getElementById('leadForm').addEventListener('submit', function(e){
   overlay.querySelectorAll('.mnav-link, .mnav-cta').forEach(link => link.addEventListener('click', closeMenu));
   overlay.addEventListener('click', (e) => { if (e.target === overlay) closeMenu(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('open')) closeMenu(); });
+})();
+</script>
+<script>
+// ---- Privacy-safe analytics events (no personal data sent) ----
+(function(){
+  function track(name) {
+    if (typeof gtag === 'function') { gtag('event', name); }
+  }
+  var isCareers = window.location.pathname.indexOf('careers') !== -1;
+  if (isCareers) track('careers_page_view');
+
+  document.addEventListener('click', function(e){
+    if (e.target.closest('a[href^="tel:"]')) { track('phone_click'); return; }
+    if (e.target.closest('a[href^="mailto:"]')) { track('email_click'); return; }
+    if (e.target.closest('a[href*="wa.me"]')) { track('whatsapp_click'); return; }
+    if (e.target.closest('a[href="#lead-form"], a[href="index.html#lead-form"]')) { track('consultation_cta_click'); return; }
+    if (e.target.closest('#pfEarlyBtn')) { track('propertyflow_interest_click'); return; }
+  });
+
+  document.querySelectorAll('#leadForm').forEach(function(form){
+    var started = false;
+    form.addEventListener('focusin', function(){
+      if (started) return;
+      started = true;
+      track(isCareers ? 'careers_application_start' : 'form_start');
+    });
+  });
+
+  document.querySelectorAll('.tn-burger').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      track(window.innerWidth <= 640 ? 'mobile_menu_open' : 'desktop_menu_open');
+    });
+  });
 })();
 </script>
 </body>
