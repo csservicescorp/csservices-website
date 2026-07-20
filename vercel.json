@@ -2,7 +2,9 @@
   "redirects": [
     { "source": "/home", "destination": "/", "statusCode": 301 },
     { "source": "/index.html", "destination": "/", "statusCode": 301 },
+    { "source": "/index.html/", "destination": "/", "statusCode": 301 },
     { "source": "/index", "destination": "/", "statusCode": 301 },
+    { "source": "/index/", "destination": "/", "statusCode": 301 },
 
     { "source": "/through-clients-eyes", "destination": "/testimonials.html", "statusCode": 301 },
     { "source": "/through-clients'-eyes", "destination": "/testimonials.html", "statusCode": 301 },
