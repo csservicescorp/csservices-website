@@ -300,12 +300,19 @@ a{color:inherit}
 
 </style>
 <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D7FQXH0TTJ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-D7FQXH0TTJ');
+  function loadGtagScript(){
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-D7FQXH0TTJ';
+    document.head.appendChild(s);
+  }
+  if ('requestIdleCallback' in window) requestIdleCallback(loadGtagScript, {timeout: 3000});
+  else window.addEventListener('load', loadGtagScript);
 </script>
 <script type="application/ld+json">
 {
@@ -394,6 +401,7 @@ a{color:inherit}
 <!-- ===== HERO ===== -->
 <section class="hero">
   <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="images/hero-drone-poster.jpg">
+    <source src="videos/hero-drone-mobile.mp4" type="video/mp4" media="(max-width: 640px)">
     <source src="videos/hero-drone-v2.mp4" type="video/mp4">
   </video>
   <script>
@@ -699,9 +707,9 @@ a{color:inherit}
   <div class="ba-wrap reveal">
     <div class="ba-project active">
       <div class="ba-slider ba-slider-inst">
-        <div class="ba-layer ba-before" style="background:url('images/ba-kitchen-before.jpg') center/cover no-repeat;color:transparent;border:none"></div>
+        <div class="ba-layer ba-before"><img src="images/ba-kitchen-before.jpg" alt="Kitchen remodel, before" width="864" height="1536" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover"></div>
         <div class="ba-after-clip">
-          <div class="ba-layer ba-after" style="width:100%;background:url('images/ba-kitchen-after.jpg') center/cover no-repeat;color:transparent;border:none"></div>
+          <div class="ba-layer ba-after"><img src="images/ba-kitchen-after.jpg" alt="Kitchen remodel, after" width="876" height="1536" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover"></div>
         </div>
         <div class="ba-handle-inst"></div>
         <div class="ba-tag left">Before</div>
@@ -711,9 +719,9 @@ a{color:inherit}
     </div>
     <div class="ba-project">
       <div class="ba-slider ba-slider-inst">
-        <div class="ba-layer ba-before" style="background:url('images/ba-graffiti-before.jpg') center/cover no-repeat;color:transparent;border:none"></div>
+        <div class="ba-layer ba-before"><img src="images/ba-graffiti-before.jpg" alt="Graffiti removal, before" width="1200" height="900" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover"></div>
         <div class="ba-after-clip">
-          <div class="ba-layer ba-after" style="width:100%;background:url('images/ba-graffiti-after.jpg') center/cover no-repeat;color:transparent;border:none"></div>
+          <div class="ba-layer ba-after"><img src="images/ba-graffiti-after.jpg" alt="Graffiti removal, after" width="1200" height="900" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover"></div>
         </div>
         <div class="ba-handle-inst"></div>
         <div class="ba-tag left">Before</div>
@@ -723,9 +731,9 @@ a{color:inherit}
     </div>
     <div class="ba-project">
       <div class="ba-slider ba-slider-inst">
-        <div class="ba-layer ba-before" style="background:url('images/ba-kitchen2-before.jpg') center/cover no-repeat;color:transparent;border:none"></div>
+        <div class="ba-layer ba-before"><img src="images/ba-kitchen2-before.jpg" alt="Full kitchen renovation, before" width="1200" height="2133" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover"></div>
         <div class="ba-after-clip">
-          <div class="ba-layer ba-after" style="width:100%;background:url('images/ba-kitchen2-after.jpg') center/cover no-repeat;color:transparent;border:none"></div>
+          <div class="ba-layer ba-after"><img src="images/ba-kitchen2-after.jpg" alt="Full kitchen renovation, after" width="1200" height="2133" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover"></div>
         </div>
         <div class="ba-handle-inst"></div>
         <div class="ba-tag left">Before</div>
@@ -938,6 +946,7 @@ a{color:inherit}
 
 // ---- Before/After sliders (multi-project) ----
 function initSlider(slider) {
+  slider.dataset.init = '1';
   const clip = slider.querySelector('.ba-after-clip');
   const handle = slider.querySelector('.ba-handle-inst');
   // add handle styles dynamically
@@ -996,9 +1005,13 @@ function switchProject(idx) {
     nav.appendChild(dot);
   }
 
+  let cardW = 0;
+  function measureCardW() { cardW = cards[0].offsetWidth + 20; }
+  requestAnimationFrame(() => requestAnimationFrame(measureCardW));
+  window.addEventListener('resize', measureCardW);
+
   function goTo(idx) {
     current = idx;
-    const cardW = cards[0].offsetWidth + 20;
     track.style.transform = `translateX(-${current * perView * cardW}px)`;
     nav.querySelectorAll('.reviews-dot').forEach((d,i) => d.classList.toggle('active', i === current));
   }
