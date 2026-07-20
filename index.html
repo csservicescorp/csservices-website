@@ -10,6 +10,7 @@
 <meta property="og:title" content="CS Services Corp | South Florida Remodeling &amp; HOA Maintenance">
 <meta property="og:description" content="Remodeling, maintenance, and property care for Delray Beach and South Florida's finest homes and HOAs, guided by the Siman Method™ for documented service.">
 <meta property="og:url" content="https://csservicesfl.com/">
+<meta property="og:image" content="https://csservicesfl.com/images/services/hoa-building.jpg">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS Services Corp | South Florida Remodeling &amp; HOA Maintenance">
 <meta name="twitter:description" content="Remodeling, maintenance, and property care for Delray Beach and South Florida's finest homes and HOAs, guided by the Siman Method™ for documented service.">
@@ -58,6 +59,8 @@ a{color:inherit}
 }
 .mnav-link{display:block;padding:18px 8px;color:#fff;text-decoration:none;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border)}
 .mnav-cta{display:block;text-align:center;margin-top:24px;padding:16px;background:var(--blue);color:#fff;text-decoration:none;border-radius:8px;font-size:13px;font-weight:700;letter-spacing:.5px}
+.mnav-group-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;padding:14px 8px 2px;font-weight:700}
+.mnav-sub{padding:12px 8px 12px 20px;font-size:12.5px;font-weight:500;text-transform:none;letter-spacing:.2px;color:var(--text2)}
 .tnl{padding:9px 16px;border-radius:6px;font-size:12.5px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .2s;text-decoration:none;letter-spacing:.2px}
 .tnl.active{color:var(--blue)}
 .tn-cta{background:transparent;color:var(--blue);padding:9px 20px;border-radius:6px;font-size:12.5px;font-weight:600;cursor:pointer;border:1px solid rgba(15,94,255,.4);font-family:'Inter',sans-serif;text-decoration:none;transition:all .2s;letter-spacing:.3px}
@@ -131,6 +134,14 @@ a{color:inherit}
 .pf-feature h5{font-size:12px;font-weight:700;color:#fff;margin-bottom:4px;letter-spacing:.3px}
 .pf-feature p{font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.5}
 .pf-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;background:rgba(255,255,255,.03);color:#fff;border:1px solid rgba(255,255,255,.16);border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.3px;transition:all .2s}
+.pf-section-compact{padding:36px 48px}
+.pf-wrap-compact{max-width:900px;display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;text-align:left}
+.pf-compact-text{font-size:13px;color:rgba(255,255,255,.6);line-height:1.5}
+.pf-compact-text i{color:var(--blue);margin-right:4px}
+.pf-compact-text strong{color:#fff;font-weight:700}
+.pf-early-form-compact{margin:0;flex:0 0 auto}
+.pf-early-form-compact .pf-early-row input{min-width:180px;padding:10px 14px;font-size:12.5px}
+.pf-early-form-compact .pf-cta{padding:10px 20px;font-size:12px}
 .ba-stack{display:flex;flex-direction:column;gap:48px}
 .ba-projects{display:flex;justify-content:center;gap:12px;margin-bottom:32px;flex-wrap:wrap}
 .ba-proj-btn{padding:8px 20px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text2);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .2s}
@@ -297,6 +308,11 @@ a{color:inherit}
   .hstat-label{font-size:9.5px}
   .svc-columns{grid-template-columns:1fr;gap:28px}
   .pf-features{grid-template-columns:1fr}
+  .pf-section-compact{padding:28px 20px}
+  .pf-wrap-compact{flex-direction:column;text-align:center;gap:16px}
+  .pf-early-form-compact{width:100%}
+  .pf-early-form-compact .pf-early-row{flex-direction:column}
+  .pf-early-form-compact .pf-early-row input,.pf-early-form-compact .pf-cta{width:100%;justify-content:center}
 
 }
 
@@ -369,14 +385,14 @@ a{color:inherit}
   <div class="tnlinks">
     <a href="index.html" class="tnl active">Home</a>
     <a href="hoa-maintenance.html" class="tnl">HOA Maintenance</a>
-    <a href="testimonials.html" class="tnl">Through Clients' Eyes</a>
+    <a href="testimonials.html" class="tnl">Reviews</a>
     <a href="siman-method.html" class="tnl">The Siman Method™</a>
   </div>
   <div class="tn-actions">
 
     <button class="tn-burger" id="tnBurger" aria-label="Open menu"><i class="ti ti-menu-2"></i></button>
 
-    <a href="#lead-form" class="tn-cta">Schedule a Private Consultation</a>
+    <a href="#lead-form" class="tn-cta">Schedule Service</a>
 
   </div>
 </nav>
@@ -385,14 +401,21 @@ a{color:inherit}
   <div class="mnav-panel">
     <button class="mnav-close" id="mnavClose" aria-label="Close menu"><i class="ti ti-x"></i></button>
     <a href="index.html" class="mnav-link">Home</a>
-    <a href="hoa-maintenance.html" class="mnav-link">HOA Maintenance</a>
-    <a href="hoa-maintenance-delray-beach.html" class="mnav-link">HOA Maintenance in Delray Beach</a>
-    <a href="property-maintenance.html" class="mnav-link">Property Maintenance</a>
-    <a href="custom-remodeling.html" class="mnav-link">Custom Remodeling</a>
-    <a href="testimonials.html" class="mnav-link">Through Clients' Eyes</a>
+    <div class="mnav-group-label">Services</div>
+    <a href="hoa-maintenance.html" class="mnav-link mnav-sub">HOA Maintenance</a>
+    <a href="hoa-maintenance-delray-beach.html" class="mnav-link mnav-sub">HOA Maintenance in Delray Beach</a>
+    <a href="property-maintenance.html" class="mnav-link mnav-sub">Property Maintenance</a>
+    <a href="emergency-services.html" class="mnav-link mnav-sub">Emergency Services</a>
+    <a href="custom-remodeling.html" class="mnav-link mnav-sub">Custom Remodeling</a>
+    <a href="painting.html" class="mnav-link mnav-sub">Painting Services</a>
+    <a href="property-maintenance.html#drywall-repairs" class="mnav-link mnav-sub">Drywall &amp; Property Repairs</a>
+    <a href="property-maintenance.html#parking-lot" class="mnav-link mnav-sub">Parking Lot Services</a>
     <a href="siman-method.html" class="mnav-link">The Siman Method™</a>
+    <a href="index.html#projects" class="mnav-link">Projects</a>
+    <a href="testimonials.html" class="mnav-link">Reviews</a>
+    <a href="service-areas.html" class="mnav-link">Service Areas</a>
     <a href="careers.html" class="mnav-link">Careers</a>
-    <a href="#lead-form" class="mnav-cta">Schedule a Private Consultation</a>
+    <a href="#lead-form" class="mnav-cta">Schedule Service</a>
   </div>
 </div>
 
@@ -420,7 +443,7 @@ a{color:inherit}
     <p class="hero-sub hero-sub-full">CS Services serves HOAs, property managers, and homeowners throughout Delray Beach and South Florida, running every project through the Siman Method™, a documented system built on organized communication and visible progress from first call to final walkthrough.</p>
     <p class="hero-sub hero-sub-short">Maintenance, repairs, and remodeling for HOAs, property managers, and homeowners across South Florida.</p>
     <div class="hero-ctas">
-      <a href="#lead-form" class="btn-gold"><i class="ti ti-calendar"></i> Schedule a Private Consultation</a>
+      <a href="#lead-form" class="btn-gold"><i class="ti ti-calendar"></i> Schedule Service</a>
       <a href="siman-method.html" class="btn-ghost">See the Siman Method™<span class="hero-ghost-arrow"> →</span></a>
     </div>
 
@@ -478,28 +501,28 @@ a{color:inherit}
       <a href="#lead-form" class="svc-view-all">View All Services <i class="ti ti-arrow-right"></i></a>
     </div>
     <div class="svc-columns">
-      <a href="property-maintenance.html" class="svc-col reveal" aria-label="HOA &amp; Building Maintenance 24/7 – Learn More">
+      <a href="hoa-maintenance.html" class="svc-col reveal" aria-label="HOA &amp; Building Maintenance 24/7 – Learn More">
         <div class="svc-col-photo"><picture><source srcset="images/services/hoa-building.webp" type="image/webp"><img src="images/services/hoa-building.jpg" alt="HOA building maintenance" width="941" height="1672" loading="lazy" decoding="async"></picture></div>
         <h4>HOA &amp; Building Maintenance 24/7</h4>
         <p><span class="hl">24/7 maintenance support</span> for HOAs, condominiums, and managed properties. We coordinate requests, document progress, share updates, and <span class="hl">keep property managers informed from start to finish</span>.</p>
         <span class="svc-learn">Learn More <i class="ti ti-arrow-right"></i></span>
       </a>
-      <a href="property-maintenance.html" class="svc-col reveal" aria-label="Property Repairs &amp; Improvements – Learn More">
+      <a href="property-maintenance.html#drywall-repairs" class="svc-col reveal" aria-label="Property Repairs &amp; Improvements – Learn More">
         <div class="svc-col-photo"><picture><source srcset="images/services/property-improvements.webp" type="image/webp"><img src="images/services/property-improvements.jpg" alt="Property repairs and improvements" width="1400" height="1050" loading="lazy" decoding="async"></picture></div>
         <h4>Property Repairs &amp; Improvements</h4>
         <p>Reliable repairs for common areas, units, walkways, doors, lighting, drywall, stucco, gutters, and other property needs, handled with <span class="hl">organized communication and professional follow-through</span>.</p>
         <span class="svc-learn">Learn More <i class="ti ti-arrow-right"></i></span>
       </a>
-      <a href="custom-remodeling.html" class="svc-col reveal" aria-label="Exterior &amp; Interior Painting – Learn More">
+      <a href="painting.html" class="svc-col reveal" aria-label="Exterior &amp; Interior Painting – Learn More">
         <div class="svc-col-photo"><picture><source srcset="images/services/exterior-painting.webp" type="image/webp"><img src="images/services/exterior-painting.jpg" alt="Exterior and interior painting" width="1023" height="1537" loading="lazy" decoding="async"></picture></div>
         <h4>Exterior &amp; Interior Painting</h4>
         <p>Professional painting for homes, buildings, common areas, railings, walkways, and interiors using <span class="hl">quality materials, proper preparation, and clean execution</span>.</p>
         <span class="svc-learn">Learn More <i class="ti ti-arrow-right"></i></span>
       </a>
-      <a href="property-maintenance.html" class="svc-col reveal" aria-label="Parking Lot Painting – Learn More">
+      <a href="property-maintenance.html#parking-lot" class="svc-col reveal" aria-label="Parking Lot Painting – Learn More">
         <div class="svc-col-photo"><picture><source srcset="images/services/parking-lot.webp" type="image/webp"><img src="images/services/parking-lot.png" alt="Parking lot painting and striping" width="1320" height="2868" loading="lazy" decoding="async"></picture></div>
         <h4>Parking Lot Painting</h4>
-        <p>Precise line striping, ADA compliance markings, directional arrows, and <span class="hl">full lot repainting</span> for HOAs and commercial properties. Clean results that improve safety and curb appeal.</p>
+        <p>Precise line striping, space and directional markings, and <span class="hl">full lot repainting</span> for HOAs and commercial properties. Clean results that improve safety and curb appeal.</p>
         <span class="svc-learn">Learn More <i class="ti ti-arrow-right"></i></span>
       </a>
       <a href="custom-remodeling.html" class="svc-col reveal" aria-label="Cabinetry &amp; Finish Upgrades – Learn More">
@@ -540,14 +563,14 @@ a{color:inherit}
     </div>
     <div class="siman-row reverse">
       <div class="siman-step left reveal" id="step2">
-        <div class="siman-step-label">04</div>
-        <div class="ctrack-dot"></div>
-        <h4>Progress Updates</h4>
-      </div>
-      <div class="siman-step right reveal" id="step3">
         <div class="siman-step-label">03</div>
         <div class="ctrack-dot"></div>
         <h4>Execution</h4>
+      </div>
+      <div class="siman-step right reveal" id="step3">
+        <div class="siman-step-label">04</div>
+        <div class="ctrack-dot"></div>
+        <h4>Progress Updates</h4>
       </div>
     </div>
     <div class="siman-row">
@@ -599,13 +622,13 @@ a{color:inherit}
       <div class="trust-item"><i class="ti ti-certificate"></i> Licensed &amp; Insured</div>
       <div class="trust-item"><i class="ti ti-shield"></i> Workers' Compensation Covered</div>
       <div class="trust-item"><i class="ti ti-star"></i> Verified Google Reviews</div>
-      <div class="trust-item"><i class="ti ti-building"></i> HOA-Approved Vendor</div>
+      <div class="trust-item"><i class="ti ti-building"></i> Trusted by HOA Boards Across South Florida</div>
       <div class="trust-item"><i class="ti ti-clock"></i> 24/7 Emergency Response</div>
-      <div class="trust-item"><i class="ti ti-certificate"></i> Licensed &amp; Insured</div>
-      <div class="trust-item"><i class="ti ti-shield"></i> Workers' Compensation Covered</div>
-      <div class="trust-item"><i class="ti ti-star"></i> Verified Google Reviews</div>
-      <div class="trust-item"><i class="ti ti-building"></i> HOA-Approved Vendor</div>
-      <div class="trust-item"><i class="ti ti-clock"></i> 24/7 Emergency Response</div>
+      <div class="trust-item" aria-hidden="true"><i class="ti ti-certificate"></i> Licensed &amp; Insured</div>
+      <div class="trust-item" aria-hidden="true"><i class="ti ti-shield"></i> Workers' Compensation Covered</div>
+      <div class="trust-item" aria-hidden="true"><i class="ti ti-star"></i> Verified Google Reviews</div>
+      <div class="trust-item" aria-hidden="true"><i class="ti ti-building"></i> Trusted by HOA Boards Across South Florida</div>
+      <div class="trust-item" aria-hidden="true"><i class="ti ti-clock"></i> 24/7 Emergency Response</div>
     </div>
   </div>
 
@@ -625,7 +648,7 @@ a{color:inherit}
         <p class="review-text">"Alvaro did an excellent job repairing my bathroom wall with dry wall. I am pleased with his work."</p>
         <div class="review-author">
           <div class="review-avatar">M</div>
-          <div><div class="review-name">Michael Santaniello</div><div class="review-meta">Google Review · 3 weeks ago</div></div>
+          <div><div class="review-name">Michael Santaniello</div><div class="review-meta">Google Review</div></div>
         </div>
       </div>
       <div class="review-card">
@@ -633,7 +656,7 @@ a{color:inherit}
         <p class="review-text">"CS Services was extremely professional and I am so grateful for their ability not only in the process of enlarging our A/C closet and adding a new door. They were neat and very organized. I highly recommend them."</p>
         <div class="review-author">
           <div class="review-avatar">V</div>
-          <div><div class="review-name">Vickie Garza</div><div class="review-meta">Google Review · Local Guide · 4 weeks ago</div></div>
+          <div><div class="review-name">Vickie Garza</div><div class="review-meta">Google Review · Local Guide</div></div>
         </div>
       </div>
       <div class="review-card">
@@ -641,7 +664,7 @@ a{color:inherit}
         <p class="review-text">"CS Team is very attentive, responsive and well priced! I have enjoyed every project thus far and hope to continue working with them on all future projects! I love how detail oriented they are!"</p>
         <div class="review-author">
           <div class="review-avatar">G</div>
-          <div><div class="review-name">Gabby Da Silva</div><div class="review-meta">Google Review · 6 weeks ago</div></div>
+          <div><div class="review-name">Gabby Da Silva</div><div class="review-meta">Google Review</div></div>
         </div>
       </div>
       <div class="review-card">
@@ -649,7 +672,7 @@ a{color:inherit}
         <p class="review-text">"The renovation of my hall bathroom went beautifully. The project was executed professionally and the end result is exactly what I had wanted. Abdala is a very talented guy! My strongest recommendation goes to this company!"</p>
         <div class="review-author">
           <div class="review-avatar">B</div>
-          <div><div class="review-name">Barbara Launer</div><div class="review-meta">Google Review · 9 weeks ago</div></div>
+          <div><div class="review-name">Barbara Launer</div><div class="review-meta">Google Review</div></div>
         </div>
       </div>
       <div class="review-card">
@@ -657,7 +680,7 @@ a{color:inherit}
         <p class="review-text">"CS Services is the most professional well managed company I have ever dealt with. They are always on time. Their workmanship is fantastic and their attention to detail is why we have had them do numerous projects at our condo association."</p>
         <div class="review-author">
           <div class="review-avatar">J</div>
-          <div><div class="review-name">Jack Kestenbaum</div><div class="review-meta">Google Review · 27 weeks ago</div></div>
+          <div><div class="review-name">Jack Kestenbaum</div><div class="review-meta">Google Review</div></div>
         </div>
       </div>
       <div class="review-card">
@@ -665,7 +688,7 @@ a{color:inherit}
         <p class="review-text">"Excellent work and service! I am so happy with their results! 5 stars. ⭐"</p>
         <div class="review-author">
           <div class="review-avatar">N</div>
-          <div><div class="review-name">Nicolle Goldfinger</div><div class="review-meta">Google Review · 27 weeks ago</div></div>
+          <div><div class="review-name">Nicolle Goldfinger</div><div class="review-meta">Google Review</div></div>
         </div>
       </div>
       <div class="review-card">
@@ -673,7 +696,7 @@ a{color:inherit}
         <p class="review-text">"The CS Services crew did a great job. My toilet leaked to the condo below us. They were able to come out quickly to access the problem. They cleaned up each day they were here. I definitely will use them for another project."</p>
         <div class="review-author">
           <div class="review-avatar">Y</div>
-          <div><div class="review-name">Yale</div><div class="review-meta">Google Review · 27 weeks ago</div></div>
+          <div><div class="review-name">Yale</div><div class="review-meta">Google Review</div></div>
         </div>
       </div>
       <div class="review-card">
@@ -681,7 +704,7 @@ a{color:inherit}
         <p class="review-text">"Alvaro and his team are excellent at what they do. They arrive on time and always get the task done. They have great suggestions and are very respectful and careful with their work."</p>
         <div class="review-author">
           <div class="review-avatar">M</div>
-          <div><div class="review-name">Marni Frank</div><div class="review-meta">Google Review · 27 weeks ago</div></div>
+          <div><div class="review-name">Marni Frank</div><div class="review-meta">Google Review</div></div>
         </div>
       </div>
       <div class="review-card">
@@ -689,7 +712,7 @@ a{color:inherit}
         <p class="review-text">"I had an amazing experience with this company! They were professional, on time, and delivered exactly what I wanted, even better than I imagined. If you're looking for a reliable company you can trust, I definitely recommend them!"</p>
         <div class="review-author">
           <div class="review-avatar" style="background:#8B6F47">a</div>
-          <div><div class="review-name">Ana Paula Oliveira</div><div class="review-meta">Google Review · 28 weeks ago</div></div>
+          <div><div class="review-name">Ana Paula Oliveira</div><div class="review-meta">Google Review</div></div>
         </div>
       </div>
     </div>
@@ -705,7 +728,7 @@ a{color:inherit}
 </section>
 
 <!-- ===== BEFORE/AFTER HOLOGRAPHIC SLIDER ===== -->
-<section class="section map-section">
+<section class="section map-section" id="projects">
   <div class="eyebrow">Property Transformation</div>
   <div class="section-head reveal">
     <h2>Before & After</h2>
@@ -786,29 +809,19 @@ a{color:inherit}
   <div class="reveal" style="text-align:center;margin-top:40px;font-size:12px;color:var(--text3)">Interested in working with us? <a href="careers.html" style="color:var(--text2);text-decoration:underline">Join Our Team</a></div>
 </section>
 
-<!-- ===== PROPERTYFLOW SHOWCASE ===== -->
-<section class="section map-section pf-section">
-  <div class="pf-wrap reveal">
-    <div class="eyebrow">Powered By Technology</div>
-    <h2 class="pf-title">Meet PropertyFlow</h2>
-    <p class="pf-sub">The operating system behind everything we do, built from 400+ real units and now available as a platform for HOAs and property managers across South Florida.</p>
-    <div class="pf-features">
-      <div class="pf-feature"><i class="ti ti-clipboard-list"></i><div><h5>Work Orders</h5><p>Every request tracked from intake to closure.</p></div></div>
-      <div class="pf-feature"><i class="ti ti-checklist"></i><div><h5>Inspections</h5><p>Documented, photo-verified, organized.</p></div></div>
-      <div class="pf-feature"><i class="ti ti-users-group"></i><div><h5>Vendor Coordination</h5><p>One place for every contractor and crew.</p></div></div>
-      <div class="pf-feature"><i class="ti ti-folder"></i><div><h5>Full Documentation</h5><p>Photos, approvals, and history always visible.</p></div></div>
-    </div>
-    <form class="pf-early-form" id="pfEarlyForm" onsubmit="submitPfEarly(event)">
+<!-- ===== PROPERTYFLOW STRIP (supporting, not competing with the primary lead form) ===== -->
+<section class="section map-section pf-section pf-section-compact">
+  <div class="pf-wrap pf-wrap-compact reveal">
+    <div class="pf-compact-text"><i class="ti ti-bolt"></i> Powered by <strong>PropertyFlow</strong> &mdash; the system behind our documented operations.</div>
+    <form class="pf-early-form pf-early-form-compact" id="pfEarlyForm" onsubmit="submitPfEarly(event)">
       <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true"><label for="hp_website_pf">Leave this field empty</label><input type="text" id="hp_website_pf" name="website" tabindex="-1" autocomplete="off"></div>
       <div class="pf-early-row">
-        <input type="text" id="pfName" placeholder="Your name" autocomplete="name">
-        <input type="email" id="pfEmail" placeholder="Work email *" required autocomplete="email">
+        <input type="email" id="pfEmail" placeholder="Work email" required autocomplete="email" aria-label="Work email">
         <button type="submit" class="pf-cta" id="pfEarlyBtn">
           <span id="pfEarlyLabel">Get Early Access</span>
           <i class="ti ti-arrow-right" id="pfEarlyIcon"></i>
         </button>
       </div>
-      <p class="pf-early-note">No credit card. We'll reach out when PropertyFlow is ready.</p>
       <p class="pf-early-success" id="pfEarlySuccess" style="display:none">✓ You're on the list! We'll be in touch.</p>
     </form>
   </div>
@@ -819,7 +832,7 @@ a{color:inherit}
   <div class="lead-section">
     <div class="lead-box reveal">
       <div class="lead-head">
-        <h2>Schedule a Private Consultation</h2>
+        <h2>Schedule Service</h2>
         <p>We respond fast: most requests get a reply within one business day.</p>
       </div>
       <form class="lead-form" id="leadForm">
@@ -847,7 +860,7 @@ a{color:inherit}
       <h5>Company</h5>
       <a href="index.html">Home</a>
       <a href="hoa-maintenance.html">HOA Maintenance</a>
-      <a href="testimonials.html">Through Clients' Eyes</a>
+      <a href="testimonials.html">Reviews</a>
       <a href="siman-method.html">The Siman Method™</a>
       <a href="careers.html">Careers</a>
     </div>
@@ -1141,7 +1154,7 @@ async function submitPfEarly(e) {
   const label = document.getElementById('pfEarlyLabel');
   const icon = document.getElementById('pfEarlyIcon');
   const success = document.getElementById('pfEarlySuccess');
-  const name = document.getElementById('pfName').value.trim();
+  const name = (document.getElementById('pfName')?.value || '').trim();
   const email = document.getElementById('pfEmail').value.trim();
   if (!email) return;
 
