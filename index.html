@@ -140,7 +140,7 @@ a{color:inherit}
 /* ===== CONCIERGE TIMELINE ===== */
 .siman-steps{max-width:640px;margin:0 auto;position:relative}
 .siman-row{display:grid;grid-template-columns:1fr 1fr;gap:0;position:relative;z-index:1;margin-bottom:48px}
-.siman-step{text-align:center;padding:0 16px}
+.siman-step{text-align:center;padding:0 16px;min-width:0}
 .siman-step h4{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:300;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-bottom:6px}
 .siman-step-label{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--blue);opacity:.6;margin-bottom:8px;text-transform:uppercase}
 .ctrack-dot{width:12px;height:12px;border-radius:50%;background:var(--blue);margin:0 auto 14px;position:relative;z-index:2;box-shadow:0 0 0 5px rgba(8,20,38,1),0 0 0 6px rgba(15,94,255,.3);transition:box-shadow .3s ease}
@@ -252,8 +252,12 @@ a{color:inherit}
   .hstat:nth-child(even){border-right:none}
   .svc-columns{grid-template-columns:repeat(3,1fr);gap:20px}
 }
+@media(min-width:641px) and (max-width:767px){
+  .hero{flex-direction:column;align-items:stretch}
+  .hero-stats-bar{position:static;margin:24px 24px 0}
+}
 @media(max-width:640px){
-  .hero{min-height:100vh;align-items:flex-start}
+  .hero{min-height:100vh;flex-direction:column;align-items:stretch}
   .hero-video-overlay{background:linear-gradient(180deg,rgba(8,20,38,.82) 0%,rgba(8,20,38,.62) 45%,rgba(8,20,38,.93) 100%)}
   .topnav{padding:0 20px}
   .tnlinks{display:none}
@@ -263,7 +267,7 @@ a{color:inherit}
 
   .hero-inner{padding:90px 24px 0;max-width:100%}
   .hero-h1-tight{line-height:1.18;margin-bottom:8px}
-  .hero h1{display:block;font-family:'Montserrat',sans-serif;font-size:24px;font-weight:300;letter-spacing:2.5px;text-transform:uppercase;line-height:1.2;color:rgba(255,255,255,.92);text-shadow:0 2px 10px rgba(0,0,0,.7);margin-bottom:0}
+  .hero h1{display:block;font-family:'Montserrat',sans-serif;font-size:28px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;line-height:1.2;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.75);margin-bottom:0}
   .hero-badge{font-size:8.5px;padding:5px 12px;position:static;width:fit-content;margin:0 0 16px;border-color:rgba(255,255,255,.3);color:#fff}
   .hero-badge .dot{background:#fff;box-shadow:0 0 8px #fff}
   .hero-badge-full{display:none}
@@ -276,7 +280,7 @@ a{color:inherit}
   .hero-ctas .btn-gold{width:100%;justify-content:center;padding:15px 24px;font-size:13px}
   .hero-ctas .btn-ghost{width:auto;align-self:center;background:none;border:none;box-shadow:none;padding:4px 0;font-size:12px;font-weight:500;color:rgba(255,255,255,.7);text-decoration:underline;text-underline-offset:3px}
   .hero-ghost-arrow{display:inline}
-  .hstat{background:rgba(255,255,255,.08);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:11px 14px;border-right:none}
+  .hstat{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:76px;background:rgba(255,255,255,.08);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:11px 14px;border-right:none}
   .hstat-num{font-family:'Montserrat',sans-serif;font-size:19px}
   .hstat-unit{font-family:'Montserrat',sans-serif;font-size:11px}
   .hstat-label{font-size:8.5px;color:rgba(255,255,255,.9);margin-top:3px;letter-spacing:.2px;text-transform:none}
