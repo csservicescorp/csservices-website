@@ -85,9 +85,7 @@ a{color:inherit}
 .hero-sub-short{display:none}
 .hero-ghost-arrow{display:none}
 
-/* Hero: stats bar below the video */
-.hero-float-stats{display:none}
-
+/* Hero: single stats block, restyled per breakpoint below (no duplicate markup) */
 .hero-stats-bar{position:absolute;bottom:0;left:0;right:0;z-index:3;background:rgba(7,15,36,.85);backdrop-filter:blur(10px);border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr);padding:22px 48px}
 .hstat{text-align:center;border-right:1px solid var(--border)}
 .hstat:last-child{border-right:none}
@@ -126,22 +124,11 @@ a{color:inherit}
 .ba-caption{text-align:center;margin-top:28px;font-size:13px;color:var(--text2)}
 .pf-section{background:radial-gradient(ellipse at top,rgba(15,94,255,.08),transparent 60%)}
 .pf-wrap{max-width:740px;margin:0 auto;text-align:center}
-.pf-title{font-family:'Montserrat',sans-serif;font-size:clamp(22px,3.5vw,36px);font-weight:300;letter-spacing:3px;text-transform:uppercase;color:#fff;margin:16px 0 14px}
-.pf-sub{font-size:13.5px;color:rgba(255,255,255,.55);line-height:1.7;margin:0 auto 36px;max-width:560px}
-.pf-features{display:grid;grid-template-columns:1fr 1fr;gap:24px 28px;margin-bottom:36px;text-align:left}
-.pf-feature{display:flex;gap:12px;align-items:flex-start}
-.pf-feature i{font-size:18px;color:var(--blue);margin-top:2px;flex-shrink:0}
-.pf-feature h5{font-size:12px;font-weight:700;color:#fff;margin-bottom:4px;letter-spacing:.3px}
-.pf-feature p{font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.5}
-.pf-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;background:rgba(255,255,255,.03);color:#fff;border:1px solid rgba(255,255,255,.16);border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.3px;transition:all .2s}
 .pf-section-compact{padding:36px 48px}
 .pf-wrap-compact{max-width:900px;display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;text-align:left}
 .pf-compact-text{font-size:13px;color:rgba(255,255,255,.6);line-height:1.5}
 .pf-compact-text i{color:var(--blue);margin-right:4px}
 .pf-compact-text strong{color:#fff;font-weight:700}
-.pf-early-form-compact{margin:0;flex:0 0 auto}
-.pf-early-form-compact .pf-early-row input{min-width:180px;padding:10px 14px;font-size:12.5px}
-.pf-early-form-compact .pf-cta{padding:10px 20px;font-size:12px}
 .ba-stack{display:flex;flex-direction:column;gap:48px}
 .ba-projects{display:flex;justify-content:center;gap:12px;margin-bottom:32px;flex-wrap:wrap}
 .ba-proj-btn{padding:8px 20px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text2);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .2s}
@@ -184,7 +171,6 @@ a{color:inherit}
 .tn-cta:hover{background:rgba(15,94,255,.1);border-color:var(--blue)}
 .btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(15,94,255,.4)}
 .btn-ghost:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.3)}
-.pf-cta:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.3)}
 .ba-proj-btn:hover:not(.active){border-color:var(--blue);color:var(--blue)}
 .lf-submit:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(15,94,255,.3)}
 .footer-col a:hover{color:var(--blue)}
@@ -206,10 +192,8 @@ a{color:inherit}
 .team-bio{font-size:12.5px;color:var(--text2);line-height:1.7;max-width:280px;margin:0 auto}
 
 /* ===== TRUST WALL ===== */
-.trust-wall{max-width:1100px;margin:0 auto;overflow:hidden;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.02);padding:28px 0}
-.trust-track{display:flex;gap:48px;animation:scrollLeft 28s linear infinite;width:max-content}
-.trust-track:hover{animation-play-state:paused}
-@keyframes scrollLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.trust-wall{max-width:1100px;margin:0 auto;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.02);padding:28px 32px}
+.trust-track{display:flex;flex-wrap:wrap;justify-content:center;gap:20px 40px}
 .trust-item{display:flex;align-items:center;gap:10px;color:var(--text2);font-size:12.5px;font-weight:600;white-space:nowrap}
 .trust-item i{color:var(--blue);font-size:16px}
 
@@ -243,11 +227,10 @@ a{color:inherit}
 .reviews-nav{display:flex;justify-content:center;gap:8px;margin-top:32px}
 .reviews-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:all .2s}
 .reviews-dot.active{background:var(--blue);width:20px;border-radius:3px}
-.partners-wall{max-width:1100px;margin:0 auto;overflow:hidden;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.02);padding:28px 0}
-.partners-track{display:flex;gap:0;animation:scrollPartners 8s linear infinite}
-.partners-track:hover{animation-play-state:paused}
+.partners-wall{max-width:1100px;margin:0 auto;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.02);padding:28px 0}
+.partners-track{display:flex;flex-wrap:wrap;justify-content:center;gap:0}
 .partner-item{flex:0 0 auto;padding:0 52px;display:flex;align-items:center;justify-content:center;border-right:1px solid rgba(255,255,255,.06);opacity:.8;filter:grayscale(1) brightness(2)}
-@keyframes scrollPartners{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.partner-item:last-child{border-right:none}
 .footer{background:#081426;padding:64px 48px 28px;color:var(--text2);border-top:1px solid var(--border)}
 .footer-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
 .footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:18px}
@@ -288,43 +271,28 @@ a{color:inherit}
   .hero-sub{display:block;font-size:12px;line-height:1.5;text-shadow:0 1px 4px rgba(0,0,0,.8);margin-bottom:22px}
   .hero-sub-full{display:none}
   .hero-sub-short{display:block}
-  .hero-stats-bar{display:none}
+  .hero-stats-bar{position:static;background:none;border-top:none;backdrop-filter:none;box-shadow:none;grid-template-columns:1fr 1fr;gap:10px;margin:0 24px 24px;padding:0}
   .hero-ctas{display:flex;flex-direction:column;gap:10px;width:100%;justify-content:flex-start;margin-bottom:36px}
   .hero-ctas .btn-gold{width:100%;justify-content:center;padding:15px 24px;font-size:13px}
   .hero-ctas .btn-ghost{width:auto;align-self:center;background:none;border:none;box-shadow:none;padding:4px 0;font-size:12px;font-weight:500;color:rgba(255,255,255,.7);text-decoration:underline;text-underline-offset:3px}
   .hero-ghost-arrow{display:inline}
-  .hero-float-stats{position:static;margin:0 0 24px;display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:none;z-index:4}
-  .hfs-card{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;background:rgba(255,255,255,.08);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:11px 14px;box-shadow:0 4px 24px rgba(0,0,0,.15)}
-  .hfs-card.hfs-show{opacity:1;transform:translateY(0)}
-  .hfs-num{font-family:'Montserrat',sans-serif;font-size:19px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;line-height:1}
-  .hfs-unit{font-family:'Montserrat',sans-serif;font-size:11px;color:var(--blue-light);font-weight:700}
-  .hfs-label{font-size:8.5px;color:rgba(255,255,255,.9);margin-top:3px;letter-spacing:.2px}
+  .hstat{background:rgba(255,255,255,.08);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:11px 14px;border-right:none}
+  .hstat-num{font-family:'Montserrat',sans-serif;font-size:19px}
+  .hstat-unit{font-family:'Montserrat',sans-serif;font-size:11px}
+  .hstat-label{font-size:8.5px;color:rgba(255,255,255,.9);margin-top:3px;letter-spacing:.2px;text-transform:none}
 
   .lead-form{grid-template-columns:1fr}
   .lead-box{padding:40px 26px}
   .review-card{flex:0 0 calc(85% - 10px)}
   .footer-inner{grid-template-columns:1fr}
-  .hstat-num{font-size:20px}
-  .hstat-label{font-size:9.5px}
   .svc-columns{grid-template-columns:1fr;gap:28px}
-  .pf-features{grid-template-columns:1fr}
   .pf-section-compact{padding:28px 20px}
   .pf-wrap-compact{flex-direction:column;text-align:center;gap:16px}
-  .pf-early-form-compact{width:100%}
-  .pf-early-form-compact .pf-early-row{flex-direction:column}
-  .pf-early-form-compact .pf-early-row input,.pf-early-form-compact .pf-cta{width:100%;justify-content:center}
 
 }
 
 
 
-.pf-early-form{margin-top:0}
-.pf-early-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.pf-early-row input{flex:1;min-width:160px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:12px 16px;font-family:'Inter',sans-serif;font-size:13px;color:#fff;outline:none;transition:border .2s}
-.pf-early-row input::placeholder{color:rgba(255,255,255,.35)}
-.pf-early-row input:focus{border-color:rgba(76,201,255,.5);background:rgba(255,255,255,.12)}
-.pf-early-note{font-size:11px;color:rgba(255,255,255,.3);margin-top:10px}
-.pf-early-success{font-size:14px;color:#4ade80;font-weight:600;margin-top:12px}
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D7FQXH0TTJ"></script>
@@ -447,21 +415,14 @@ a{color:inherit}
       <a href="siman-method.html" class="btn-ghost">See the Siman Method™<span class="hero-ghost-arrow"> →</span></a>
     </div>
 
-    <div class="hero-float-stats">
-      <div class="hfs-card hfs-1"><div class="hfs-num"><span class="count-target" data-target="6">6</span><span class="hfs-unit">+</span></div><div class="hfs-label">Years of Excellence</div></div>
-      <div class="hfs-card hfs-2"><div class="hfs-num"><span class="count-target" data-target="450">450</span><span class="hfs-unit">+</span></div><div class="hfs-label">Projects Completed</div></div>
-      <div class="hfs-card hfs-3"><div class="hfs-num"><span class="count-target" data-target="100">100</span><span class="hfs-unit">%</span></div><div class="hfs-label">Client Satisfaction</div></div>
-      <div class="hfs-card hfs-4"><div class="hfs-num">24<span class="hfs-unit">/7</span></div><div class="hfs-label">Availability</div></div>
-    </div>
   </div>
 
   <div class="hero-stats-bar reveal">
-    <div class="hstat"><div class="hstat-num"><span class="count-target" data-target="6">6</span><span class="hstat-unit">+</span></div><div class="hstat-label">Years of Excellence</div></div>
-    <div class="hstat"><div class="hstat-num"><span class="count-target" data-target="450">450</span><span class="hstat-unit">+</span></div><div class="hstat-label">Projects Completed</div></div>
-    <div class="hstat"><div class="hstat-num"><span class="count-target" data-target="100">100</span><span class="hstat-unit">%</span></div><div class="hstat-label">Client Satisfaction</div></div>
+    <div class="hstat"><div class="hstat-num"><span class="count-target" data-target="5">5</span><span class="hstat-unit">+</span></div><div class="hstat-label">Years of Excellence</div></div>
+    <div class="hstat"><div class="hstat-num"><span class="count-target" data-target="400">400</span><span class="hstat-unit">+</span></div><div class="hstat-label">Properties Served</div></div>
+    <div class="hstat"><div class="hstat-num"><span class="count-target" data-target="100">100</span><span class="hstat-unit">%</span></div><div class="hstat-label">5-Star Google Reviews</div></div>
     <div class="hstat"><div class="hstat-num">24<span class="hstat-unit">/7</span></div><div class="hstat-label">Availability</div></div>
   </div>
-
 
 </section>
 
@@ -602,9 +563,6 @@ a{color:inherit}
         <div class="partner-item"><img src="images/logo-sherwin.png" alt="Sherwin-Williams" width="106" height="60" loading="lazy" decoding="async" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
         <div class="partner-item"><img src="images/logo-homedepot.png" alt="The Home Depot" width="80" height="80" loading="lazy" decoding="async" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
         <div class="partner-item"><img src="images/logo-lowes.png" alt="Lowe's" width="152" height="80" loading="lazy" decoding="async" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
-        <div class="partner-item"><img src="images/logo-sherwin.png" alt="Sherwin-Williams" width="106" height="60" loading="lazy" decoding="async" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
-        <div class="partner-item"><img src="images/logo-homedepot.png" alt="The Home Depot" width="80" height="80" loading="lazy" decoding="async" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
-        <div class="partner-item"><img src="images/logo-lowes.png" alt="Lowe's" width="152" height="80" loading="lazy" decoding="async" style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.6"></div>
       </div>
     </div>
   </div>
@@ -624,11 +582,6 @@ a{color:inherit}
       <div class="trust-item"><i class="ti ti-star"></i> Verified Google Reviews</div>
       <div class="trust-item"><i class="ti ti-building"></i> Trusted by HOA Boards Across South Florida</div>
       <div class="trust-item"><i class="ti ti-clock"></i> 24/7 Emergency Response</div>
-      <div class="trust-item" aria-hidden="true"><i class="ti ti-certificate"></i> Licensed &amp; Insured</div>
-      <div class="trust-item" aria-hidden="true"><i class="ti ti-shield"></i> Workers' Compensation Covered</div>
-      <div class="trust-item" aria-hidden="true"><i class="ti ti-star"></i> Verified Google Reviews</div>
-      <div class="trust-item" aria-hidden="true"><i class="ti ti-building"></i> Trusted by HOA Boards Across South Florida</div>
-      <div class="trust-item" aria-hidden="true"><i class="ti ti-clock"></i> 24/7 Emergency Response</div>
     </div>
   </div>
 
@@ -813,17 +766,6 @@ a{color:inherit}
 <section class="section map-section pf-section pf-section-compact">
   <div class="pf-wrap pf-wrap-compact reveal">
     <div class="pf-compact-text"><i class="ti ti-bolt"></i> Powered by <strong>PropertyFlow</strong> &mdash; the system behind our documented operations.</div>
-    <form class="pf-early-form pf-early-form-compact" id="pfEarlyForm" onsubmit="submitPfEarly(event)">
-      <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true"><label for="hp_website_pf">Leave this field empty</label><input type="text" id="hp_website_pf" name="website" tabindex="-1" autocomplete="off"></div>
-      <div class="pf-early-row">
-        <input type="email" id="pfEmail" placeholder="Work email" required autocomplete="email" aria-label="Work email">
-        <button type="submit" class="pf-cta" id="pfEarlyBtn">
-          <span id="pfEarlyLabel">Get Early Access</span>
-          <i class="ti ti-arrow-right" id="pfEarlyIcon"></i>
-        </button>
-      </div>
-      <p class="pf-early-success" id="pfEarlySuccess" style="display:none">✓ You're on the list! We'll be in touch.</p>
-    </form>
   </div>
 </section>
 
@@ -900,31 +842,6 @@ a{color:inherit}
   overlay.querySelectorAll('.mnav-link, .mnav-cta').forEach(link => link.addEventListener('click', closeMenu));
   overlay.addEventListener('click', (e) => { if (e.target === overlay) closeMenu(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('open')) closeMenu(); });
-})();
-
-// ---- Hero floating stat cards (mobile): appear one by one, ~1s apart ----
-(function(){
-  const cards = document.querySelectorAll('.hfs-card');
-  if (!cards.length) return;
-  cards.forEach((card, i) => {
-    setTimeout(() => {
-      card.classList.add('hfs-show');
-      // trigger count-up for counters inside this card
-      card.querySelectorAll('.count-target').forEach(el => {
-        const target = parseFloat(el.dataset.target);
-        const duration = 900;
-        const startTime = performance.now();
-        function tick(now) {
-          const progress = Math.min((now - startTime) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 2.4);
-          el.textContent = Math.round(target * eased);
-          if (progress < 1) requestAnimationFrame(tick);
-          else el.textContent = target;
-        }
-        requestAnimationFrame(tick);
-      });
-    }, 600 + i * 300);
-  });
 })();
 
 // ---- Scroll-reveal: fade + rise animation for elements with .reveal ----
@@ -1147,56 +1064,6 @@ function switchProject(idx) {
 </script>
 
 <script>
-async function submitPfEarly(e) {
-  e.preventDefault();
-  if (document.getElementById('hp_website_pf')?.value) { return; }
-  const btn = document.getElementById('pfEarlyBtn');
-  const label = document.getElementById('pfEarlyLabel');
-  const icon = document.getElementById('pfEarlyIcon');
-  const success = document.getElementById('pfEarlySuccess');
-  const name = (document.getElementById('pfName')?.value || '').trim();
-  const email = document.getElementById('pfEmail').value.trim();
-  if (!email) return;
-
-  btn.disabled = true;
-  label.textContent = 'Sending...';
-  icon.style.display = 'none';
-
-  // Google Sheets (fire-and-forget, same pattern used by every other form on this site)
-  fetch('https://script.google.com/macros/s/AKfycbyUeCVIqlc7CG6uSFsvm2cEG15Eo5YqVVRjk2ZJSf7TmD_bWjJCeZ_-p1uSYWIJIItV/exec', {
-    method: 'POST',
-    body: JSON.stringify({
-      name: name || '',
-      email: email,
-      phone: '',
-      address: '',
-      message: 'PropertyFlow Early Access Request',
-      source: 'PropertyFlow Early Access'
-    })
-  }).catch(() => {});
-
-  // EmailJS notification is the success gate, same pattern used by every other form on this site
-  try {
-    await emailjs.send('service_0bphc1j', 'template_t6r44vb', {
-      from_name: name || 'Early Access',
-      from_email: email,
-      to_email: 'info@csservicecorp.com',
-      phone: '',
-      address: '',
-      message: 'PropertyFlow Early Access Request',
-      source: 'PropertyFlow Early Access',
-      reply_to: email
-    });
-    document.getElementById('pfEarlyForm').querySelectorAll('input,button').forEach(el => el.style.display = 'none');
-    success.style.display = 'block';
-  } catch(err) {
-    btn.disabled = false;
-    label.textContent = 'Get Early Access';
-    icon.style.display = '';
-  }
-}
-</script>
-<script>
 // ---- Privacy-safe analytics events (no personal data sent) ----
 (function(){
   function track(name) {
@@ -1210,7 +1077,6 @@ async function submitPfEarly(e) {
     if (e.target.closest('a[href^="mailto:"]')) { track('email_click'); return; }
     if (e.target.closest('a[href*="wa.me"]')) { track('whatsapp_click'); return; }
     if (e.target.closest('a[href="#lead-form"], a[href="index.html#lead-form"]')) { track('consultation_cta_click'); return; }
-    if (e.target.closest('#pfEarlyBtn')) { track('propertyflow_interest_click'); return; }
   });
 
   document.querySelectorAll('#leadForm').forEach(function(form){
