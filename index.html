@@ -14,6 +14,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS Services Corp | South Florida Remodeling &amp; HOA Maintenance">
 <meta name="twitter:description" content="Remodeling, maintenance, and property care for Delray Beach and South Florida's finest homes and HOAs, guided by the Siman Method™ for documented service.">
+<meta name="twitter:image" content="https://csservicesfl.com/images/services/hoa-building.jpg">
 <link rel="icon" type="image/png" href="images/logo-cs-services.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -239,7 +240,7 @@ a{color:inherit}
 .footer-col h5{font-size:11.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1px;margin-bottom:18px}
 .footer-col a{display:block;font-size:12.5px;color:var(--text2);text-decoration:none;margin-bottom:11px;transition:color .2s}
 .footer-desc{font-size:12.5px;line-height:1.75;max-width:320px;color:var(--text2)}
-.footer-bottom{max-width:1180px;margin:0 auto;border-top:1px solid var(--border);padding-top:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:11px;color:var(--text3)}
+.footer-bottom{max-width:1180px;margin:0 auto;border-top:1px solid var(--border);padding-top:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:11px;color:rgba(255,255,255,.5)}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:980px){
@@ -362,7 +363,7 @@ a{color:inherit}
   </div>
   <div class="tn-actions">
 
-    <button class="tn-burger" id="tnBurger" aria-label="Open menu"><i class="ti ti-menu-2"></i></button>
+    <button class="tn-burger" id="tnBurger" aria-label="Open menu" aria-expanded="false" aria-controls="mnavOverlay"><i class="ti ti-menu-2"></i></button>
 
     <a href="#lead-form" class="tn-cta">Schedule Service</a>
 
@@ -393,7 +394,7 @@ a{color:inherit}
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="images/logo-cs-services.png">
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="images/hero-drone-poster.jpg" fetchpriority="high">
     <source src="videos/hero-drone-v2.mp4" type="video/mp4">
   </video>
   <script>
@@ -783,11 +784,11 @@ a{color:inherit}
       </div>
       <form class="lead-form" id="leadForm">
         <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true"><label for="hp_website">Leave this field empty</label><input type="text" id="hp_website" name="website" tabindex="-1" autocomplete="off"></div>
-        <div><label class="lf-label">Name</label><input class="lf-input" type="text" name="name" placeholder="Your name" required></div>
-        <div><label class="lf-label">Email</label><input class="lf-input" type="email" name="email" placeholder="you@email.com" required></div>
-        <div><label class="lf-label">Phone</label><input class="lf-input" type="tel" name="phone" placeholder="(954) 000-0000"></div>
-        <div><label class="lf-label">Property Address</label><input class="lf-input" type="text" name="address" placeholder="Street, City, Zip"></div>
-        <div class="full"><label class="lf-label">What do you need help with?</label><textarea class="lf-textarea" name="message" placeholder="Tell us about your project..." required></textarea></div>
+        <div><label class="lf-label" for="lf-name">Name</label><input class="lf-input" type="text" name="name" id="lf-name" placeholder="Your name" required></div>
+        <div><label class="lf-label" for="lf-email">Email</label><input class="lf-input" type="email" name="email" id="lf-email" placeholder="you@email.com" required></div>
+        <div><label class="lf-label" for="lf-phone">Phone</label><input class="lf-input" type="tel" name="phone" id="lf-phone" placeholder="(954) 000-0000"></div>
+        <div><label class="lf-label" for="lf-address">Property Address</label><input class="lf-input" type="text" name="address" id="lf-address" placeholder="Street, City, Zip"></div>
+        <div class="full"><label class="lf-label" for="lf-message">What do you need help with?</label><textarea class="lf-textarea" name="message" id="lf-message" placeholder="Tell us about your project..." required></textarea></div>
         <button class="lf-submit" type="submit">Send Request</button>
         <div class="lf-note">By submitting, you agree to be contacted about your request.</div>
       </form>
@@ -839,8 +840,8 @@ a{color:inherit}
   const overlay = document.getElementById('mnavOverlay');
   const close = document.getElementById('mnavClose');
   if (!burger || !overlay) return;
-  function openMenu() { overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function closeMenu() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+  function openMenu() { overlay.classList.add('open'); document.body.style.overflow = 'hidden'; burger.setAttribute('aria-expanded','true'); }
+  function closeMenu() { overlay.classList.remove('open'); document.body.style.overflow = ''; burger.setAttribute('aria-expanded','false'); }
   burger.addEventListener('click', openMenu);
   close.addEventListener('click', closeMenu);
   overlay.querySelectorAll('.mnav-link, .mnav-cta').forEach(link => link.addEventListener('click', closeMenu));
