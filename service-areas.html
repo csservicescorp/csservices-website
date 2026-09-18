@@ -373,9 +373,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (e.target.closest('a[href^="tel:"]')) { track('phone_click'); return; }
     if (e.target.closest('a[href^="mailto:"]')) { track('email_click'); return; }
     if (e.target.closest('a[href*="wa.me"]')) { track('whatsapp_click'); return; }
-    if (e.target.closest('a[href="index.html#lead-form"]')) { track('consultation_cta_click'); return; }
     var schedLink = e.target.closest('a');
     if (schedLink && schedLink.textContent.trim() === 'Schedule Service') { track('schedule_click'); return; }
+    if (e.target.closest('a[href="index.html#lead-form"]')) { track('consultation_cta_click'); return; }
   });
   document.querySelectorAll('.tn-burger').forEach(function(btn){
     btn.addEventListener('click', function(){
