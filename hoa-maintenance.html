@@ -931,7 +931,7 @@ function switchProject(idx) {
     emailPromise.then(function() {
       if (typeof gtag === 'function') { gtag('event', 'form_submit_success'); }
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'generate_lead' });
+      window.dataLayer.push({ event: 'gtm_generate_lead' });
       btn.textContent = 'Message Sent ✓';
       btn.style.background = '#16a34a';
       form.reset();
@@ -951,7 +951,7 @@ function switchProject(idx) {
   function track(name) {
     if (typeof gtag === 'function') { gtag('event', name); }
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: name });
+    window.dataLayer.push({ event: 'gtm_' + name });
   }
   var isCareers = window.location.pathname.indexOf('careers') !== -1;
   if (isCareers) track('careers_page_view');

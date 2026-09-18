@@ -367,7 +367,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   function track(name) {
     if (typeof gtag === 'function') { gtag('event', name); }
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: name });
+    window.dataLayer.push({ event: 'gtm_' + name });
   }
   document.addEventListener('click', function(e){
     if (e.target.closest('a[href^="tel:"]')) { track('phone_click'); return; }
