@@ -22,6 +22,11 @@
     { "source": "/the-siman-method%E2%84%A2", "destination": "/siman-method.html", "statusCode": 301 },
 
     { "source": "/emergency-services.html", "destination": "/property-maintenance.html", "statusCode": 301 },
-    { "source": "/emergency-services", "destination": "/property-maintenance.html", "statusCode": 301 }
+    { "source": "/emergency-services", "destination": "/property-maintenance.html", "statusCode": 301 },
+
+    { "source": "/contact.html", "destination": "/#lead-form", "statusCode": 301 }
+  ],
+  "rewrites": [
+    { "source": "/thank-you", "destination": "/thank-you.html" }
   ]
 }

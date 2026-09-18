@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WJD9DQS5');</script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Property Maintenance in South Florida | CS Services Corp</title>
@@ -252,6 +259,10 @@ a{color:inherit}
 </script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJD9DQS5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <nav class="topnav">
   <a href="index.html" class="tnlogo">
@@ -549,6 +560,8 @@ a{color:inherit}
     }).catch(() => {});
     emailPromise.then(function() {
       if (typeof gtag === 'function') { gtag('event', 'form_submit_success'); }
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'generate_lead' });
       btn.textContent = 'Message Sent ✓';
       btn.style.background = '#16a34a';
       form.reset();
@@ -582,6 +595,8 @@ a{color:inherit}
 (function(){
   function track(name) {
     if (typeof gtag === 'function') { gtag('event', name); }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: name });
   }
   var isCareers = window.location.pathname.indexOf('careers') !== -1;
   if (isCareers) track('careers_page_view');
@@ -592,6 +607,8 @@ a{color:inherit}
     if (e.target.closest('a[href*="wa.me"]')) { track('whatsapp_click'); return; }
     if (e.target.closest('a[href="#lead-form"], a[href="index.html#lead-form"]')) { track('consultation_cta_click'); return; }
     if (e.target.closest('#pfEarlyBtn')) { track('propertyflow_interest_click'); return; }
+    var schedLink = e.target.closest('a');
+    if (schedLink && schedLink.textContent.trim() === 'Schedule Service') { track('schedule_click'); return; }
   });
 
   document.querySelectorAll('#leadForm').forEach(function(form){
