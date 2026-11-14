@@ -29,6 +29,7 @@
   "rewrites": [
     { "source": "/thank-you", "destination": "/thank-you.html" },
     { "source": "/pressure-cleaning", "destination": "/pressure-cleaning.html" },
-    { "source": "/vinyl-flooring", "destination": "/vinyl-flooring.html" }
+    { "source": "/vinyl-flooring", "destination": "/vinyl-flooring.html" },
+    { "source": "/parking-lot-striping", "destination": "/parking-lot-striping.html" }
   ]
 }

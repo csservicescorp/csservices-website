@@ -10,7 +10,7 @@
     hoa_maintenance: 'HOA maintenance', remodeling: 'Remodeling', property_maintenance: 'Property maintenance', other: 'Other' };
   var PAGES = [['pressure', 'Pressure Cleaning Page'], ['vinyl', 'Vinyl Flooring Page'], ['hoa', 'HOA Page'], ['siman', 'Siman Method Page'],
     ['painting', 'Painting Page'], ['remodeling', 'Remodeling Page'], ['property-maintenance', 'Property Maintenance Page'],
-    ['testimonials', 'Reviews Page'], ['services', 'Services Page']];
+    ['testimonials', 'Reviews Page'], ['services', 'Services Page'], ['parking', 'Parking Lot Page']];
 
   function sheetSource(path) {
     for (var i = 0; i < PAGES.length; i++) if (String(path || '').indexOf(PAGES[i][0]) !== -1) return PAGES[i][1];

@@ -32,7 +32,8 @@ const FORM_PAGES = {
   'painting.html': 'painting', 'custom-remodeling.html': 'remodeling', 'property-maintenance.html': 'property_maintenance',
   'hoa-maintenance.html': 'hoa_maintenance', 'hoa-maintenance-delray-beach.html': 'hoa_maintenance',
   'hoa-maintenance-boca-raton.html': 'hoa_maintenance', 'hoa-maintenance-boynton-beach.html': 'hoa_maintenance',
-  'hoa-maintenance-pompano-beach.html': 'hoa_maintenance', 'hoa-maintenance-fort-lauderdale.html': 'hoa_maintenance'
+  'hoa-maintenance-pompano-beach.html': 'hoa_maintenance', 'hoa-maintenance-fort-lauderdale.html': 'hoa_maintenance',
+  'parking-lot-striping.html': 'property_maintenance'
 };
 for (const [file, service] of Object.entries(FORM_PAGES)) {
   test(file + ' quote form feeds the Agency OS leads inbox', () => {
@@ -72,4 +73,37 @@ test('unit count is the official 1,200+ on every page', () => {
     assert.ok(!/\b400\+/.test(read(f)), f + ' still says 400+');
   }
   assert.match(read('service-areas.html'), /1,200\+ units served/);
+});
+
+const visibleAll = html => html.replace(/<script(?![^>]*ld\+json)[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '').replace(/<!--[\s\S]*?-->/g, '');
+const pages = () => fs.readdirSync(new URL('..', import.meta.url)).filter(f => f.endsWith('.html')).concat(['link/index.html']);
+
+test('no em or en dashes anywhere a visitor or Google reads', () => {
+  for (const f of pages()) {
+    const hit = visibleAll(read(f)).match(/.{0,30}[–—].{0,30}/);
+    assert.equal(hit, null, f + ': ' + (hit && hit[0]));
+  }
+});
+
+test('pressure cleaning and vinyl flooring use the standard service page layout', () => {
+  for (const f of ['pressure-cleaning.html', 'vinyl-flooring.html']) {
+    const html = read(f);
+    assert.ok(!/pv-|service-premium/.test(html), f + ' still has premium-only markup');
+    assert.match(html, /<section class="svc-hero">/);
+    assert.match(html, /<div class="gal-grid">/);
+    assert.match(html, /Mon to Fri, 9 AM to 5 PM/);
+  }
+});
+
+test('parking lot page is a complete service page with before, during and after photos', () => {
+  const html = read('parking-lot-striping.html');
+  assert.match(html, /<section class="svc-hero">/);
+  assert.match(html, new RegExp('<link rel="canonical" href="https://csservicesfl.com/parking-lot-striping">'));
+  for (const p of ['before', 'during', 'after']) for (const n of [1, 2, 3]) assert.ok(html.includes('images/services/parking-' + p + '-' + n + '.jpg'), p + n);
+  assert.match(html, /<input type="hidden" name="service" value="property_maintenance">/);
+  assert.match(html, /src="\/lead-capture\.js"/);
+  assert.match(html, /"@type": "FAQPage"/);
+  assert.ok(read('sitemap.xml').includes('https://csservicesfl.com/parking-lot-striping<'));
+  assert.ok(JSON.parse(read('vercel.json')).rewrites.some(r => r.source === '/parking-lot-striping' && r.destination === '/parking-lot-striping.html'));
+  for (const f of pages()) if (read(f).includes('mnav-panel')) assert.ok(read(f).includes('href="parking-lot-striping"'), f);
 });
