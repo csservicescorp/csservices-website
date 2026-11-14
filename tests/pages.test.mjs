@@ -26,3 +26,43 @@ for (const [file, slug, service] of [['pressure-cleaning.html', 'pressure-cleani
     assert.ok(JSON.parse(read('vercel.json')).rewrites.some(r => r.source === '/' + slug && r.destination === '/' + file));
   });
 }
+
+const FORM_PAGES = {
+  'index.html': null, 'services.html': null, 'siman-method.html': null, 'testimonials.html': null,
+  'painting.html': 'painting', 'custom-remodeling.html': 'remodeling', 'property-maintenance.html': 'property_maintenance',
+  'hoa-maintenance.html': 'hoa_maintenance', 'hoa-maintenance-delray-beach.html': 'hoa_maintenance',
+  'hoa-maintenance-boca-raton.html': 'hoa_maintenance', 'hoa-maintenance-boynton-beach.html': 'hoa_maintenance',
+  'hoa-maintenance-pompano-beach.html': 'hoa_maintenance', 'hoa-maintenance-fort-lauderdale.html': 'hoa_maintenance'
+};
+for (const [file, service] of Object.entries(FORM_PAGES)) {
+  test(file + ' quote form feeds the Agency OS leads inbox', () => {
+    const html = read(file);
+    assert.match(html, /src="\/lead-capture\.js"/);
+    assert.ok(!html.includes('emailjs.send('), 'old inline handler removed');
+    assert.match(html, /name="heard_about"/);
+    if (service) assert.match(html, new RegExp('<input type="hidden" name="service" value="' + service + '">'));
+    else for (const s of ['painting', 'hoa_maintenance', 'remodeling', 'property_maintenance', 'pressure_cleaning', 'vinyl_flooring'])
+      assert.match(html, new RegExp('<option value="' + s + '"'));
+    assert.match(html, /emailjs\.init\("0UbAC3h4lfmDB7YpU"\)/);
+  });
+}
+
+test('careers keeps its own application handler', () => {
+  const html = read('careers.html');
+  assert.ok(!html.includes('/lead-capture.js'));
+  assert.ok(html.includes("emailjs.send('service_0bphc1j', 'template_z0409cp'"));
+});
+
+test('every page with the mobile menu links the new service pages', () => {
+  for (const f of fs.readdirSync(new URL('..', import.meta.url)).filter(f => f.endsWith('.html'))) {
+    const html = read(f);
+    if (!html.includes('mnav-panel')) continue;
+    assert.ok(html.includes('href="pressure-cleaning"') && html.includes('href="vinyl-flooring"'), f);
+  }
+});
+
+test('services page lists pressure cleaning and vinyl flooring', () => {
+  const html = read('services.html');
+  assert.match(html, /href="\/pressure-cleaning"/);
+  assert.match(html, /href="\/vinyl-flooring"/);
+});

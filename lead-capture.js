@@ -6,7 +6,16 @@
   var SHEET = 'https://script.google.com/macros/s/AKfycbyUeCVIqlc7CG6uSFsvm2cEG15Eo5YqVVRjk2ZJSf7TmD_bWjJCeZ_-p1uSYWIJIItV/exec';
   var KEY = 'cs_attr';
   var FIELDS = ['utm_source', 'utm_medium', 'utm_campaign', 'gclid', 'fbclid'];
-  var SERVICE_NAMES = { pressure_cleaning: 'Pressure cleaning', vinyl_flooring: 'Vinyl flooring', other: 'Other' };
+  var SERVICE_NAMES = { pressure_cleaning: 'Pressure cleaning', vinyl_flooring: 'Vinyl flooring', painting: 'Painting',
+    hoa_maintenance: 'HOA maintenance', remodeling: 'Remodeling', property_maintenance: 'Property maintenance', other: 'Other' };
+  var PAGES = [['pressure', 'Pressure Cleaning Page'], ['vinyl', 'Vinyl Flooring Page'], ['hoa', 'HOA Page'], ['siman', 'Siman Method Page'],
+    ['painting', 'Painting Page'], ['remodeling', 'Remodeling Page'], ['property-maintenance', 'Property Maintenance Page'],
+    ['testimonials', 'Reviews Page'], ['services', 'Services Page']];
+
+  function sheetSource(path) {
+    for (var i = 0; i < PAGES.length; i++) if (String(path || '').indexOf(PAGES[i][0]) !== -1) return PAGES[i][1];
+    return 'Homepage';
+  }
 
   function captureAttribution(location, referrer, storage) {
     try {
@@ -64,9 +73,7 @@
   }
 
   function sendSheet(payload) {
-    var path = payload.page || '';
-    var source = path.indexOf('pressure') !== -1 ? 'Pressure Cleaning Page' : path.indexOf('vinyl') !== -1 ? 'Vinyl Flooring Page'
-      : path.indexOf('hoa') !== -1 ? 'HOA Page' : path.indexOf('siman') !== -1 ? 'Siman Method Page' : 'Homepage';
+    var source = sheetSource(payload.page);
     return window.fetch(SHEET, { method: 'POST', body: JSON.stringify({ name: payload.name, email: payload.email, phone: payload.phone,
       address: payload.address, message: payload.message, source: source, service: payload.service, heard_about: payload.heard_about }) });
   }
@@ -104,7 +111,7 @@
     });
   }
 
-  window.CSLead = { captureAttribution: captureAttribution, buildPayload: buildPayload, submit: submit, bindForm: bindForm };
+  window.CSLead = { sheetSource: sheetSource, captureAttribution: captureAttribution, buildPayload: buildPayload, submit: submit, bindForm: bindForm };
   if (window.document && window.document.readyState) {
     var start = function () { bindForm(window.document.getElementById('leadForm')); };
     if (window.document.readyState === 'loading') window.document.addEventListener('DOMContentLoaded', start); else start();

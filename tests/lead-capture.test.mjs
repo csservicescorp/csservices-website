@@ -54,3 +54,12 @@ test('submit resolves false when both fail', async () => {
   const L = load();
   assert.equal(await L.submit({}, { sendEmail: fail, sendSheet: ok, sendAgency: never, timeoutMs: 50 }), false);
 });
+
+test('sheetSource names every page with a quote form', () => {
+  const L = load();
+  const cases = { '/painting.html': 'Painting Page', '/painting': 'Painting Page', '/custom-remodeling.html': 'Remodeling Page',
+    '/property-maintenance.html': 'Property Maintenance Page', '/hoa-maintenance-boca-raton.html': 'HOA Page',
+    '/siman-method.html': 'Siman Method Page', '/testimonials.html': 'Reviews Page', '/services.html': 'Services Page',
+    '/pressure-cleaning': 'Pressure Cleaning Page', '/vinyl-flooring': 'Vinyl Flooring Page', '/': 'Homepage' };
+  for (const [p, want] of Object.entries(cases)) assert.equal(L.sheetSource(p), want, p);
+});
