@@ -66,3 +66,10 @@ test('services page lists pressure cleaning and vinyl flooring', () => {
   assert.match(html, /href="\/pressure-cleaning"/);
   assert.match(html, /href="\/vinyl-flooring"/);
 });
+
+test('unit count is the official 1,200+ on every page', () => {
+  for (const f of fs.readdirSync(new URL('..', import.meta.url)).filter(f => f.endsWith('.html'))) {
+    assert.ok(!/\b400\+/.test(read(f)), f + ' still says 400+');
+  }
+  assert.match(read('service-areas.html'), /1,200\+ units served/);
+});
