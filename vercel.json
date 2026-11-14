@@ -27,6 +27,8 @@
     { "source": "/contact.html", "destination": "/#lead-form", "statusCode": 301 }
   ],
   "rewrites": [
-    { "source": "/thank-you", "destination": "/thank-you.html" }
+    { "source": "/thank-you", "destination": "/thank-you.html" },
+    { "source": "/pressure-cleaning", "destination": "/pressure-cleaning.html" },
+    { "source": "/vinyl-flooring", "destination": "/vinyl-flooring.html" }
   ]
 }
