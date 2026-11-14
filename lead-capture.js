@@ -7,7 +7,8 @@
   var KEY = 'cs_attr';
   var FIELDS = ['utm_source', 'utm_medium', 'utm_campaign', 'gclid', 'fbclid'];
   var SERVICE_NAMES = { pressure_cleaning: 'Pressure cleaning', vinyl_flooring: 'Vinyl flooring', painting: 'Painting',
-    hoa_maintenance: 'HOA maintenance', remodeling: 'Remodeling', property_maintenance: 'Property maintenance', other: 'Other' };
+    hoa_maintenance: 'HOA maintenance', remodeling: 'Remodeling', property_maintenance: 'Property maintenance',
+    parking_lot: 'Parking lot sealcoating and striping', other: 'Other' };
   var PAGES = [['pressure', 'Pressure Cleaning Page'], ['vinyl', 'Vinyl Flooring Page'], ['hoa', 'HOA Page'], ['siman', 'Siman Method Page'],
     ['painting', 'Painting Page'], ['remodeling', 'Remodeling Page'], ['property-maintenance', 'Property Maintenance Page'],
     ['testimonials', 'Reviews Page'], ['services', 'Services Page'], ['parking', 'Parking Lot Page']];

@@ -33,7 +33,7 @@ const FORM_PAGES = {
   'hoa-maintenance.html': 'hoa_maintenance', 'hoa-maintenance-delray-beach.html': 'hoa_maintenance',
   'hoa-maintenance-boca-raton.html': 'hoa_maintenance', 'hoa-maintenance-boynton-beach.html': 'hoa_maintenance',
   'hoa-maintenance-pompano-beach.html': 'hoa_maintenance', 'hoa-maintenance-fort-lauderdale.html': 'hoa_maintenance',
-  'parking-lot-striping.html': 'property_maintenance'
+  'parking-lot-striping.html': 'parking_lot'
 };
 for (const [file, service] of Object.entries(FORM_PAGES)) {
   test(file + ' quote form feeds the Agency OS leads inbox', () => {
@@ -100,7 +100,9 @@ test('parking lot page is a complete service page with before, during and after 
   assert.match(html, /<section class="svc-hero">/);
   assert.match(html, new RegExp('<link rel="canonical" href="https://csservicesfl.com/parking-lot-striping">'));
   for (const p of ['before', 'during', 'after']) for (const n of [1, 2, 3]) assert.ok(html.includes('images/services/parking-' + p + '-' + n + '.jpg'), p + n);
-  assert.match(html, /<input type="hidden" name="service" value="property_maintenance">/);
+  assert.match(html, /<input type="hidden" name="service" value="parking_lot">/);
+  assert.match(html, /<video[^>]*src="images\/services\/parking-striping\.mp4"[^>]*muted[^>]*playsinline/);
+  assert.match(html, /poster="images\/services\/parking-striping-poster\.jpg"/);
   assert.match(html, /src="\/lead-capture\.js"/);
   assert.match(html, /"@type": "FAQPage"/);
   assert.ok(read('sitemap.xml').includes('https://csservicesfl.com/parking-lot-striping<'));
