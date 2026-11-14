@@ -46,6 +46,17 @@
 .pv-tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 18px 16px;font-size:12.5px;color:#fff;background:linear-gradient(180deg,transparent,rgba(5,11,30,.85));transform:translateY(6px);opacity:.92;transition:all .5s}
 .pv-tile:hover figcaption{transform:none;opacity:1}
 
+/* Styles row (vinyl) */
+.pv-styles-sec{padding-bottom:40px}
+.pv-styles{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pv-style{position:relative;margin:0;border-radius:18px;overflow:hidden;aspect-ratio:4/5;background:#0B1F3F}
+.pv-style img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.pv-style:hover img{transform:scale(1.06)}
+.pv-style figcaption{position:absolute;left:0;right:0;bottom:0;padding:60px 22px 22px;background:linear-gradient(180deg,transparent,rgba(5,11,30,.88));display:flex;flex-direction:column;gap:4px}
+.pv-style strong{font-family:'Montserrat',sans-serif;font-weight:500;letter-spacing:2px;text-transform:uppercase;font-size:15px}
+.pv-style span{font-size:12.5px;color:rgba(255,255,255,.7)}
+@media(max-width:900px){.pv-styles{grid-template-columns:1fr}.pv-style{aspect-ratio:16/10}}
+
 /* Before / after slider (real result) */
 .pv-ba{position:relative;max-width:1000px;margin:0 auto;aspect-ratio:4/3;border-radius:22px;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.7);--pos:50%;user-select:none;touch-action:pan-y}
 .pv-ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
