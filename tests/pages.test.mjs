@@ -101,8 +101,7 @@ test('parking lot page is a complete service page with before, during and after 
   assert.match(html, new RegExp('<link rel="canonical" href="https://csservicesfl.com/parking-lot-striping">'));
   for (const p of ['before', 'during', 'after']) for (const n of [1, 2, 3]) assert.ok(html.includes('images/services/parking-' + p + '-' + n + '.jpg'), p + n);
   assert.match(html, /<input type="hidden" name="service" value="parking_lot">/);
-  assert.match(html, /<video[^>]*src="images\/services\/parking-striping\.mp4"[^>]*muted[^>]*playsinline/);
-  assert.match(html, /poster="images\/services\/parking-striping-poster\.jpg"/);
+  assert.ok(!html.includes("<video"), "no video on the parking page");
   assert.match(html, /src="\/lead-capture\.js"/);
   assert.match(html, /"@type": "FAQPage"/);
   assert.ok(read('sitemap.xml').includes('https://csservicesfl.com/parking-lot-striping<'));
