@@ -846,6 +846,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div><label class="lf-label" for="lf-email">Email</label><input class="lf-input" type="email" name="email" id="lf-email" placeholder="you@email.com" required></div>
         <div><label class="lf-label" for="lf-phone">Phone</label><input class="lf-input" type="tel" name="phone" id="lf-phone" placeholder="(954) 000-0000"></div>
         <div><label class="lf-label" for="lf-address">Property Address</label><input class="lf-input" type="text" name="address" id="lf-address" placeholder="Street, City, Zip"></div>
+        <div><label class="lf-label" for="lf-service">Service</label><select class="lf-input" name="service" id="lf-service"><option value="other">Remodeling, maintenance or other</option><option value="pressure_cleaning">Pressure cleaning</option><option value="vinyl_flooring">Vinyl flooring installation</option></select></div>
+        <div><label class="lf-label" for="lf-heard">How did you hear about us?</label><select class="lf-input" name="heard_about" id="lf-heard"><option value="">Choose one</option><option value="google_search">Google search</option><option value="google_maps">Google Maps</option><option value="facebook">Facebook</option><option value="instagram">Instagram</option><option value="nextdoor">Nextdoor</option><option value="referral">Referral</option><option value="hoa_pm">HOA / property manager</option><option value="sign">Truck or yard sign</option><option value="other">Other</option></select></div>
         <div class="full"><label class="lf-label" for="lf-message">What do you need help with?</label><textarea class="lf-textarea" name="message" id="lf-message" placeholder="Tell us about your project..." required></textarea></div>
         <button class="lf-submit" type="submit">Send Request</button>
         <div class="lf-note">By submitting, you agree to be contacted about your request.</div>
@@ -895,6 +897,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>emailjs.init("0UbAC3h4lfmDB7YpU");</script>
+<script src="/lead-capture.js" defer></script>
 <script>
 // ---- Mobile hamburger menu ----
 (function(){
@@ -1083,58 +1086,7 @@ function switchProject(idx) {
   }, {passive:true});
 })();
 
-// ---- Lead form — EmailJS + Google Sheets ----
-(function(){
-  const form = document.getElementById('leadForm');
-  if (!form) return;
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    if (form.querySelector('[name="website"]')?.value) { return; }
-    const btn = form.querySelector('.lf-submit');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-
-    const data = Object.fromEntries(new FormData(form));
-
-    // Send to EmailJS
-    const emailPromise = emailjs.send('service_0bphc1j', 'template_t6r44vb', {
-      from_name: data.name || '',
-      from_email: data.email || '',
-      phone: data.phone || '',
-      address: data.address || '',
-      message: data.message || '',
-      to_email: 'info@csservicecorp.com'
-    });
-
-    // Send to Google Sheets
-    fetch('https://script.google.com/macros/s/AKfycbyUeCVIqlc7CG6uSFsvm2cEG15Eo5YqVVRjk2ZJSf7TmD_bWjJCeZ_-p1uSYWIJIItV/exec', {
-      method: 'POST',
-      body: JSON.stringify({
-        name: data.name || '',
-        email: data.email || '',
-        phone: data.phone || '',
-        address: data.address || '',
-        message: data.message || '',
-        source: window.location.pathname.includes('hoa') ? 'HOA Page' : window.location.pathname.includes('siman') ? 'Siman Method Page' : 'Homepage'
-      })
-    }).catch(() => {});
-
-    emailPromise.then(function() {
-      if (typeof gtag === 'function') { gtag('event', 'form_submit_success'); }
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'gtm_generate_lead' });
-      btn.textContent = 'Message Sent ✓';
-      btn.style.background = '#16a34a';
-      form.reset();
-      setTimeout(() => { btn.textContent = 'Send Request'; btn.style.background = ''; btn.disabled = false; }, 4000);
-    }).catch(function(err) {
-      console.error('EmailJS error:', err);
-      btn.textContent = 'Send Request';
-      btn.disabled = false;
-      alert('Something went wrong sending your message. Please call us at 954-263-1159 or email info@csservicecorp.com directly.');
-    });
-  });
-})();
+// Lead form: handled by /lead-capture.js (EmailJS + Google Sheet + Agency OS leads).
 </script>
 
 <script>
