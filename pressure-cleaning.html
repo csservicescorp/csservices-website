@@ -91,6 +91,25 @@ a{color:inherit}
 .gal-item:hover img{transform:scale(1.05)}
 .gal-item.tall{grid-row:span 2;aspect-ratio:auto}
 
+/* ===== BEFORE / AFTER SLIDER ===== */
+.ba-wrap{max-width:980px;margin:0 auto}
+.ba{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:#E4E8F0;box-shadow:0 18px 50px rgba(11,16,36,.12);user-select:none;touch-action:pan-y}
+.ba-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba-before{clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.ba-label{position:absolute;top:16px;background:rgba(11,16,36,.75);color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:7px 12px;border-radius:8px;pointer-events:none}
+.ba-l{left:16px}.ba-r{right:16px}
+.ba-line{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 12px rgba(0,0,0,.35);pointer-events:none}
+.ba-knob{position:absolute;top:50%;left:50%;width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;background:#fff;color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 16px rgba(0,0,0,.25)}
+.ba-tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:18px}
+.ba-tab{background:#fff;border:2px solid transparent;border-radius:999px;padding:10px 18px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:var(--navy);cursor:pointer}
+.ba-tab[aria-pressed="true"]{border-color:var(--blue);color:var(--blue)}
+.ba-kind{position:absolute;left:16px;bottom:16px;background:rgba(255,255,255,.9);color:var(--navy);font-size:11.5px;font-weight:600;padding:6px 10px;border-radius:8px;pointer-events:none}
+.ba-note{font-size:12.5px;color:#7A8396;margin-top:12px;text-align:center}
+.ba .ba-img{transition:opacity .18s ease}.ba.ba-fade .ba-img{opacity:.15}
+@media(max-width:700px){.ba{aspect-ratio:4/3}.ba-tab{padding:8px 12px;font-size:12px}}
+.ba-range{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba-range:focus-visible + .ba-line,.ba:focus-within .ba-knob{outline:3px solid var(--blue)}
+
 /* ===== DETAILS ===== */
 .svc-details{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .svc-details-eyebrow{font-size:11px;letter-spacing:2.5px;color:var(--blue);text-transform:uppercase;font-weight:700;margin-bottom:16px}
@@ -347,11 +366,83 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<section class="section section-light" id="before-after">
+  <div class="gal-head">
+    <div class="gal-eyebrow">Before and After</div>
+    <h2>See the Difference</h2>
+    <p>Drag the handle to compare dirty and clean. Pick a surface below.</p>
+  </div>
+  <div class="ba-wrap">
+    <div class="ba-tabs" role="group" aria-label="Choose a surface" id="baTabs">
+      <button type="button" class="ba-tab" aria-pressed="true" data-i="0">Graffiti Removal</button>
+      <button type="button" class="ba-tab" aria-pressed="false" data-i="1">Pool Deck</button>
+      <button type="button" class="ba-tab" aria-pressed="false" data-i="2">Stone Patio</button>
+      <button type="button" class="ba-tab" aria-pressed="false" data-i="3">Paver Entrance</button>
+    </div>
+    <div class="ba" id="baBox" style="--pos:50%">
+      <img class="ba-img" id="baAfter" src="images/ba/graffiti-after.webp" alt="Building wall after graffiti removal by CS Services" width="1200" height="900" loading="lazy" decoding="async">
+      <img class="ba-img ba-before" id="baBefore" src="images/ba/graffiti-before.webp" alt="Same building wall covered in graffiti before cleaning" width="1200" height="900" loading="lazy" decoding="async">
+      <span class="ba-label ba-l">Before</span>
+      <span class="ba-label ba-r">After</span>
+      <span class="ba-kind" id="baKind">Real CS Services job</span>
+      <div class="ba-line" aria-hidden="true"><span class="ba-knob"><i class="ti ti-arrows-horizontal"></i></span></div>
+      <input class="ba-range" id="baRange" type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
+    </div>
+    <p class="ba-note" id="baNote">Graffiti removal completed by our crew. Same wall, before and after.</p>
+  </div>
+</section>
+
+<script>
+(function () {
+  var PAIRS = [
+    ['graffiti', 'Building wall', 'Real CS Services job', 'Graffiti removal completed by our crew. Same wall, before and after.'],
+    ['pool-deck', 'Travertine pool deck', 'Illustrative example', 'Illustrative example of mold and mildew removal on a travertine pool deck.'],
+    ['patio', 'Stone patio', 'Illustrative example', 'Illustrative example of algae and grime removal on a stone patio.'],
+    ['pavers', 'Paver entrance', 'Illustrative example', 'Illustrative example of mold and dirt removal on pavers and entrance steps.']
+  ];
+  var box = document.getElementById('baBox'), r = document.getElementById('baRange');
+  var aft = document.getElementById('baAfter'), bef = document.getElementById('baBefore');
+  var kind = document.getElementById('baKind'), note = document.getElementById('baNote'), tabs = document.getElementById('baTabs');
+  if (!box || !r) return;
+  function set(v) { box.style.setProperty('--pos', v + '%'); }
+  r.addEventListener('input', function () { set(r.value); });
+  tabs.addEventListener('click', function (e) {
+    var b = e.target.closest('.ba-tab'); if (!b) return;
+    var p = PAIRS[+b.dataset.i];
+    Array.prototype.forEach.call(tabs.children, function (t) { t.setAttribute('aria-pressed', t === b ? 'true' : 'false'); });
+    box.classList.add('ba-fade');
+    setTimeout(function () {
+      aft.src = 'images/ba/' + p[0] + '-after.webp'; aft.alt = p[1] + ' after pressure cleaning';
+      bef.src = 'images/ba/' + p[0] + '-before.webp'; bef.alt = p[1] + ' before pressure cleaning';
+      kind.textContent = p[2]; note.textContent = p[3];
+      r.value = 50; set(50); box.classList.remove('ba-fade');
+    }, 180);
+  });
+  var played = false;
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es, o) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting || played) return;
+        played = true; o.disconnect();
+        var t0 = null;
+        function step(t) {
+          if (t0 === null) t0 = t;
+          var k = Math.min((t - t0) / 1400, 1), v = 50 + 35 * Math.sin(k * Math.PI * 2) * (1 - k);
+          r.value = v; set(v);
+          if (k < 1) requestAnimationFrame(step); else { r.value = 50; set(50); }
+        }
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.5 }).observe(box);
+  }
+})();
+</script>
+
 <section class="section section-light">
   <div class="gal-head">
     <div class="gal-eyebrow">Recent Work</div>
     <h2>Pressure Cleaning Across South Florida</h2>
-    <p>Driveways, pavers, pool decks, patios and building walls brought back to clean, plus a graffiti removal completed by our crew.</p>
+    <p>Driveways, pavers, pool decks, patios and building walls brought back to clean.</p>
   </div>
   <div class="gal-grid">
     <div class="gal-item tall"><picture><source srcset="images/services/pressure-driveway-surface.webp" type="image/webp"><img src="images/services/pressure-driveway-surface.jpg" alt="Technician pressure cleaning a concrete driveway with a surface cleaner" width="1672" height="941" loading="lazy" decoding="async"></picture></div>
@@ -359,8 +450,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="gal-item"><picture><source srcset="images/services/pressure-pool-deck.webp" type="image/webp"><img src="images/services/pressure-pool-deck.jpg" alt="Clean travertine pool deck at a waterfront home" width="1672" height="941" loading="lazy" decoding="async"></picture></div>
     <div class="gal-item"><picture><source srcset="images/services/pressure-patio.webp" type="image/webp"><img src="images/services/pressure-patio.jpg" alt="Clean stone patio with outdoor kitchen" width="1672" height="941" loading="lazy" decoding="async"></picture></div>
     <div class="gal-item"><picture><source srcset="images/services/pressure-entrance-pavers.webp" type="image/webp"><img src="images/services/pressure-entrance-pavers.jpg" alt="Clean paver driveway and entrance steps" width="1672" height="941" loading="lazy" decoding="async"></picture></div>
-    <div class="gal-item"><img src="images/ba-graffiti-before.jpg" alt="Graffiti on a building wall before cleaning by CS Services" width="1200" height="900" loading="lazy" decoding="async"></div>
-    <div class="gal-item"><img src="images/ba-graffiti-after.jpg" alt="Same building wall after graffiti removal by CS Services" width="1200" height="900" loading="lazy" decoding="async"></div>
   </div>
 </section>
 
