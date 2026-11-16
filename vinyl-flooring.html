@@ -91,6 +91,31 @@ a{color:inherit}
 .gal-item:hover img{transform:scale(1.05)}
 .gal-item.tall{grid-row:span 2;aspect-ratio:auto}
 
+/* ===== FLOOR VISUALIZER (Elite Series Coastal) ===== */
+.fl-wrap{max-width:1180px;margin:0 auto}
+.fl-stage{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:1672/941;background:#E4E8F0;box-shadow:0 18px 50px rgba(11,16,36,.12)}
+.fl-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease}
+.fl-img.is-on{opacity:1}
+.fl-tag{position:absolute;left:18px;bottom:18px;background:rgba(11,16,36,.78);color:#fff;border-radius:10px;padding:10px 16px;font-family:'Montserrat',sans-serif;font-size:15px;letter-spacing:1px;text-transform:uppercase;display:flex;flex-direction:column;gap:2px}
+.fl-tag small{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:1.5px;color:rgba(255,255,255,.6)}
+.fl-arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:none;background:rgba(255,255,255,.85);color:#0B1024;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.fl-prev{left:14px}.fl-next{right:14px}
+.fl-swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:22px}
+.fl-sw{background:#fff;border:2px solid transparent;border-radius:12px;padding:8px;cursor:pointer;display:flex;align-items:center;gap:10px;text-align:left;transition:border-color .2s,transform .2s;font-family:'Inter',sans-serif}
+.fl-sw:hover{transform:translateY(-2px)}
+.fl-sw[aria-pressed="true"]{border-color:var(--blue)}
+.fl-chip{width:34px;height:46px;border-radius:6px;background-size:cover;background-position:center;flex-shrink:0}
+.fl-sw-name{font-size:12.5px;font-weight:600;color:var(--navy);line-height:1.25}
+.fl-note{font-size:12px;color:#7A8396;margin-top:14px;text-align:center}
+.fl-specs{max-width:1180px;margin:48px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.fl-spec{background:#fff;border-radius:14px;padding:20px 22px;display:grid;grid-template-columns:34px 1fr;column-gap:12px;row-gap:4px;align-items:center}
+.fl-spec i{grid-row:span 2;font-size:26px;color:var(--blue)}
+.fl-spec strong{font-size:14.5px;color:var(--navy)}
+.fl-spec span{font-size:13px;color:#5A6478;line-height:1.5}
+.fl-cta{text-align:center;margin-top:36px}
+@media(max-width:900px){.fl-swatches{grid-template-columns:repeat(4,1fr)}.fl-specs{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.fl-swatches{grid-template-columns:repeat(3,1fr);gap:8px}.fl-sw{padding:6px;gap:6px}.fl-chip{width:24px;height:34px}.fl-sw-name{font-size:11px}.fl-specs{grid-template-columns:1fr}.fl-arrow{width:36px;height:36px}.fl-tag{font-size:12px;padding:7px 11px}}
+
 /* ===== DETAILS ===== */
 .svc-details{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .svc-details-eyebrow{font-size:11px;letter-spacing:2.5px;color:var(--blue);text-transform:uppercase;font-weight:700;margin-bottom:16px}
@@ -360,6 +385,86 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="gal-item"><picture><source srcset="images/services/vinyl-living-oak.webp" type="image/webp"><img src="images/services/vinyl-living-oak.jpg" alt="Living room with light oak luxury vinyl plank flooring" width="1672" height="941" loading="lazy" decoding="async"></picture></div>
   </div>
 </section>
+
+<section class="section section-light" id="choose-your-floor">
+  <div class="gal-head">
+    <div class="gal-eyebrow">Elite Series · Coastal Collection</div>
+    <h2>Choose Your Floor</h2>
+    <p>Tap a color to see the same room with a different luxury vinyl plank. Twelve coastal tones, one waterproof floor built for South Florida homes, condos and rentals.</p>
+  </div>
+  <div class="fl-wrap">
+    <div class="fl-stage" id="flStage" aria-live="polite">
+      <img class="fl-img is-on" id="flA" src="images/floors/beach-house.webp" alt="Bedroom with Beach House luxury vinyl plank flooring" width="1672" height="941" decoding="async">
+      <img class="fl-img" id="flB" src="images/floors/beach-house.webp" alt="" width="1672" height="941" decoding="async" aria-hidden="true">
+      <div class="fl-tag"><span id="flName">Beach House</span><small id="flCode">FC55200</small></div>
+      <button type="button" class="fl-arrow fl-prev" id="flPrev" aria-label="Previous color"><i class="ti ti-chevron-left"></i></button>
+      <button type="button" class="fl-arrow fl-next" id="flNext" aria-label="Next color"><i class="ti ti-chevron-right"></i></button>
+    </div>
+    <div class="fl-swatches" role="group" aria-label="Floor colors" id="flSwatches"></div>
+    <p class="fl-note">Room previews are digital renderings of each color. Ask us for a physical sample before you choose.</p>
+  </div>
+  <div class="fl-specs">
+    <div class="fl-spec"><i class="ti ti-droplet"></i><strong>Waterproof</strong><span>Built for kitchens, baths and Florida humidity</span></div>
+    <div class="fl-spec"><i class="ti ti-shield-check"></i><strong>20 mil wear layer</strong><span>Stands up to kids, pets and tenants</span></div>
+    <div class="fl-spec"><i class="ti ti-ruler-measure"></i><strong>9 x 48 in planks</strong><span>Wide, long boards for a true wood look</span></div>
+    <div class="fl-spec"><i class="ti ti-stack-2"></i><strong>6.5 mm with IXPE pad</strong><span>Underlayment already attached</span></div>
+    <div class="fl-spec"><i class="ti ti-puzzle"></i><strong>Unilin click lock</strong><span>No glue installation</span></div>
+    <div class="fl-spec"><i class="ti ti-volume-3"></i><strong>Quiet underfoot</strong><span>STC 69 and IIC 72 sound ratings</span></div>
+    <div class="fl-spec"><i class="ti ti-paw"></i><strong>Pet friendly</strong><span>Easy to clean, hard to scratch</span></div>
+    <div class="fl-spec"><i class="ti ti-leaf"></i><strong>FloorScore certified</strong><span>Phthalate free for healthier indoor air</span></div>
+    <div class="fl-spec"><i class="ti ti-stairs"></i><strong>Matching moldings</strong><span>T-molding, end cap, reducer and stairnose</span></div>
+  </div>
+  <div class="fl-cta"><a href="#lead-form" class="btn-primary"><i class="ti ti-calendar"></i> Get a Quote for This Floor</a></div>
+</section>
+
+<script>
+(function () {
+  var FLOORS = [
+    ['White Cap', 'FC55100', 'white-cap'], ['Beach House', 'FC55200', 'beach-house'], ['Sea Salt', 'FC55300', 'sea-salt'],
+    ['High Tide', 'FC55400', 'high-tide'], ['New Acacia', 'FC55500', 'new-acacia'], ['Ocean Breeze', 'FC55600', 'ocean-breeze'],
+    ['Seaspray', 'FC55700', 'seaspray'], ['Surfside', 'FC55800', 'surfside'], ['Golden Haze', 'FC55900', 'golden-haze'],
+    ['Grey Dawn', 'FC55920', 'grey-dawn'], ['Silver Haze', 'FC55940', 'silver-haze'], ['Dockside', 'FC55960', 'dockside']
+  ];
+  var box = document.getElementById('flSwatches'), A = document.getElementById('flA'), B = document.getElementById('flB');
+  var nameEl = document.getElementById('flName'), codeEl = document.getElementById('flCode');
+  var cur = 1, front = A, back = B, small = window.matchMedia('(max-width:700px)').matches;
+  function src(i) { return 'images/floors/' + FLOORS[i][2] + (small ? '-sm' : '') + '.webp'; }
+  FLOORS.forEach(function (f, i) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'fl-sw'; b.setAttribute('aria-pressed', i === cur ? 'true' : 'false');
+    b.innerHTML = '<span class="fl-chip" style="background-image:url(images/floors/swatch-' + f[2] + '.webp)"></span><span class="fl-sw-name"></span>';
+    b.querySelector('.fl-sw-name').textContent = f[0];
+    b.addEventListener('click', function () { show(i); });
+    b.addEventListener('mouseenter', function () { new Image().src = src(i); });
+    box.appendChild(b);
+  });
+  A.src = src(cur);
+  function show(i) {
+    i = (i + FLOORS.length) % FLOORS.length;
+    if (i === cur) return;
+    cur = i;
+    var f = FLOORS[i];
+    back.onload = function () {
+      back.classList.add('is-on'); front.classList.remove('is-on');
+      back.removeAttribute('aria-hidden'); front.setAttribute('aria-hidden', 'true'); front.alt = '';
+      var t = front; front = back; back = t;
+    };
+    back.alt = 'Bedroom with ' + f[0] + ' luxury vinyl plank flooring';
+    back.src = src(i);
+    nameEl.textContent = f[0]; codeEl.textContent = f[1];
+    Array.prototype.forEach.call(box.children, function (el, k) { el.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
+  }
+  document.getElementById('flPrev').addEventListener('click', function () { show(cur - 1); });
+  document.getElementById('flNext').addEventListener('click', function () { show(cur + 1); });
+  var x0 = null, stage = document.getElementById('flStage');
+  stage.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 40) show(cur + (dx < 0 ? 1 : -1));
+  });
+})();
+</script>
 
 <section class="section section-light">
   <div class="svc-details">

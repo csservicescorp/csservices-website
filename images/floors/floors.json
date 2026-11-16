@@ -1,0 +1,62 @@
+[
+ {
+  "name": "White Cap",
+  "code": "FC55100",
+  "slug": "white-cap"
+ },
+ {
+  "name": "Beach House",
+  "code": "FC55200",
+  "slug": "beach-house"
+ },
+ {
+  "name": "Sea Salt",
+  "code": "FC55300",
+  "slug": "sea-salt"
+ },
+ {
+  "name": "High Tide",
+  "code": "FC55400",
+  "slug": "high-tide"
+ },
+ {
+  "name": "New Acacia",
+  "code": "FC55500",
+  "slug": "new-acacia"
+ },
+ {
+  "name": "Ocean Breeze",
+  "code": "FC55600",
+  "slug": "ocean-breeze"
+ },
+ {
+  "name": "Seaspray",
+  "code": "FC55700",
+  "slug": "seaspray"
+ },
+ {
+  "name": "Surfside",
+  "code": "FC55800",
+  "slug": "surfside"
+ },
+ {
+  "name": "Golden Haze",
+  "code": "FC55900",
+  "slug": "golden-haze"
+ },
+ {
+  "name": "Grey Dawn",
+  "code": "FC55920",
+  "slug": "grey-dawn"
+ },
+ {
+  "name": "Silver Haze",
+  "code": "FC55940",
+  "slug": "silver-haze"
+ },
+ {
+  "name": "Dockside",
+  "code": "FC55960",
+  "slug": "dockside"
+ }
+]
